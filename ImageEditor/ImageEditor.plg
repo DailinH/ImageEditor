@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ImageEditor - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/ImageEditor.res" /d "_DEBUG" /d "_AFXDLL" "G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.rc"" 
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAB.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.cpp"
+"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\MainFrm.cpp"
+"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorDoc.cpp"
+"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp"
+]
+Creating command line "cl.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPBAB.tmp" 
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAC.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPBAC.tmp" 
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAD.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ImageEditor.pdb" /debug /machine:I386 /out:"Debug/ImageEditor.exe" /pdbtype:sept 
+".\Debug\ImageEditor.obj"
+".\Debug\StdAfx.obj"
+".\Debug\MainFrm.obj"
+".\Debug\ImageEditorDoc.obj"
+".\Debug\ImageEditorView.obj"
+".\Debug\ImageEditor.res"
+]
+Creating command line "link.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPBAD.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ImageEditor.cpp
+MainFrm.cpp
+ImageEditorDoc.cpp
+ImageEditorView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ImageEditor.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

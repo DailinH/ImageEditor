@@ -6,23 +6,30 @@
 --------------------Configuration: ImageEditor - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSP5338.bat" with contents
+[
+@echo off
+start /wait hcw /C /E /M "hlp\ImageEditor.hpj"
+if errorlevel 1 goto :Error
+if not exist "hlp\ImageEditor.hlp" goto :Error
+copy "hlp\ImageEditor.hlp" .\Debug
+goto :done
+:Error
+echo hlp\ImageEditor.hpj(1) : error:
+type "hlp\ImageEditor.log"
+:done
+]
+Creating command line "C:\Users\DailinHu\AppData\Local\Temp\RSP5338.bat"
 Creating command line "rc.exe /l 0x804 /fo"Debug/ImageEditor.res" /d "_DEBUG" /d "_AFXDLL" "G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.rc"" 
-Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAB.tmp" with contents
-[
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
-"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.cpp"
-"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\MainFrm.cpp"
-"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorDoc.cpp"
-"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp"
-]
-Creating command line "cl.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPBAB.tmp" 
-Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAC.tmp" with contents
-[
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
-"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\StdAfx.cpp"
-]
-Creating command line "cl.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPBAC.tmp" 
-Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAD.tmp" with contents
+Making help file...
+hlp\ImageEditor.hpj(1) : error:
+Microsoft (R) Help Compiler
+HCRTF 4.03.0002
+Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
+imageeditor.hpj
+    HC5011: Error: imageeditor.hpj : 
+ Cannot open the file "include\afxhelp.hm."
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSP53E5.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ImageEditor.pdb" /debug /machine:I386 /out:"Debug/ImageEditor.exe" /pdbtype:sept 
 ".\Debug\ImageEditor.obj"
@@ -32,23 +39,15 @@ Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPBAD.tmp" with c
 ".\Debug\ImageEditorView.obj"
 ".\Debug\ImageEditor.res"
 ]
-Creating command line "link.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPBAD.tmp"
+Creating command line "link.exe @C:\Users\DailinHu\AppData\Local\Temp\RSP53E5.tmp"
 <h3>Output Window</h3>
 Compiling resources...
-Compiling...
-StdAfx.cpp
-Compiling...
-ImageEditor.cpp
-MainFrm.cpp
-ImageEditorDoc.cpp
-ImageEditorView.cpp
-Generating Code...
 Linking...
 
 
 
 <h3>Results</h3>
-ImageEditor.exe - 0 error(s), 0 warning(s)
+ImageEditor.exe - 2 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

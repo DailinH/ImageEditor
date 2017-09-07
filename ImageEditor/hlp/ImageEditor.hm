@@ -1,0 +1,34 @@
+ 
+// Commands (ID_* and IDM_*) 
+HID_APP_EMAIL                           0x18003
+HID_APP_SCANNER_CAMERA                  0x18004
+HID_EDIT_DEL                            0x18006
+HID_MENUITEM32775                       0x18007
+HID_EDIT_COPY_TO                        0x18008
+HID_EDIT_PASTE_FROM                     0x18009
+HID_VIEW_COLORBOX                       0x1800A
+HID_VIEW_TXT_EDIT                       0x1800B
+HID_VIEW_BITMAP                         0x1800D
+HID_VIEW_ZOOM_NORMAL                    0x1800E
+HID_VIEW_ZOOM_LARGE                     0x1800F
+HID_VIEW_USRDEF                         0x18010
+HID_VIEW_ZOOM_GRID                      0x18011
+HID_VIEW_ZOOM_THUMBNAIL                 0x18012
+HID_IMG_ROTATE                          0x18013
+HID_IMG_STRETCH                         0x18014
+HID_IMG_INVERSE                         0x18015
+HID_MENUITEM32790                       0x18016
+HID_IMG_CLEAR                           0x18017
+HID_IMG_OPAQUE                          0x18018
+HID_COLOR_EDIT                          0x18019
+ 
+// Prompts (IDP_*) 
+ 
+// Resources (IDR_*) 
+HIDR_MAINFRAME                          0x20080
+HIDR_IMAGEETYPE                         0x20081
+ 
+// Dialogs (IDD_*) 
+HIDD_ABOUTBOX                           0x20064
+ 
+// Frame Controls (IDW_*) 

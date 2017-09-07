@@ -2,8 +2,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_IMAGEEDITORDOC_H__EDEB0F97_1760_4AA9_9683_35CD9227D41F__INCLUDED_)
-#define AFX_IMAGEEDITORDOC_H__EDEB0F97_1760_4AA9_9683_35CD9227D41F__INCLUDED_
+#if !defined(AFX_IMAGEEDITORDOC_H__2A0650CF_4029_4E04_9971_42A1EDBE5715__INCLUDED_)
+#define AFX_IMAGEEDITORDOC_H__2A0650CF_4029_4E04_9971_42A1EDBE5715__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
@@ -54,4 +54,4 @@ protected:
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
-#endif // !defined(AFX_IMAGEEDITORDOC_H__EDEB0F97_1760_4AA9_9683_35CD9227D41F__INCLUDED_)
+#endif // !defined(AFX_IMAGEEDITORDOC_H__2A0650CF_4029_4E04_9971_42A1EDBE5715__INCLUDED_)

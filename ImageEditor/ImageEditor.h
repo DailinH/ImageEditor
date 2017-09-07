@@ -1,8 +1,8 @@
 // ImageEditor.h : main header file for the IMAGEEDITOR application
 //
 
-#if !defined(AFX_IMAGEEDITOR_H__D5A2CDAD_441B_466F_9FE6_D4BAD48CAA3E__INCLUDED_)
-#define AFX_IMAGEEDITOR_H__D5A2CDAD_441B_466F_9FE6_D4BAD48CAA3E__INCLUDED_
+#if !defined(AFX_IMAGEEDITOR_H__F23609C5_AA0F_463B_8F1D_A90F977CB2CE__INCLUDED_)
+#define AFX_IMAGEEDITOR_H__F23609C5_AA0F_463B_8F1D_A90F977CB2CE__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
@@ -46,4 +46,4 @@ public:
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
-#endif // !defined(AFX_IMAGEEDITOR_H__D5A2CDAD_441B_466F_9FE6_D4BAD48CAA3E__INCLUDED_)
+#endif // !defined(AFX_IMAGEEDITOR_H__F23609C5_AA0F_463B_8F1D_A90F977CB2CE__INCLUDED_)

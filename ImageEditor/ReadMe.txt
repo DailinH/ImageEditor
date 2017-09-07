@@ -75,6 +75,21 @@ ImageEditorView.h, ImageEditorView.cpp - the view of the document
     CImageEditorView objects are used to view CImageEditorDoc objects.
 
 
+/////////////////////////////////////////////////////////////////////////////
+
+Help Support:
+
+hlp\ImageEditor.hpj
+    This file is the Help Project file used by the Help compiler to create
+    your application's Help file.
+
+hlp\*.bmp
+    These are bitmap files required by the standard Help file topics for
+    Microsoft Foundation Class Library standard commands.
+
+hlp\*.rtf
+    This file contains the standard help topics for standard MFC
+    commands and screen objects.
 
 /////////////////////////////////////////////////////////////////////////////
 Other standard files:

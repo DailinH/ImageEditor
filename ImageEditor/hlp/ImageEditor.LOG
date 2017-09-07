@@ -1,0 +1,6 @@
+Microsoft (R) Help Compiler
+HCRTF 4.03.0002
+Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
+imageeditor.hpj
+    HC5011: Error: imageeditor.hpj : 
+	Cannot open the file "include\afxhelp.hm."

@@ -2,8 +2,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_IMAGEEDITORVIEW_H__152D3791_23E7_4C63_AA46_CD84CE2C2164__INCLUDED_)
-#define AFX_IMAGEEDITORVIEW_H__152D3791_23E7_4C63_AA46_CD84CE2C2164__INCLUDED_
+#if !defined(AFX_IMAGEEDITORVIEW_H__06CE64C1_5033_44B5_9189_F099CDE5A07F__INCLUDED_)
+#define AFX_IMAGEEDITORVIEW_H__06CE64C1_5033_44B5_9189_F099CDE5A07F__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
@@ -64,4 +64,4 @@ inline CImageEditorDoc* CImageEditorView::GetDocument()
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
-#endif // !defined(AFX_IMAGEEDITORVIEW_H__152D3791_23E7_4C63_AA46_CD84CE2C2164__INCLUDED_)
+#endif // !defined(AFX_IMAGEEDITORVIEW_H__06CE64C1_5033_44B5_9189_F099CDE5A07F__INCLUDED_)

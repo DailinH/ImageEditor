@@ -23,6 +23,11 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 		//    DO NOT EDIT what you see in these blocks of generated code !
 	ON_WM_CREATE()
 	//}}AFX_MSG_MAP
+	// Global help commands
+	ON_COMMAND(ID_HELP_FINDER, CFrameWnd::OnHelpFinder)
+	ON_COMMAND(ID_HELP, CFrameWnd::OnHelp)
+	ON_COMMAND(ID_CONTEXT_HELP, CFrameWnd::OnContextHelp)
+	ON_COMMAND(ID_DEFAULT_HELP, CFrameWnd::OnHelpFinder)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =

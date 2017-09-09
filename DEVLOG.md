@@ -8,17 +8,17 @@
 > ## 2017-9-8
 > ### Progress:
 > - add function: create new image
-  1. add dialog "new image"
-  2. correlate dialog with button *ID_FILE_NEW*
-  3. [attain mainframe size][1]  ![][2]
+>  1. add dialog "new image"
+>  2. correlate dialog with button *ID_FILE_NEW*
+>  3. [attain mainframe size][1]  ![][2]
 
 > ## 2017-9-9
 > ### Progress:
 > - reset to delete dialog form of 'create new image'
 > - delete original toolbar
 > - create new image-edit tools
-    1. ~~[use ondraw function to create static shapes][3]~~
-    2. create pencil function (currently malfunctioning, actually presenting fold-lines rather than following mouse movement)
+>    1. ~~[use ondraw function to create static shapes][3]~~
+>    2. create pencil function (currently malfunctioning, actually presenting fold-lines rather than following mouse movement)
     
     
 

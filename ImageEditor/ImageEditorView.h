@@ -1,6 +1,6 @@
 // ImageEditorView.h : interface of the CImageEditorView class
 //
-/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// / ////////////////////////////////////
 
 #if !defined(AFX_IMAGEEDITORVIEW_H__06CE64C1_5033_44B5_9189_F099CDE5A07F__INCLUDED_)
 #define AFX_IMAGEEDITORVIEW_H__06CE64C1_5033_44B5_9189_F099CDE5A07F__INCLUDED_
@@ -29,6 +29,7 @@ public:
 	public:
 	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+	
 	protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
 	virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
@@ -37,6 +38,13 @@ public:
 
 // Implementation
 public:
+	int m_type;
+/*
+	brief notes:
+		define m_type:
+		0	default
+		1	pencil 
+*/
 	virtual ~CImageEditorView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -48,8 +56,8 @@ protected:
 // Generated message map functions
 protected:
 	//{{AFX_MSG(CImageEditorView)
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
+	afx_msg void OnPencil();
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

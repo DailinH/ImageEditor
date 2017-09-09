@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CAboutDlg
+LastClass=CImageEditorView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
@@ -14,12 +14,12 @@ Class2=CImageEditorDoc
 Class3=CImageEditorView
 Class4=CMainFrame
 
-ResourceCount=9
+ResourceCount=4
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
-Resource8=IDD_ABOUTBOX (English (U.S.))
 Class5=CAboutDlg
-Resource9=IDR_MAINFRAME (English (U.S.))
+Resource3=IDR_MAINFRAME (English (U.S.))
+Resource4=IDD_ABOUTBOX (English (U.S.))
 
 [CLS:CImageEditorApp]
 Type=0
@@ -38,6 +38,8 @@ Type=0
 HeaderFile=ImageEditorView.h
 ImplementationFile=ImageEditorView.cpp
 Filter=C
+BaseClass=CView
+VirtualFilter=VWC
 
 
 [CLS:CMainFrame]
@@ -45,6 +47,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
+LastObject=ID_Pencil
 
 
 
@@ -135,7 +138,7 @@ CommandCount=9
 
 [MNU:IDR_MAINFRAME (English (U.S.))]
 Type=1
-Class=?
+Class=CMainFrame
 Command1=ID_FILE_NEW
 Command2=ID_FILE_OPEN
 Command3=ID_FILE_SAVE

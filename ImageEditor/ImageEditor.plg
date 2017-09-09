@@ -6,7 +6,7 @@
 --------------------Configuration: ImageEditor - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSP5338.bat" with contents
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPFB5F.bat" with contents
 [
 @echo off
 start /wait hcw /C /E /M "hlp\ImageEditor.hpj"
@@ -19,8 +19,13 @@ echo hlp\ImageEditor.hpj(1) : error:
 type "hlp\ImageEditor.log"
 :done
 ]
-Creating command line "C:\Users\DailinHu\AppData\Local\Temp\RSP5338.bat"
-Creating command line "rc.exe /l 0x804 /fo"Debug/ImageEditor.res" /d "_DEBUG" /d "_AFXDLL" "G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.rc"" 
+Creating command line "C:\Users\DailinHu\AppData\Local\Temp\RSPFB5F.bat"
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPFB60.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\17-18-1\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\MainFrm.cpp"
+]
+Creating command line "cl.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPFB60.tmp" 
 Making help file...
 hlp\ImageEditor.hpj(1) : error:
 Microsoft (R) Help Compiler
@@ -29,19 +34,20 @@ Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
 imageeditor.hpj
     HC5011: Error: imageeditor.hpj : 
  Cannot open the file "include\afxhelp.hm."
-Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSP53E5.tmp" with contents
+Creating temporary file "C:\Users\DailinHu\AppData\Local\Temp\RSPFBEE.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ImageEditor.pdb" /debug /machine:I386 /out:"Debug/ImageEditor.exe" /pdbtype:sept 
 ".\Debug\ImageEditor.obj"
-".\Debug\StdAfx.obj"
-".\Debug\MainFrm.obj"
 ".\Debug\ImageEditorDoc.obj"
 ".\Debug\ImageEditorView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
 ".\Debug\ImageEditor.res"
 ]
-Creating command line "link.exe @C:\Users\DailinHu\AppData\Local\Temp\RSP53E5.tmp"
+Creating command line "link.exe @C:\Users\DailinHu\AppData\Local\Temp\RSPFBEE.tmp"
 <h3>Output Window</h3>
-Compiling resources...
+Compiling...
+MainFrm.cpp
 Linking...
 
 

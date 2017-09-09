@@ -98,9 +98,9 @@ IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
 IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
 BEGIN
     BUTTON      ID_FILE_NEW
-    BUTTON      ID_FILE_OPEN
     BUTTON      ID_FILE_SAVE
     SEPARATOR
+    BUTTON      ID_FILE_OPEN
     BUTTON      ID_EDIT_CUT
     BUTTON      ID_EDIT_COPY
     BUTTON      ID_EDIT_PASTE
@@ -144,6 +144,36 @@ BEGIN
         MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
         MENUITEM "&Repeat\tCtrl+Y",             ID_EDIT_REPEAT
         MENUITEM SEPARATOR
+        POPUP "&Tools\tCtrl+T"
+        BEGIN
+            MENUITEM "Irregular Selection",         ID_Irregular_Selection
+            MENUITEM "Rectangle Selection",         ID_Rectangle_Selection
+            MENUITEM "Select Color",                ID_Select_Color
+            MENUITEM "Erase",                       ID_Erase
+            MENUITEM "Fill",                        ID_Fill
+            MENUITEM "Magnify",                     ID_Magnify
+            MENUITEM SEPARATOR
+            MENUITEM "Pencil",                      ID_Pencil
+            MENUITEM "Brush",                       ID_Brush
+            MENUITEM "Line",                        ID_Line
+            MENUITEM "Curve",                       ID_Curve
+            MENUITEM "Text",                        ID_Text
+            MENUITEM SEPARATOR
+            MENUITEM "Rectangle",                   ID_Rectangle
+            MENUITEM "Outlined Rectangle",          ID_Outlined_Rectangle
+            MENUITEM "Filled Rectangle",            ID_Filled_Rectangle
+            MENUITEM SEPARATOR
+            MENUITEM "Round Rectangle",             ID_Round_Rectangle
+            MENUITEM "Outlined Round Rectangle",    ID_Outlined_Round_Rectangle
+
+            MENUITEM "Filled Round Rectangle",      ID_Filled_Round_Rectangle
+
+            MENUITEM SEPARATOR
+            MENUITEM "Ellipse",                     ID_Ellipse
+            MENUITEM "Outlined Ellipse",            ID_Outlined_Ellipse
+            MENUITEM "Filled Ellipse",              ID_Filled_Ellipse
+        END
+        MENUITEM SEPARATOR
         MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
         MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
         MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
@@ -155,7 +185,6 @@ BEGIN
     END
     POPUP "&View"
     BEGIN
-        MENUITEM "&Toolbar\tCtrl+T",            ID_VIEW_TOOLBAR
         MENUITEM "&Color Box\tCtrl+L",          ID_VIEW_COLORBOX
         MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
         MENUITEM "Text &Edit Bar",              ID_VIEW_TXT_EDIT

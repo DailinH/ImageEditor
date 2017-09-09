@@ -21,6 +21,26 @@ HID_MENUITEM32790                       0x18016
 HID_IMG_CLEAR                           0x18017
 HID_IMG_OPAQUE                          0x18018
 HID_COLOR_EDIT                          0x18019
+HID_Irregular_Selection                 0x1801A
+HID_Rectangle_Selection                 0x1801B
+HID_Select_Color                        0x1801C
+HID_Erase                               0x1801D
+HID_Fill                                0x1801E
+HID_Magnify                             0x1801F
+HID_Pencil                              0x18020
+HID_Brush                               0x18021
+HID_Line                                0x18022
+HID_Curve                               0x18023
+HID_Text                                0x18024
+HID_Rectangle                           0x18025
+HID_Outlined_Rectangle                  0x18026
+HID_Filled_Rectangle                    0x18027
+HID_Round_Rectangle                     0x1802A
+HID_Outlined_Round_Rectangle            0x1802B
+HID_Filled_Round_Rectangle              0x1802C
+HID_Ellipse                             0x1802D
+HID_Outlined_Ellipse                    0x1802E
+HID_Filled_Ellipse                      0x1802F
  
 // Prompts (IDP_*) 
  

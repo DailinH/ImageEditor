@@ -19,9 +19,8 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	//{{AFX_MSG_MAP(CMainFrame)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
 	ON_WM_CREATE()
+	ON_UPDATE_COMMAND_UI(LINE_STYLE_DASH, OnUpdateStyleDash)
 	//}}AFX_MSG_MAP
 	// Global help commands
 	ON_COMMAND(ID_HELP_FINDER, CFrameWnd::OnHelpFinder)
@@ -110,3 +109,10 @@ void CMainFrame::Dump(CDumpContext& dc) const
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame message handlers
 
+
+void CMainFrame::OnUpdateStyleDash(CCmdUI* pCmdUI) 
+{
+	// TODO: Add your command update UI handler code here
+	if(m_
+	
+}

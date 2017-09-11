@@ -11,6 +11,7 @@
 
 #include "ImageEditorColorPanel.h"
 #include "ImageEditorNewFile.h"
+#include "ImageEditorLineWidth.h"
 class CImageEditorView : public CView
 {
 protected: // create from serialization only
@@ -44,6 +45,7 @@ public:
 	int ImgWidth;
 	ImageEditorColorPanel colorPanel;
 	ImageEditorNewFile createNewFile;
+	ImageEditorLineWidth getLineWidth;
 	int m_type;
 /*
 	brief notes:
@@ -76,6 +78,7 @@ protected:
 	afx_msg void OnStyleDot();
 	afx_msg void OnStyleDashdot();
 	afx_msg void OnStyleDashdotdot();
+	afx_msg void OnGetLineWidth();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

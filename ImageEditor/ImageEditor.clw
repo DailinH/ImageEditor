@@ -2,28 +2,30 @@
 
 [General Info]
 Version=1
-LastClass=CImageEditorView
+LastClass=CMainFrame
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
 LastPage=0
 
-ClassCount=7
+ClassCount=8
 Class1=CImageEditorApp
 Class2=CImageEditorDoc
 Class3=CImageEditorView
 Class4=CMainFrame
 
-ResourceCount=6
+ResourceCount=7
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_ABOUTBOX (English (U.S.))
-Resource4=IDR_MAINFRAME (English (U.S.))
+Resource3=IDR_MAINFRAME (English (U.S.))
+Resource4=IDD_DIALOG2
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG1
+Resource5=IDD_ABOUTBOX (English (U.S.))
 Class7=ImageEditorNewFile
-Resource6=IDD_DIALOG2
+Resource6=IDD_DIALOG1
+Class8=ImageEditorLineWidth
+Resource7=IDD_DIALOG3
 
 [CLS:CImageEditorApp]
 Type=0
@@ -52,7 +54,9 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=LINE_STYLE_DASHDOTDOT
+LastObject=ID_Brush
+BaseClass=CFrameWnd
+VirtualFilter=fWC
 
 
 
@@ -268,6 +272,25 @@ Control6=IDC_EDIT2,edit,1350631552
 Type=0
 HeaderFile=ImageEditorNewFile.h
 ImplementationFile=ImageEditorNewFile.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=IDOK
+VirtualFilter=dWC
+
+[DLG:IDD_DIALOG3]
+Type=1
+Class=ImageEditorLineWidth
+ControlCount=5
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_STATIC,static,1342308352
+Control4=IDC_EDIT1,edit,1350631552
+Control5=IDC_STATIC,button,1342177287
+
+[CLS:ImageEditorLineWidth]
+Type=0
+HeaderFile=ImageEditorLineWidth.h
+ImplementationFile=ImageEditorLineWidth.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=IDOK

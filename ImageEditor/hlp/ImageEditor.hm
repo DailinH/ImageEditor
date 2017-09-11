@@ -53,5 +53,6 @@ HIDR_IMAGEETYPE                         0x20081
 HIDD_ABOUTBOX                           0x20064
 HIDD_DIALOG1                            0x20082
 HIDD_DIALOG2                            0x20083
+HIDD_DIALOG3                            0x20084
  
 // Frame Controls (IDW_*) 

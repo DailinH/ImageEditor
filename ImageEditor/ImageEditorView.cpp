@@ -7,6 +7,7 @@
 #include "ImageEditorDoc.h"
 #include "ImageEditorView.h"
 #include "ImageEditorColorPanel.h"
+#include "ImageEditorLineWidth.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -32,6 +33,7 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 	ON_COMMAND(LINE_STYLE_DOT, OnStyleDot)
 	ON_COMMAND(LINE_STYLE_DASHDOT, OnStyleDashdot)
 	ON_COMMAND(LINE_STYLE_DASHDOTDOT, OnStyleDashdotdot)
+	ON_COMMAND(ID_MENUITEM32820, OnGetLineWidth)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -109,7 +111,12 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	int color = RGB(red,green,blue);
 
 	///////set width//////////
-	int width = 1;
+	int width = atoi(getLineWidth.m_Line_Width);
+	if(width != 1)
+	{
+		
+	}
+	///////create pen/////////
 	CPen newPen(LineStyle,width,color);
 	if(m_type==1){
 		CPoint point= pDoc->m_Last_Position;
@@ -259,4 +266,10 @@ void CImageEditorView::OnStyleDashdotdot()
 {
 	// TODO: Add your command handler code here
 	LineStyle = 4;
+}
+
+void CImageEditorView::OnGetLineWidth() 
+{
+	// TODO: Add your command handler code here
+	getLineWidth.DoModal();
 }

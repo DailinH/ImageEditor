@@ -234,7 +234,6 @@ BEGIN
     BEGIN
         MENUITEM "Irregular Selection",         ID_Irregular_Selection
         MENUITEM "Rectangle Selection",         ID_Rectangle_Selection
-        MENUITEM "Select Color",                ID_Select_Color
         MENUITEM "Erase",                       ID_Erase
         MENUITEM "Fill",                        ID_Fill
         MENUITEM "Magnify",                     ID_Magnify
@@ -257,6 +256,19 @@ BEGIN
         MENUITEM "Outlined Ellipse",            ID_Outlined_Ellipse
         MENUITEM "Filled Ellipse",              ID_Filled_Ellipse
     END
+    POPUP "&Settings"
+    BEGIN
+        MENUITEM "Line Width",                  ID_MENUITEM32820
+        POPUP "Line Style"
+        BEGIN
+            MENUITEM "solid",                       LINE_STYLE_SOLID
+            MENUITEM "dash",                        LINE_STYLE_DASH
+            MENUITEM "dot",                         LINE_STYLE_DOT
+            MENUITEM "dash-dot",                    LINE_STYLE_DASHDOT
+            MENUITEM "dash-dot-dot",                LINE_STYLE_DASHDOTDOT
+        END
+        MENUITEM "Color",                       ID_Select_Color
+    END
     POPUP "&Image"
     BEGIN
         MENUITEM "&Flip/Rotate...\tCtrl+R",     ID_IMG_ROTATE
@@ -265,10 +277,6 @@ BEGIN
         MENUITEM "&Attributes...\tCtrl+E",      ID_MENUITEM32790
         MENUITEM "&Clear\tCtrl+Shft+W",         ID_IMG_CLEAR
         MENUITEM "&Draw Opaque",                ID_IMG_OPAQUE
-    END
-    POPUP "&Color"
-    BEGIN
-        MENUITEM "&Edit Color...",              ID_COLOR_EDIT
     END
     POPUP "&Help"
     BEGIN

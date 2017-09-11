@@ -50,7 +50,10 @@ public:
 		define m_type:
 		0	default
 		1	pencil 
+		2	brush
+		3	
 */
+	int LineStyle;
 	virtual ~CImageEditorView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -68,6 +71,11 @@ protected:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnSelectColor();
 	afx_msg void OnCreateNewFile();
+	afx_msg void OnStyleSolid();
+	afx_msg void OnStyleDash();
+	afx_msg void OnStyleDot();
+	afx_msg void OnStyleDashdot();
+	afx_msg void OnStyleDashdotdot();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

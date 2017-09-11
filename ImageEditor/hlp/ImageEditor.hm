@@ -41,6 +41,7 @@ HID_Filled_Round_Rectangle              0x1802C
 HID_Ellipse                             0x1802D
 HID_Outlined_Ellipse                    0x1802E
 HID_Filled_Ellipse                      0x1802F
+HID_MENUITEM32820                       0x18034
  
 // Prompts (IDP_*) 
  

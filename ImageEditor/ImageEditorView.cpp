@@ -27,6 +27,11 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_Select_Color, OnSelectColor)
 	ON_COMMAND(ID_FILE_NEW, OnCreateNewFile)
+	ON_COMMAND(LINE_STYLE_SOLID, OnStyleSolid)
+	ON_COMMAND(LINE_STYLE_DASH, OnStyleDash)
+	ON_COMMAND(LINE_STYLE_DOT, OnStyleDot)
+	ON_COMMAND(LINE_STYLE_DASHDOT, OnStyleDashdot)
+	ON_COMMAND(LINE_STYLE_DASHDOTDOT, OnStyleDashdotdot)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -43,6 +48,7 @@ CImageEditorView::CImageEditorView()
 	LBtnDn = false;
 	ImgHeight = 500;
 	ImgWidth = 500;
+	LineStyle =0;
 	// TODO: add construction code here
 }
 
@@ -104,7 +110,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 
 	///////set width//////////
 	int width = 1;
-	CPen newPen(PS_SOLID,width,color);
+	CPen newPen(LineStyle,width,color);
 	if(m_type==1){
 		CPoint point= pDoc->m_Last_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
@@ -116,6 +122,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		}
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
 	}
+	newPen.DeleteObject();
 
 	// pDC->BitBlt(rc_size.left,rc_size.top,rc_size.Width(),rc_size.Height(),&MemDC,0,0,SRCCOPY);
 	// oldBitmap.DeleteObject();
@@ -222,4 +229,34 @@ void CImageEditorView::OnCreateNewFile()
 	if(createNewFile.ResetMap==true)   
 		InvalidateRect(NULL,FALSE);
 	
+}
+
+void CImageEditorView::OnStyleSolid() 
+{
+	// TODO: Add your command handler code here
+	LineStyle = 0;
+}
+
+void CImageEditorView::OnStyleDash() 
+{
+	// TODO: Add your command handler code here
+	LineStyle = 1;	
+}
+
+void CImageEditorView::OnStyleDot() 
+{
+	// TODO: Add your command handler code here
+	LineStyle = 2;
+}
+
+void CImageEditorView::OnStyleDashdot() 
+{
+	// TODO: Add your command handler code here
+	LineStyle = 3;	
+}
+
+void CImageEditorView::OnStyleDashdotdot() 
+{
+	// TODO: Add your command handler code here
+	LineStyle = 4;
 }

@@ -51,6 +51,12 @@
 #define ID_Ellipse                      32813
 #define ID_Outlined_Ellipse             32814
 #define ID_Filled_Ellipse               32815
+#define ID_MENUITEM32820                32820
+#define LINE_STYLE_SOLID                32821
+#define LINE_STYLE_DASH                 32822
+#define LINE_STYLE_DOT                  32823
+#define LINE_STYLE_DASHDOT              32824
+#define LINE_STYLE_DASHDOTDOT           32825
 
 // Next default values for new objects
 // 
@@ -58,7 +64,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32816
+#define _APS_NEXT_COMMAND_VALUE         32826
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

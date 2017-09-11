@@ -26,6 +26,7 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_Select_Color, OnSelectColor)
+	ON_COMMAND(ID_FILE_NEW, OnCreateNewFile)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -63,6 +64,8 @@ void CImageEditorView::OnDraw(CDC *pDC)
 {
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
+
+	///////double buffer//////////
 
 	///////set color//////////
 	int red = atoi(colorPanel.m_Color_Red);
@@ -176,4 +179,10 @@ void CImageEditorView::OnSelectColor()
 	colorPanel.DoModal();
 //	CView::OnMouseMove(nFlags, point);
 	
+}
+
+void CImageEditorView::OnCreateNewFile() 
+{
+	// TODO: Add your command handler code here
+	createNewFile.DoModal();
 }

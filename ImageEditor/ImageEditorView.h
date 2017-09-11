@@ -10,7 +10,7 @@
 #endif // _MSC_VER > 1000
 
 #include "ImageEditorColorPanel.h"
-
+#include "ImageEditorNewFile.h"
 class CImageEditorView : public CView
 {
 protected: // create from serialization only
@@ -39,9 +39,10 @@ public:
 
 // Implementation
 public:
-	int m_type;
 	bool LBtnDn;
-	ImageEditorColorPanel colorPanel;	
+	ImageEditorColorPanel colorPanel;
+	ImageEditorNewFile createNewFile;
+	int m_type;
 /*
 	brief notes:
 		define m_type:
@@ -64,6 +65,7 @@ protected:
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnSelectColor();
+	afx_msg void OnCreateNewFile();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

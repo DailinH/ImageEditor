@@ -8,20 +8,22 @@ NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
 LastPage=0
 
-ClassCount=6
+ClassCount=7
 Class1=CImageEditorApp
 Class2=CImageEditorDoc
 Class3=CImageEditorView
 Class4=CMainFrame
 
-ResourceCount=5
+ResourceCount=6
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDR_MAINFRAME (English (U.S.))
-Resource4=IDD_ABOUTBOX (English (U.S.))
+Resource3=IDD_ABOUTBOX (English (U.S.))
+Resource4=IDR_MAINFRAME (English (U.S.))
 Class6=ImageEditorColorPanel
 Resource5=IDD_DIALOG1
+Class7=ImageEditorNewFile
+Resource6=IDD_DIALOG2
 
 [CLS:CImageEditorApp]
 Type=0
@@ -50,7 +52,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_Select_Color
+LastObject=ID_FILE_NEW
 
 
 
@@ -244,5 +246,25 @@ ImplementationFile=ImageEditorColorPanel.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=IDC_EDIT1
+VirtualFilter=dWC
+
+[DLG:IDD_DIALOG2]
+Type=1
+Class=ImageEditorNewFile
+ControlCount=6
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_STATIC,static,1342308352
+Control4=IDC_STATIC,static,1342308352
+Control5=IDC_EDIT1,edit,1350631552
+Control6=IDC_EDIT2,edit,1350631552
+
+[CLS:ImageEditorNewFile]
+Type=0
+HeaderFile=ImageEditorNewFile.h
+ImplementationFile=ImageEditorNewFile.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=IDOK
 VirtualFilter=dWC
 

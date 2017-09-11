@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CImageEditorView
+LastClass=ImageEditorColorPanel
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
@@ -18,12 +18,12 @@ ResourceCount=7
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_DIALOG1
-Resource4=IDD_ABOUTBOX (English (U.S.))
+Resource3=IDD_ABOUTBOX (English (U.S.))
+Resource4=IDR_MAINFRAME (English (U.S.))
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG2
+Resource5=IDD_DIALOG1
 Class7=ImageEditorNewFile
-Resource6=IDR_MAINFRAME (English (U.S.))
+Resource6=IDD_DIALOG2
 Class8=ImageEditorLineWidth
 Resource7=IDD_DIALOG3
 
@@ -54,7 +54,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_Line
+LastObject=ID_Filled_Rectangle
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -236,7 +236,7 @@ CommandCount=16
 [DLG:IDD_DIALOG1]
 Type=1
 Class=ImageEditorColorPanel
-ControlCount=9
+ControlCount=16
 Control1=IDOK,button,1342242817
 Control2=IDCANCEL,button,1342242816
 Control3=IDC_EDIT1,edit,1350631552
@@ -245,7 +245,14 @@ Control5=IDC_EDIT2,edit,1350631552
 Control6=IDC_STATIC,static,1342308352
 Control7=IDC_EDIT3,edit,1350631552
 Control8=IDC_STATIC,static,1342308352
-Control9=IDC_STATIC,button,1342177287
+Control9=IDC_STATIC,button,1476395015
+Control10=IDC_EDIT4,edit,1350631552
+Control11=IDC_STATIC,static,1342308352
+Control12=IDC_EDIT5,edit,1350631552
+Control13=IDC_STATIC,static,1342308352
+Control14=IDC_EDIT6,edit,1350631552
+Control15=IDC_STATIC,static,1342308352
+Control16=IDC_STATIC,button,1476395015
 
 [CLS:ImageEditorColorPanel]
 Type=0

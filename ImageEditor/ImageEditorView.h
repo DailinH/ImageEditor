@@ -54,6 +54,15 @@ public:
 		2	line
 		3	curve
 		4	text
+		5	rectangle
+		6	outlined rectangle
+		7	filled rectangle
+		8	round rectangle
+		9	outlined round rectangle
+		10	filled round rectangle
+		11	ellipse
+		12	round ellipse
+		13	filled ellipse
 */
 	int LineStyle;
 	virtual ~CImageEditorView();
@@ -82,6 +91,9 @@ protected:
 	afx_msg void OnCurve();
 	afx_msg void OnText();
 	afx_msg void OnLine();
+	afx_msg void OnRectangle();
+	afx_msg void OnOutlinedRectangle();
+	afx_msg void OnFilledRectangle();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

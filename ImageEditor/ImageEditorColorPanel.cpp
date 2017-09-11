@@ -22,7 +22,10 @@ ImageEditorColorPanel::ImageEditorColorPanel(CWnd* pParent /*=NULL*/)
 	m_Color_Red = _T("0");
 	m_Color_Green = _T("0");
 	m_Color_Blue = _T("0");
-//	ModifyColor=false;
+	m_BG_Color_Red = _T("");
+	m_BG_Color_Green = _T("");
+	m_BG_Color_Blue = _T("");
+	transparent = true;
 	//}}AFX_DATA_INIT
 }
 
@@ -34,6 +37,9 @@ void ImageEditorColorPanel::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT1, m_Color_Red);
 	DDX_Text(pDX, IDC_EDIT2, m_Color_Green);
 	DDX_Text(pDX, IDC_EDIT3, m_Color_Blue);
+	DDX_Text(pDX, IDC_EDIT4, m_BG_Color_Red);
+	DDX_Text(pDX, IDC_EDIT5, m_BG_Color_Green);
+	DDX_Text(pDX, IDC_EDIT6, m_BG_Color_Blue);
 	//}}AFX_DATA_MAP
 }
 
@@ -48,7 +54,19 @@ END_MESSAGE_MAP()
 
 void ImageEditorColorPanel::OnOK() 
 {
+	
+	int bg_red = atoi(m_BG_Color_Red);
+	int bg_green = atoi(m_BG_Color_Green);	
+	int bg_blue = atoi(m_BG_Color_Blue);	
 	UpdateData(true);
+	if(transparent == true){
+		int bg_red2 = atoi(m_BG_Color_Red);
+		int bg_green2 = atoi(m_BG_Color_Green);	
+		int bg_blue2 = atoi(m_BG_Color_Blue);	
+		if(bg_red2 != bg_red || bg_green2 != bg_green || bg_blue2 != bg_blue){
+			transparent = false;
+		}
+	}
 	//	ModifyColor = true;
 	// MessageBox(m_Color_Red);
 	// MessageBox(m_Color_Green);

@@ -37,6 +37,9 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 	ON_COMMAND(ID_Curve, OnCurve)
 	ON_COMMAND(ID_Text, OnText)
 	ON_COMMAND(ID_Line, OnLine)
+	ON_COMMAND(ID_Rectangle, OnRectangle)
+	ON_COMMAND(ID_Outlined_Rectangle, OnOutlinedRectangle)
+	ON_COMMAND(ID_Filled_Rectangle, OnFilledRectangle)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -111,6 +114,11 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	int red = atoi(colorPanel.m_Color_Red);
 	int green = atoi(colorPanel.m_Color_Green);	
 	int blue = atoi(colorPanel.m_Color_Blue);
+	if (colorPanel.transparent != true){
+		int bg_red = atoi(colorPanel.m_BG_Color_Red);
+		int bg_green = atoi(colorPanel.m_BG_Color_Green);	
+		int bg_blue = atoi(colorPanel.m_BG_Color_Blue);	
+	}
 	int color = RGB(red,green,blue);
 
 	///////set width//////////
@@ -131,7 +139,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
 	}
 	////////line/////////////	
-	if(m_type==2){
+	else if(m_type==2){
 		CPen newPen(LineStyle,width,color);		
 		CPoint point= pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
@@ -142,6 +150,39 @@ void CImageEditorView::OnDraw(CDC *pDC)
 			pDC->LineTo(tgtPoint);
 		}
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
+	}
+	else if(m_type==5||m_type == 6||m_type == 7){
+		CPoint point= pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		CPoint LDn(point.x,tgtPoint.y);
+		CPoint RUp(tgtPoint.x,point.y);
+		// if(m_type ==5){
+		// 	color = NULL;
+		// }
+		// else 
+		// if (m_type ==6 ){
+		// 	if(colorPanel.transparent){
+		// 		MessageBox("Please set background color!");
+		// 	}else{
+		// 		// CBrush
+		// 	}
+		// }
+		// else{
+		// 	color = NULL;
+		// }
+			CPen newPen(LineStyle,width,color);		
+			pDC->SelectObject(&newPen);		
+			if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
+				pDC->MoveTo(point);			
+				pDC->LineTo(LDn);				
+				pDC->MoveTo(LDn);			
+				pDC->LineTo(tgtPoint);				
+				pDC->MoveTo(tgtPoint);			
+				pDC->LineTo(RUp);				
+				pDC->MoveTo(RUp);			
+				pDC->LineTo(point);				
+		}
+		pDoc->m_Last_Position=pDoc->m_Current_Position;		
 	}
 	newPen.DeleteObject();
 
@@ -214,7 +255,7 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = false;
-	if(m_type ==2){
+	if(m_type ==2||m_type >=5){
 		CImageEditorDoc* pDoc = GetDocument();
 		pDoc->m_Current_Position = point;
 		InvalidateRect(NULL,FALSE);		
@@ -309,7 +350,25 @@ void CImageEditorView::OnCurve()
 void CImageEditorView::OnText() 
 {
 	// TODO: Add your command handler code here
-	m_type = 4;	
-	
+	m_type = 4;		
+}
+
+
+void CImageEditorView::OnRectangle() 
+{
+	// TODO: Add your command handler code here
+	m_type = 5;		
+}
+
+void CImageEditorView::OnOutlinedRectangle() 
+{
+	// TODO: Add your command handler code here
+	m_type = 6;		
+}
+
+void CImageEditorView::OnFilledRectangle() 
+{
+	// TODO: Add your command handler code here
+	m_type = 7;		
 }
 

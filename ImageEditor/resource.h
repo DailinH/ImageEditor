@@ -11,6 +11,9 @@
 #define IDC_EDIT1                       1000
 #define IDC_EDIT2                       1001
 #define IDC_EDIT3                       1002
+#define IDC_EDIT4                       1003
+#define IDC_EDIT5                       1004
+#define IDC_EDIT6                       1005
 #define ID_APP_EMAIL                    32771
 #define ID_APP_SCANNER_CAMERA           32772
 #define ID_EDIT_DEL                     32774

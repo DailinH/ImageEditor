@@ -159,6 +159,10 @@ SOURCE=.\ImageEditorDoc.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\ImageEditorLineWidth.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\ImageEditorNewFile.cpp
 # End Source File
 # Begin Source File
@@ -189,6 +193,10 @@ SOURCE=.\ImageEditorColorPanel.h
 # Begin Source File
 
 SOURCE=.\ImageEditorDoc.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ImageEditorLineWidth.h
 # End Source File
 # Begin Source File
 

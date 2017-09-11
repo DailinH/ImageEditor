@@ -22,7 +22,10 @@ public:
 	CString	m_Color_Red;
 	CString	m_Color_Green;
 	CString	m_Color_Blue;
-//	bool ModifyColor;
+	CString	m_BG_Color_Red;
+	CString	m_BG_Color_Green;
+	CString	m_BG_Color_Blue;
+	bool transparent;
 	//}}AFX_DATA
 
 

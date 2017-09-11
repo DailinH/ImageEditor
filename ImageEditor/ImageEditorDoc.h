@@ -33,8 +33,9 @@ public:
 // Implementation
 public:
 	CPoint m_Current_Position;
-	CPoint m_Current_LBtnDn_Position_Last;
-	CPoint m_Current_LBtnDn_Position;
+	CPoint m_Last_Position;
+	CPoint m_Last_LBtnDn_Position;
+	
 	virtual ~CImageEditorDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;

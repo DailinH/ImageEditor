@@ -22,27 +22,6 @@ Basic Featues
  2. Edit
     - [ ] Undo
     - [ ] Repeat
-    - [ ] Toolbar
-        - [ ] Irregular Selection
-        - [ ] Rectangle Selection
-        - [ ] Select Color
-        - [ ] Erase
-        - [ ] Fill
-        - [ ] Magnify
-        - [ ] Pencil
-        - [ ] Brush
-        - [ ] Line
-        - [ ] Curve
-        - [ ] Text
-        - [ ] Rectangle
-        - [ ] Outlined Rectangle
-        - [ ] Filled Rectangle
-        - [ ] Round Rectangle
-        - [ ] Outlined Round Rectangle
-        - [ ] Filled Round Rectangle
-        - [ ] Ellipse
-        - [ ] Outlined Ellipse
-        - [ ] Filled Ellipse
     - [ ] Cut
     - [ ] Copy
     - [ ] Paste
@@ -61,16 +40,38 @@ Basic Featues
         - [ ] Grid
         - [ ] Thumbnail
     - [ ] View Bitmap
- 4. Image
+ 4. [ ] Tools
+    - [ ] Irregular Selection
+    - [ ] Rectangle Selection
+    - [ ] Select Color
+    - [ ] Erase
+    - [ ] Fill
+    - [ ] Magnify
+    - [x] Pencil
+    - [ ] Brush
+    - [ ] Line
+    - [ ] Curve
+    - [ ] Text
+    - [ ] Rectangle
+    - [ ] Outlined Rectangle
+    - [ ] Filled Rectangle
+    - [ ] Round Rectangle
+    - [ ] Outlined Round Rectangle
+    - [ ] Filled Round Rectangle
+    - [ ] Ellipse
+    - [ ] Outlined Ellipse
+    - [ ] Filled Ellipse
+
+ 5. Image
     - [ ] Flip/Rotate
     - [ ] Stretch/Distort
     - [ ] Inverse
     - [ ] Attributes
     - [ ] Clear
     - [ ] Draw Opaque
- 5. Color
+ 6. Color
     - [ ] Edit Color
- 6. Help
+ 7. Help
     - [ ] Help Topics
     - [x] About ImageEditor
 

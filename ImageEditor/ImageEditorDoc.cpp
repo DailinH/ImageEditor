@@ -30,8 +30,6 @@ END_MESSAGE_MAP()
 CImageEditorDoc::CImageEditorDoc()
 {
 	// TODO: add one-time construction code here
-	m_Current_LBtnDn_Position_Last.x =0 ;
-	m_Current_LBtnDn_Position_Last.y =0 ;
 
 }
 

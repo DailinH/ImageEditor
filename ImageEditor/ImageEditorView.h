@@ -39,6 +39,7 @@ public:
 // Implementation
 public:
 	int m_type;
+	bool LBtnDn;
 /*
 	brief notes:
 		define m_type:
@@ -58,6 +59,8 @@ protected:
 	//{{AFX_MSG(CImageEditorView)
 	afx_msg void OnPencil();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

@@ -22,6 +22,8 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 //{{AFX_MSG_MAP(CImageEditorView)
 	ON_COMMAND(ID_Pencil, OnPencil)
 	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
+	ON_WM_MOUSEMOVE()
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -35,6 +37,7 @@ END_MESSAGE_MAP()
 CImageEditorView::CImageEditorView()
 {
 	m_type = 0;
+	LBtnDn = false;
 //	m_Current_LBtnDn_Position_Last(0,0);
 	// TODO: add construction code here
 }
@@ -59,14 +62,10 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if(m_type==1){
-		CPoint point= pDoc->m_Current_LBtnDn_Position_Last;
-		if(point.x ==0 && point.y == 0){
-			point = pDoc->m_Current_LBtnDn_Position;
-			pDoc->m_Current_LBtnDn_Position_Last=pDoc->m_Current_LBtnDn_Position;		
-		}
+		CPoint point= pDoc->m_Last_Position;
 		pDC->MoveTo(point);
-		pDC->LineTo(pDoc->m_Current_LBtnDn_Position);
-		pDoc->m_Current_LBtnDn_Position_Last=pDoc->m_Current_LBtnDn_Position;
+		pDC->LineTo(pDoc->m_Current_Position);
+		pDoc->m_Last_Position=pDoc->m_Current_Position;
 	}
 
 	// TODO: add draw code for native data here
@@ -124,8 +123,33 @@ void CImageEditorView::OnPencil()
 void CImageEditorView::OnLButtonDown(UINT nFlags, CPoint point) 
 {
 	// TODO: Add your message handler code here and/or call default
+	LBtnDn = true;
 	CImageEditorDoc* pDoc = GetDocument();
-	pDoc->m_Current_LBtnDn_Position=point;
-	InvalidateRect(NULL,FALSE);
+
+	pDoc->m_Last_LBtnDn_Position=point;
+	pDoc->m_Last_Position = point;
+	// InvalidateRect(NULL,FALSE);
+
 	CView::OnLButtonDown(nFlags, point);
+}
+
+void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point) 
+{
+	// TODO: Add your message handler code here and/or call default
+	LBtnDn = false;
+	CView::OnLButtonUp(nFlags, point);
+}
+
+void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point) 
+{
+	// TODO: Add your message handler code here and/or call default
+	if(m_type == 1){
+		if(LBtnDn == true){
+			CImageEditorDoc* pDoc = GetDocument();
+			pDoc->m_Current_Position = point;
+			InvalidateRect(NULL,FALSE);	
+		}
+	}
+	
+	CView::OnMouseMove(nFlags, point);
 }

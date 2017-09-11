@@ -144,36 +144,6 @@ BEGIN
         MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
         MENUITEM "&Repeat\tCtrl+Y",             ID_EDIT_REPEAT
         MENUITEM SEPARATOR
-        POPUP "&Tools\tCtrl+T"
-        BEGIN
-            MENUITEM "Irregular Selection",         ID_Irregular_Selection
-            MENUITEM "Rectangle Selection",         ID_Rectangle_Selection
-            MENUITEM "Select Color",                ID_Select_Color
-            MENUITEM "Erase",                       ID_Erase
-            MENUITEM "Fill",                        ID_Fill
-            MENUITEM "Magnify",                     ID_Magnify
-            MENUITEM SEPARATOR
-            MENUITEM "Pencil",                      ID_Pencil
-            MENUITEM "Brush",                       ID_Brush
-            MENUITEM "Line",                        ID_Line
-            MENUITEM "Curve",                       ID_Curve
-            MENUITEM "Text",                        ID_Text
-            MENUITEM SEPARATOR
-            MENUITEM "Rectangle",                   ID_Rectangle
-            MENUITEM "Outlined Rectangle",          ID_Outlined_Rectangle
-            MENUITEM "Filled Rectangle",            ID_Filled_Rectangle
-            MENUITEM SEPARATOR
-            MENUITEM "Round Rectangle",             ID_Round_Rectangle
-            MENUITEM "Outlined Round Rectangle",    ID_Outlined_Round_Rectangle
-
-            MENUITEM "Filled Round Rectangle",      ID_Filled_Round_Rectangle
-
-            MENUITEM SEPARATOR
-            MENUITEM "Ellipse",                     ID_Ellipse
-            MENUITEM "Outlined Ellipse",            ID_Outlined_Ellipse
-            MENUITEM "Filled Ellipse",              ID_Filled_Ellipse
-        END
-        MENUITEM SEPARATOR
         MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
         MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
         MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
@@ -197,6 +167,33 @@ BEGIN
             MENUITEM "T&humbnail",                  ID_VIEW_ZOOM_THUMBNAIL
         END
         MENUITEM "&View Bitmap\tCtrl+F",        ID_VIEW_BITMAP
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Irregular Selection",         ID_Irregular_Selection
+        MENUITEM "Rectangle Selection",         ID_Rectangle_Selection
+        MENUITEM "Select Color",                ID_Select_Color
+        MENUITEM "Erase",                       ID_Erase
+        MENUITEM "Fill",                        ID_Fill
+        MENUITEM "Magnify",                     ID_Magnify
+        MENUITEM SEPARATOR
+        MENUITEM "Pencil",                      ID_Pencil
+        MENUITEM "Brush",                       ID_Brush
+        MENUITEM "Line",                        ID_Line
+        MENUITEM "Curve",                       ID_Curve
+        MENUITEM "Text",                        ID_Text
+        MENUITEM SEPARATOR
+        MENUITEM "Rectangle",                   ID_Rectangle
+        MENUITEM "Outlined Rectangle",          ID_Outlined_Rectangle
+        MENUITEM "Filled Rectangle",            ID_Filled_Rectangle
+        MENUITEM SEPARATOR
+        MENUITEM "Round Rectangle",             ID_Round_Rectangle
+        MENUITEM "Outlined Round Rectangle",    ID_Outlined_Round_Rectangle
+        MENUITEM "Filled Round Rectangle",      ID_Filled_Round_Rectangle
+        MENUITEM SEPARATOR
+        MENUITEM "Ellipse",                     ID_Ellipse
+        MENUITEM "Outlined Ellipse",            ID_Outlined_Ellipse
+        MENUITEM "Filled Ellipse",              ID_Filled_Ellipse
     END
     POPUP "&Image"
     BEGIN

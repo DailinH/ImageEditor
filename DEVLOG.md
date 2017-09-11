@@ -19,6 +19,11 @@
 > - create new image-edit tools
 >    1. ~~[use ondraw function to create static shapes][3]~~
 >    2. create pencil function (currently malfunctioning, actually presenting fold-lines rather than following mouse movement)
+
+> ## 2017-9-11
+> ### Progress:
+> - Reset to empty single document
+> - Fulfil "Pencil" function
     
     
 

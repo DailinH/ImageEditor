@@ -35,6 +35,7 @@ public:
 	CPoint m_Current_Position;
 	CPoint m_Last_Position;
 	CPoint m_Last_LBtnDn_Position;
+	CBitmap Bmp_Buff;
 	
 	virtual ~CImageEditorDoc();
 #ifdef _DEBUG

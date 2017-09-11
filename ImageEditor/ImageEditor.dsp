@@ -159,6 +159,10 @@ SOURCE=.\ImageEditorDoc.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\ImageEditorNewFile.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\ImageEditorView.cpp
 # End Source File
 # Begin Source File
@@ -185,6 +189,10 @@ SOURCE=.\ImageEditorColorPanel.h
 # Begin Source File
 
 SOURCE=.\ImageEditorDoc.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ImageEditorNewFile.h
 # End Source File
 # Begin Source File
 

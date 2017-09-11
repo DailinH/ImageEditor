@@ -50,10 +50,10 @@ public:
 /*
 	brief notes:
 		define m_type:
-		0	default
-		1	pencil 
-		2	brush
-		3	
+		1	pencil (default)
+		2	line
+		3	curve
+		4	text
 */
 	int LineStyle;
 	virtual ~CImageEditorView();
@@ -79,6 +79,9 @@ protected:
 	afx_msg void OnStyleDashdot();
 	afx_msg void OnStyleDashdotdot();
 	afx_msg void OnGetLineWidth();
+	afx_msg void OnCurve();
+	afx_msg void OnText();
+	afx_msg void OnLine();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

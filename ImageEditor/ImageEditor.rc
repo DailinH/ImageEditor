@@ -259,7 +259,6 @@ BEGIN
         MENUITEM "Magnify",                     ID_Magnify
         MENUITEM SEPARATOR
         MENUITEM "Pencil",                      ID_Pencil
-        MENUITEM "Brush",                       ID_Brush
         MENUITEM "Line",                        ID_Line
         MENUITEM "Curve",                       ID_Curve
         MENUITEM "Text",                        ID_Text

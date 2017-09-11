@@ -34,6 +34,9 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 	ON_COMMAND(LINE_STYLE_DASHDOT, OnStyleDashdot)
 	ON_COMMAND(LINE_STYLE_DASHDOTDOT, OnStyleDashdotdot)
 	ON_COMMAND(ID_MENUITEM32820, OnGetLineWidth)
+	ON_COMMAND(ID_Curve, OnCurve)
+	ON_COMMAND(ID_Text, OnText)
+	ON_COMMAND(ID_Line, OnLine)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -46,7 +49,7 @@ END_MESSAGE_MAP()
 
 CImageEditorView::CImageEditorView()
 {
-	m_type = 0;
+	m_type = 1;
 	LBtnDn = false;
 	ImgHeight = 500;
 	ImgWidth = 500;
@@ -112,14 +115,25 @@ void CImageEditorView::OnDraw(CDC *pDC)
 
 	///////set width//////////
 	int width = atoi(getLineWidth.m_Line_Width);
-	if(width != 1)
-	{
-		
-	}
 	///////create pen/////////
 	CPen newPen(LineStyle,width,color);
+	//////////////////////////
+	////////pencil////////////
 	if(m_type==1){
 		CPoint point= pDoc->m_Last_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		pDC->SelectObject(&newPen);
+		// MemDC.SelectObject(&newPen);
+		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
+			pDC->MoveTo(point);			
+			pDC->LineTo(tgtPoint);
+		}
+		pDoc->m_Last_Position=pDoc->m_Current_Position;
+	}
+	////////line/////////////	
+	if(m_type==2){
+		CPen newPen(LineStyle,width,color);		
+		CPoint point= pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
 		pDC->SelectObject(&newPen);
 		// MemDC.SelectObject(&newPen);
@@ -182,10 +196,6 @@ CImageEditorDoc *CImageEditorView::GetDocument() // non-debug version is inline
 // CImageEditorView message handlers
 
 
-void CImageEditorView::OnPencil() 
-{
-	m_type = 1;	
-}
 
 void CImageEditorView::OnLButtonDown(UINT nFlags, CPoint point) 
 {
@@ -204,6 +214,11 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = false;
+	if(m_type ==2){
+		CImageEditorDoc* pDoc = GetDocument();
+		pDoc->m_Current_Position = point;
+		InvalidateRect(NULL,FALSE);		
+	}
 	CView::OnLButtonUp(nFlags, point);
 }
 
@@ -273,3 +288,28 @@ void CImageEditorView::OnGetLineWidth()
 	// TODO: Add your command handler code here
 	getLineWidth.DoModal();
 }
+
+void CImageEditorView::OnPencil() 
+{
+	m_type = 1;	
+}
+
+void CImageEditorView::OnLine() 
+{
+	// TODO: Add your command handler code here
+	m_type = 2;	
+}
+void CImageEditorView::OnCurve() 
+{
+	// TODO: Add your command handler code here
+	m_type = 3;	
+	
+}
+
+void CImageEditorView::OnText() 
+{
+	// TODO: Add your command handler code here
+	m_type = 4;	
+	
+}
+

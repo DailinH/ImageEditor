@@ -40,15 +40,13 @@ Basic Featues
         - [ ] Grid
         - [ ] Thumbnail
     - [ ] View Bitmap
- 4. [ ] Tools
+ 4. Tools
     - [ ] Irregular Selection
     - [ ] Rectangle Selection
-    - [x] Select Color
     - [ ] Erase
     - [ ] Fill
     - [ ] Magnify
     - [x] Pencil
-    - [ ] Brush
     - [ ] Line
     - [ ] Curve
     - [ ] Text
@@ -61,17 +59,25 @@ Basic Featues
     - [ ] Ellipse
     - [ ] Outlined Ellipse
     - [ ] Filled Ellipse
-
- 5. Image
+ 5. Settings
+    - [x] Line Width
+    - [x] Line Style
+        - [x] solid
+        - [x] dash
+        - [x] dot
+        - [x] dash-dot
+        - [x] dash-dot-dot
+    - [x] Select Color
+ 6. Image
     - [ ] Flip/Rotate
     - [ ] Stretch/Distort
     - [ ] Inverse
     - [ ] Attributes
     - [ ] Clear
     - [ ] Draw Opaque
- 6. Color
+ 7. Color
     - [ ] Edit Color
- 7. Help
+ 8. Help
     - [ ] Help Topics
     - [x] About ImageEditor
 

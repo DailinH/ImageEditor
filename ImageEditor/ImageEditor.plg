@@ -6,27 +6,7 @@
 --------------------Configuration: ImageEditor - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3588.bat" with contents
-[
-@echo off
-echo. >"hlp\ImageEditor.hm"
-echo // Commands (ID_* and IDM_*) >>"hlp\ImageEditor.hm"
-makehm ID_,HID_,0x10000 IDM_,HIDM_,0x10000 resource.h >>"hlp\ImageEditor.hm"
-echo. >>"hlp\ImageEditor.hm"
-echo // Prompts (IDP_*) >>"hlp\ImageEditor.hm"
-makehm IDP_,HIDP_,0x30000 resource.h >>"hlp\ImageEditor.hm"
-echo. >>"hlp\ImageEditor.hm"
-echo // Resources (IDR_*) >>"hlp\ImageEditor.hm"
-makehm IDR_,HIDR_,0x20000 resource.h >>"hlp\ImageEditor.hm"
-echo. >>"hlp\ImageEditor.hm"
-echo // Dialogs (IDD_*) >>"hlp\ImageEditor.hm"
-makehm IDD_,HIDD_,0x20000 resource.h >>"hlp\ImageEditor.hm"
-echo. >>"hlp\ImageEditor.hm"
-echo // Frame Controls (IDW_*) >>"hlp\ImageEditor.hm"
-makehm IDW_,HIDW_,0x50000 resource.h >>"hlp\ImageEditor.hm"
-]
-Creating command line "C:\Users\hudai\AppData\Local\Temp\RSP3588.bat"
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3589.bat" with contents
+Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3B33.bat" with contents
 [
 @echo off
 start /wait hcw /C /E /M "hlp\ImageEditor.hpj"
@@ -39,9 +19,13 @@ echo hlp\ImageEditor.hpj(1) : error:
 type "hlp\ImageEditor.log"
 :done
 ]
-Creating command line "C:\Users\hudai\AppData\Local\Temp\RSP3589.bat"
-Creating command line "rc.exe /l 0x804 /fo"Debug/ImageEditor.res" /d "_DEBUG" /d "_AFXDLL" "D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.rc"" 
-Making help include file...
+Creating command line "C:\Users\hudai\AppData\Local\Temp\RSP3B33.bat"
+Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3B34.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp"
+]
+Creating command line "cl.exe @C:\Users\hudai\AppData\Local\Temp\RSP3B34.tmp" 
 Making help file...
 hlp\ImageEditor.hpj(1) : error:
 Microsoft (R) Help Compiler
@@ -50,15 +34,7 @@ Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
 imageeditor.hpj
     HC5011: Error: imageeditor.hpj : 
  Cannot open the file "include\afxhelp.hm."
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3710.tmp" with contents
-[
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ImageEditor.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditor.cpp"
-"D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp"
-"D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorNewFile.cpp"
-]
-Creating command line "cl.exe @C:\Users\hudai\AppData\Local\Temp\RSP3710.tmp" 
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3721.tmp" with contents
+Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3C10.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ImageEditor.pdb" /debug /machine:I386 /out:"Debug/ImageEditor.exe" /pdbtype:sept 
 ".\Debug\ImageEditor.obj"
@@ -70,14 +46,10 @@ Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP3721.tmp" with con
 ".\Debug\ImageEditor.res"
 ".\Debug\ImageEditorNewFile.obj"
 ]
-Creating command line "link.exe @C:\Users\hudai\AppData\Local\Temp\RSP3721.tmp"
+Creating command line "link.exe @C:\Users\hudai\AppData\Local\Temp\RSP3C10.tmp"
 <h3>Output Window</h3>
-Compiling resources...
 Compiling...
-ImageEditor.cpp
 ImageEditorView.cpp
-ImageEditorNewFile.cpp
-Generating Code...
 Linking...
 
 

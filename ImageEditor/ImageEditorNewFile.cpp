@@ -21,6 +21,7 @@ ImageEditorNewFile::ImageEditorNewFile(CWnd* pParent /*=NULL*/)
 	//{{AFX_DATA_INIT(ImageEditorNewFile)
 	m_New_Img_Horizontal = _T("");
 	m_New_Img_Vertical = _T("");
+	ResetMap = false;
 	//}}AFX_DATA_INIT
 }
 
@@ -48,6 +49,7 @@ void ImageEditorNewFile::OnCreateNewFile()
 {
 	// TODO: Add your control notification handler code here
 	UpdateData(true);
+	ResetMap=true;
 	CDialog::OnOK();
 	
 }

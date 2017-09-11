@@ -40,6 +40,8 @@ public:
 // Implementation
 public:
 	bool LBtnDn;
+	int ImgHeight;
+	int ImgWidth;
 	ImageEditorColorPanel colorPanel;
 	ImageEditorNewFile createNewFile;
 	int m_type;

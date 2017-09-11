@@ -25,6 +25,7 @@
 > - Reset to empty single document
 > - Fulfil "Pencil" function
 > - Fulfil "Select color" function(user-defined);
+> -  create dialog attached to ID_FILE_NEW: "NEW IMAGE" ![][4]
     
     
 
@@ -33,3 +34,4 @@
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg
   [3]: http://www.cnblogs.com/shenxiaolin/p/5295995.html
+  [4]: https://img.shields.io/badge/branch-double__buffer-blue.svg

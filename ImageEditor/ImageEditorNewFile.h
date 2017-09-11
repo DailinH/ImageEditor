@@ -21,6 +21,7 @@ public:
 	enum { IDD = IDD_DIALOG2 };
 	CString	m_New_Img_Horizontal;
 	CString	m_New_Img_Vertical;
+	bool ResetMap;
 	//}}AFX_DATA
 
 

@@ -41,6 +41,9 @@ CImageEditorView::CImageEditorView()
 {
 	m_type = 0;
 	LBtnDn = false;
+	ImgHeight = 500;
+	ImgWidth = 500;
+	
 //	m_Current_LBtnDn_Position_Last(0,0);
 	// TODO: add construction code here
 }
@@ -64,8 +67,20 @@ void CImageEditorView::OnDraw(CDC *pDC)
 {
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
-
-	///////double buffer//////////
+	///create new bitmap//////
+	// CBitmap bmp;
+	if (createNewFile.ResetMap == true){
+		CRect rc_size;	
+		GetClientRect(&rc_size);		
+		if(createNewFile.m_New_Img_Horizontal && createNewFile.m_New_Img_Vertical){
+			ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right)?atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
+			ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom)?atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;	
+		}
+		pDC->FillSolidRect(0,0,rc_size.right,rc_size.bottom,RGB(128,128,128));
+		pDC->FillSolidRect(0,0,ImgWidth,ImgHeight,RGB(255,255,255));
+		createNewFile.ResetMap = false;
+		}
+///////double buffer//////
 
 	///////set color//////////
 	int red = atoi(colorPanel.m_Color_Red);
@@ -81,9 +96,12 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	
 	if(m_type==1){
 		CPoint point= pDoc->m_Last_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
 		pDC->SelectObject(&newPen);
-		pDC->MoveTo(point);
-		pDC->LineTo(pDoc->m_Current_Position);
+		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
+			pDC->MoveTo(point);			
+			pDC->LineTo(tgtPoint);
+		}
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
 	}
 
@@ -185,4 +203,7 @@ void CImageEditorView::OnCreateNewFile()
 {
 	// TODO: Add your command handler code here
 	createNewFile.DoModal();
+	if(createNewFile.ResetMap==true)   
+		InvalidateRect(NULL,FALSE);
+	
 }

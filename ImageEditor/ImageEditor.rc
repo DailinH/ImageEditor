@@ -60,6 +60,47 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 198, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Customize Color"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,141,19,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,141,36,50,14
+    EDITTEXT        IDC_EDIT1,65,24,50,13,ES_AUTOHSCROLL
+    LTEXT           "RED:",IDC_STATIC,32,25,35,11
+    EDITTEXT        IDC_EDIT2,65,42,50,13,ES_AUTOHSCROLL
+    LTEXT           "GREEN:",IDC_STATIC,32,42,35,11
+    EDITTEXT        IDC_EDIT3,65,61,50,13,ES_AUTOHSCROLL
+    LTEXT           "BLUE:",IDC_STATIC,32,61,35,11
+    GROUPBOX        "",IDC_STATIC,19,15,113,67
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 191
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
 #endif    // Chinese (P.R.C.) resources
 /////////////////////////////////////////////////////////////////////////////
 

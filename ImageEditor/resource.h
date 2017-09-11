@@ -5,6 +5,10 @@
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
 #define IDR_IMAGEETYPE                  129
+#define IDD_DIALOG1                     130
+#define IDC_EDIT1                       1000
+#define IDC_EDIT2                       1001
+#define IDC_EDIT3                       1002
 #define ID_APP_EMAIL                    32771
 #define ID_APP_SCANNER_CAMERA           32772
 #define ID_EDIT_DEL                     32774
@@ -33,17 +37,17 @@
 #define ID_Fill                         32798
 #define ID_Magnify                      32799
 #define ID_Pencil                       32800
-#define ID_Brush		                32801
-#define ID_Line					        32802
-#define ID_Curve						32803
-#define ID_Text							32804
-#define ID_Rectangle		            32805
+#define ID_Brush                        32801
+#define ID_Line                         32802
+#define ID_Curve                        32803
+#define ID_Text                         32804
+#define ID_Rectangle                    32805
 #define ID_Outlined_Rectangle           32806
 #define ID_Filled_Rectangle             32807
-#define ID_Round_Rectangle			    32810
+#define ID_Round_Rectangle              32810
 #define ID_Outlined_Round_Rectangle     32811
 #define ID_Filled_Round_Rectangle       32812
-#define ID_Ellipse					    32813
+#define ID_Ellipse                      32813
 #define ID_Outlined_Ellipse             32814
 #define ID_Filled_Ellipse               32815
 
@@ -52,9 +56,9 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        130
+#define _APS_NEXT_RESOURCE_VALUE        131
 #define _APS_NEXT_COMMAND_VALUE         32816
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

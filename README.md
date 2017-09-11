@@ -43,7 +43,7 @@ Basic Featues
  4. [ ] Tools
     - [ ] Irregular Selection
     - [ ] Rectangle Selection
-    - [ ] Select Color
+    - [x] Select Color
     - [ ] Erase
     - [ ] Fill
     - [ ] Magnify

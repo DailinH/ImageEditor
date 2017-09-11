@@ -24,6 +24,7 @@
 > ### Progress:
 > - Reset to empty single document
 > - Fulfil "Pencil" function
+> - Fulfil "Select color" function(user-defined);
     
     
 

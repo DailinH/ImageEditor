@@ -9,6 +9,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+#include "ImageEditorColorPanel.h"
 
 class CImageEditorView : public CView
 {
@@ -40,6 +41,7 @@ public:
 public:
 	int m_type;
 	bool LBtnDn;
+	ImageEditorColorPanel colorPanel;	
 /*
 	brief notes:
 		define m_type:
@@ -61,6 +63,7 @@ protected:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnSelectColor();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

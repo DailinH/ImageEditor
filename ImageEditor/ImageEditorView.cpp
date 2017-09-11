@@ -6,6 +6,7 @@
 
 #include "ImageEditorDoc.h"
 #include "ImageEditorView.h"
+#include "ImageEditorColorPanel.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -24,6 +25,7 @@ BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_Select_Color, OnSelectColor)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -61,8 +63,22 @@ void CImageEditorView::OnDraw(CDC *pDC)
 {
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
+
+	///////set color//////////
+	int red = atoi(colorPanel.m_Color_Red);
+	int green = atoi(colorPanel.m_Color_Green);	
+	int blue = atoi(colorPanel.m_Color_Blue);
+	int color = RGB(red,green,blue);
+
+	///////set width//////////
+	int width = 1;
+	
+
+	CPen newPen(PS_SOLID,width,color);
+	
 	if(m_type==1){
 		CPoint point= pDoc->m_Last_Position;
+		pDC->SelectObject(&newPen);
 		pDC->MoveTo(point);
 		pDC->LineTo(pDoc->m_Current_Position);
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
@@ -152,4 +168,12 @@ void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 	}
 	
 	CView::OnMouseMove(nFlags, point);
+}
+
+void CImageEditorView::OnSelectColor() 
+{
+	// TODO: Add your command handler code here
+	colorPanel.DoModal();
+//	CView::OnMouseMove(nFlags, point);
+	
 }

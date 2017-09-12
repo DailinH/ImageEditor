@@ -18,12 +18,12 @@ ResourceCount=7
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_ABOUTBOX (English (U.S.))
-Resource4=IDR_MAINFRAME (English (U.S.))
+Resource3=IDD_DIALOG1
+Resource4=IDD_ABOUTBOX (English (U.S.))
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG1
+Resource5=IDD_DIALOG2
 Class7=ImageEditorNewFile
-Resource6=IDD_DIALOG2
+Resource6=IDR_MAINFRAME (English (U.S.))
 Class8=ImageEditorLineWidth
 Resource7=IDD_DIALOG3
 
@@ -260,7 +260,7 @@ HeaderFile=ImageEditorColorPanel.h
 ImplementationFile=ImageEditorColorPanel.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_EDIT1
+LastObject=IDC_EDIT4
 VirtualFilter=dWC
 
 [DLG:IDD_DIALOG2]

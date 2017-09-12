@@ -47,12 +47,12 @@ Basic Featues
     - [ ] Fill
     - [ ] Magnify
     - [x] Pencil
-    - [ ] Line
+    - [x] Line
     - [ ] Curve
     - [ ] Text
-    - [ ] Rectangle
-    - [ ] Outlined Rectangle
-    - [ ] Filled Rectangle
+    - [x] Rectangle
+    - [x] Outlined Rectangle
+    - [x] Filled Rectangle
     - [ ] Round Rectangle
     - [ ] Outlined Round Rectangle
     - [ ] Filled Round Rectangle

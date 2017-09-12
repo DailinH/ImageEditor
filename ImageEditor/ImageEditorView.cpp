@@ -81,6 +81,17 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;	
 	GetClientRect(&rc_size);
+	///////set color//////////
+	int red = atoi(colorPanel.m_Color_Red);
+	int green = atoi(colorPanel.m_Color_Green);	
+	int blue = atoi(colorPanel.m_Color_Blue);
+	int bg_red = atoi(colorPanel.m_BG_Color_Red);
+	int bg_green = atoi(colorPanel.m_BG_Color_Green);	
+	int bg_blue = atoi(colorPanel.m_BG_Color_Blue);	
+
+	int bgcolor = RGB(bg_red,bg_green,bg_blue);
+	int color = RGB(red,green,blue);
+	
 	///////double buffer//////
 	// CDC MemDC;
 	// MemDC.CreateCompatibleDC(pDC);
@@ -106,28 +117,19 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right)?atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
 		ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom)?atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;	
 		pDC->FillSolidRect(0,0,rc_size.right,rc_size.bottom,RGB(128,128,128));
-		pDC->FillSolidRect(0,0,ImgWidth,ImgHeight,RGB(255,255,255));
+		pDC->FillSolidRect(0,0,ImgWidth,ImgHeight,bgcolor);
 		createNewFile.ResetMap = false;
 		}
 
-	///////set color//////////
-	int red = atoi(colorPanel.m_Color_Red);
-	int green = atoi(colorPanel.m_Color_Green);	
-	int blue = atoi(colorPanel.m_Color_Blue);
-	if (colorPanel.transparent != true){
-		int bg_red = atoi(colorPanel.m_BG_Color_Red);
-		int bg_green = atoi(colorPanel.m_BG_Color_Green);	
-		int bg_blue = atoi(colorPanel.m_BG_Color_Blue);	
-	}
-	int color = RGB(red,green,blue);
 
 	///////set width//////////
 	int width = atoi(getLineWidth.m_Line_Width);
 	///////create pen/////////
-	CPen newPen(LineStyle,width,color);
+	// CPen newPen(LineStyle,width,color);
 	//////////////////////////
 	////////pencil////////////
 	if(m_type==1){
+		CPen newPen(LineStyle,width,color);	
 		CPoint point= pDoc->m_Last_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
 		pDC->SelectObject(&newPen);
@@ -137,6 +139,8 @@ void CImageEditorView::OnDraw(CDC *pDC)
 			pDC->LineTo(tgtPoint);
 		}
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
+		newPen.DeleteObject();
+	
 	}
 	////////line/////////////	
 	else if(m_type==2){
@@ -148,29 +152,18 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
 			pDC->MoveTo(point);			
 			pDC->LineTo(tgtPoint);
+		newPen.DeleteObject();
+	
 		}
 		pDoc->m_Last_Position=pDoc->m_Current_Position;
 	}
-	else if(m_type==5||m_type == 6||m_type == 7){
+	////////rectangle////////
+	else if (m_type ==5){
 		CPoint point= pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
 		CPoint LDn(point.x,tgtPoint.y);
 		CPoint RUp(tgtPoint.x,point.y);
-		// if(m_type ==5){
-		// 	color = NULL;
-		// }
-		// else 
-		// if (m_type ==6 ){
-		// 	if(colorPanel.transparent){
-		// 		MessageBox("Please set background color!");
-		// 	}else{
-		// 		// CBrush
-		// 	}
-		// }
-		// else{
-		// 	color = NULL;
-		// }
-			CPen newPen(LineStyle,width,color);		
+			CPen newPen(LineStyle,width,color);				
 			pDC->SelectObject(&newPen);		
 			if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
 				pDC->MoveTo(point);			
@@ -182,13 +175,69 @@ void CImageEditorView::OnDraw(CDC *pDC)
 				pDC->MoveTo(RUp);			
 				pDC->LineTo(point);				
 		}
-		pDoc->m_Last_Position=pDoc->m_Current_Position;		
+		newPen.DeleteObject();
 	}
-	newPen.DeleteObject();
+	////outlined rectangle///
+	else if (m_type ==6){
+		CPoint point= pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		CPoint LDn(point.x,tgtPoint.y);
+		CPoint RUp(tgtPoint.x,point.y);
+		CPen newPen(LineStyle,width,color);				
+		pDC->SelectObject(&newPen);		
+		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
+				pDC->MoveTo(point);			
+				pDC->LineTo(LDn);				
+				pDC->MoveTo(LDn);			
+				pDC->LineTo(tgtPoint);				
+				pDC->MoveTo(tgtPoint);			
+				pDC->LineTo(RUp);				
+				pDC->MoveTo(RUp);			
+				pDC->LineTo(point);				
+		}
+		newPen.DeleteObject();
+
+		// CBrush newBrush(bgcolor);
+		CBrush newBrush;
+		newBrush.CreateSolidBrush(bgcolor);
+		// pDC->SelectObject(&newBrush);
+		pDC->Rectangle(point.x,point.y,tgtPoint.x,tgtPoint.y);
+		// CRect rect(point.x,point.y,tgtPoint.x,tgtPoint.y);
+		// pDC->FillRect(&rect,&newBrush);
+		newBrush.DeleteObject();
+	}
+	else if(m_type == 7){
+		CPoint point= pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		CPoint LDn(point.x,tgtPoint.y);
+		CPoint RUp(tgtPoint.x,point.y);
+
+		CBrush newBrush(bgcolor);
+		pDC->SelectObject(&newBrush);
+		CRect drawrc(point.x,point.y,tgtPoint.x,tgtPoint.y);
+		pDC->FillRect(&drawrc,&newBrush);
+		// pDC->Rectangle(point.x,point.y,tgtPoint.x,tgtPoint.y);
+		newBrush.DeleteObject();
+
+		// CPen newPen(LineStyle,width,bgcolor);				
+		// pDC->SelectObject(&newPen);		
+		// if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
+		// 		pDC->MoveTo(point);			
+		// 		pDC->LineTo(LDn);				
+		// 		pDC->MoveTo(LDn);			
+		// 		pDC->LineTo(tgtPoint);				
+		// 		pDC->MoveTo(tgtPoint);			
+		// 		pDC->LineTo(RUp);				
+		// 		pDC->MoveTo(RUp);			
+		// 		pDC->LineTo(point);				
+		// }
+		// newPen.DeleteObject();
+	}
 
 	// pDC->BitBlt(rc_size.left,rc_size.top,rc_size.Width(),rc_size.Height(),&MemDC,0,0,SRCCOPY);
 	// oldBitmap.DeleteObject();
 	// MemDC.DeleteDC();
+	pDoc->m_Last_Position=pDoc->m_Current_Position;			
 	return;
 	
 }

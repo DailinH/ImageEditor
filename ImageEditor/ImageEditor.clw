@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=ImageEditorColorPanel
+LastClass=CImageEditorView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
@@ -19,13 +19,13 @@ Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
 Resource3=IDD_DIALOG1
-Resource4=IDD_ABOUTBOX (English (U.S.))
+Resource4=IDD_DIALOG2
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG2
+Resource5=IDD_ABOUTBOX (English (U.S.))
 Class7=ImageEditorNewFile
-Resource6=IDR_MAINFRAME (English (U.S.))
+Resource6=IDD_DIALOG3
 Class8=ImageEditorLineWidth
-Resource7=IDD_DIALOG3
+Resource7=IDR_MAINFRAME (English (U.S.))
 
 [CLS:CImageEditorApp]
 Type=0
@@ -54,7 +54,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_Filled_Rectangle
+LastObject=ID_Filled_Round_Rectangle
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -187,11 +187,11 @@ Command36=ID_Line
 Command37=ID_Curve
 Command38=ID_Text
 Command39=ID_Rectangle
-Command40=ID_Outlined_Rectangle
-Command41=ID_Filled_Rectangle
+Command40=ID_Filled_Rectangle
+Command41=ID_Outlined_Rectangle
 Command42=ID_Round_Rectangle
-Command43=ID_Outlined_Round_Rectangle
-Command44=ID_Filled_Round_Rectangle
+Command43=ID_Filled_Round_Rectangle
+Command44=ID_Outlined_Round_Rectangle
 Command45=ID_Ellipse
 Command46=ID_Outlined_Ellipse
 Command47=ID_Filled_Ellipse

@@ -94,6 +94,9 @@ protected:
 	afx_msg void OnRectangle();
 	afx_msg void OnOutlinedRectangle();
 	afx_msg void OnFilledRectangle();
+	afx_msg void OnRoundRectangle();
+	afx_msg void OnOutlinedRoundRectangle();
+	afx_msg void OnFilledRoundRectangle();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

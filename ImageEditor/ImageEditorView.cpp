@@ -22,25 +22,28 @@ IMPLEMENT_DYNCREATE(CImageEditorView, CView)
 
 BEGIN_MESSAGE_MAP(CImageEditorView, CView)
 //{{AFX_MSG_MAP(CImageEditorView)
-	ON_COMMAND(ID_Pencil, OnPencil)
-	ON_WM_LBUTTONDOWN()
-	ON_WM_LBUTTONUP()
-	ON_WM_MOUSEMOVE()
-	ON_COMMAND(ID_Select_Color, OnSelectColor)
-	ON_COMMAND(ID_FILE_NEW, OnCreateNewFile)
-	ON_COMMAND(LINE_STYLE_SOLID, OnStyleSolid)
-	ON_COMMAND(LINE_STYLE_DASH, OnStyleDash)
-	ON_COMMAND(LINE_STYLE_DOT, OnStyleDot)
-	ON_COMMAND(LINE_STYLE_DASHDOT, OnStyleDashdot)
-	ON_COMMAND(LINE_STYLE_DASHDOTDOT, OnStyleDashdotdot)
-	ON_COMMAND(ID_MENUITEM32820, OnGetLineWidth)
-	ON_COMMAND(ID_Curve, OnCurve)
-	ON_COMMAND(ID_Text, OnText)
-	ON_COMMAND(ID_Line, OnLine)
-	ON_COMMAND(ID_Rectangle, OnRectangle)
-	ON_COMMAND(ID_Outlined_Rectangle, OnOutlinedRectangle)
-	ON_COMMAND(ID_Filled_Rectangle, OnFilledRectangle)
-	//}}AFX_MSG_MAP
+ON_COMMAND(ID_Pencil, OnPencil)
+ON_WM_LBUTTONDOWN()
+ON_WM_LBUTTONUP()
+ON_WM_MOUSEMOVE()
+ON_COMMAND(ID_Select_Color, OnSelectColor)
+ON_COMMAND(ID_FILE_NEW, OnCreateNewFile)
+ON_COMMAND(LINE_STYLE_SOLID, OnStyleSolid)
+ON_COMMAND(LINE_STYLE_DASH, OnStyleDash)
+ON_COMMAND(LINE_STYLE_DOT, OnStyleDot)
+ON_COMMAND(LINE_STYLE_DASHDOT, OnStyleDashdot)
+ON_COMMAND(LINE_STYLE_DASHDOTDOT, OnStyleDashdotdot)
+ON_COMMAND(ID_MENUITEM32820, OnGetLineWidth)
+ON_COMMAND(ID_Curve, OnCurve)
+ON_COMMAND(ID_Text, OnText)
+ON_COMMAND(ID_Line, OnLine)
+ON_COMMAND(ID_Rectangle, OnRectangle)
+ON_COMMAND(ID_Outlined_Rectangle, OnOutlinedRectangle)
+ON_COMMAND(ID_Filled_Rectangle, OnFilledRectangle)
+ON_COMMAND(ID_Round_Rectangle, OnRoundRectangle)
+ON_COMMAND(ID_Outlined_Round_Rectangle, OnOutlinedRoundRectangle)
+ON_COMMAND(ID_Filled_Round_Rectangle, OnFilledRoundRectangle)
+//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
 ON_COMMAND(ID_FILE_PRINT_DIRECT, CView::OnFilePrint)
@@ -56,7 +59,7 @@ CImageEditorView::CImageEditorView()
 	LBtnDn = false;
 	ImgHeight = 500;
 	ImgWidth = 500;
-	LineStyle =0;
+	LineStyle = 0;
 	// TODO: add construction code here
 }
 
@@ -79,19 +82,19 @@ void CImageEditorView::OnDraw(CDC *pDC)
 {
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
-	CRect rc_size;	
+	CRect rc_size;
 	GetClientRect(&rc_size);
 	///////set color//////////
 	int red = atoi(colorPanel.m_Color_Red);
-	int green = atoi(colorPanel.m_Color_Green);	
+	int green = atoi(colorPanel.m_Color_Green);
 	int blue = atoi(colorPanel.m_Color_Blue);
 	int bg_red = atoi(colorPanel.m_BG_Color_Red);
-	int bg_green = atoi(colorPanel.m_BG_Color_Green);	
-	int bg_blue = atoi(colorPanel.m_BG_Color_Blue);	
+	int bg_green = atoi(colorPanel.m_BG_Color_Green);
+	int bg_blue = atoi(colorPanel.m_BG_Color_Blue);
 
-	int bgcolor = RGB(bg_red,bg_green,bg_blue);
-	int color = RGB(red,green,blue);
-	
+	int bgcolor = RGB(bg_red, bg_green, bg_blue);
+	int color = RGB(red, green, blue);
+
 	///////double buffer//////
 	// CDC MemDC;
 	// MemDC.CreateCompatibleDC(pDC);
@@ -106,21 +109,21 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	///create new bitmap//////
 	// if (createNewFile.ResetMap == true){
 	// 	ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right)?atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
-	// 	ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom)?atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;	
+	// 	ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom)?atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;
 
 	// 	MemDC.FillSolidRect(0,0,rc_size.right,rc_size.bottom,RGB(128,128,128));
 	// 	MemDC.FillSolidRect(0,0,ImgWidth,ImgHeight,RGB(255,255,255));
 	// 	createNewFile.ResetMap = false;
 	// 	}
-	
-	if (createNewFile.ResetMap == true){
-		ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right)?atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
-		ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom)?atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;	
-		pDC->FillSolidRect(0,0,rc_size.right,rc_size.bottom,RGB(128,128,128));
-		pDC->FillSolidRect(0,0,ImgWidth,ImgHeight,bgcolor);
-		createNewFile.ResetMap = false;
-		}
 
+	if (createNewFile.ResetMap == true)
+	{
+		ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right) ? atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
+		ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom) ? atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;
+		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+		pDC->FillSolidRect(0, 0, ImgWidth, ImgHeight, bgcolor);
+		createNewFile.ResetMap = false;
+	}
 
 	///////set width//////////
 	int width = atoi(getLineWidth.m_Line_Width);
@@ -128,72 +131,78 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	// CPen newPen(LineStyle,width,color);
 	//////////////////////////
 	////////pencil////////////
-	if(m_type==1){
-		CPen newPen(LineStyle,width,color);	
-		CPoint point= pDoc->m_Last_Position;
+	if (m_type == 1)
+	{
+		CPen newPen(LineStyle, width, color);
+		CPoint point = pDoc->m_Last_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
 		pDC->SelectObject(&newPen);
 		// MemDC.SelectObject(&newPen);
-		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
-			pDC->MoveTo(point);			
+		if (point.x <= ImgWidth && point.y <= ImgHeight && tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight)
+		{
+			pDC->MoveTo(point);
 			pDC->LineTo(tgtPoint);
 		}
-		pDoc->m_Last_Position=pDoc->m_Current_Position;
+		pDoc->m_Last_Position = pDoc->m_Current_Position;
 		newPen.DeleteObject();
-	
 	}
-	////////line/////////////	
-	else if(m_type==2){
-		CPen newPen(LineStyle,width,color);		
-		CPoint point= pDoc->m_Last_LBtnDn_Position;
+	////////line/////////////
+	else if (m_type == 2)
+	{
+		CPen newPen(LineStyle, width, color);
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
 		pDC->SelectObject(&newPen);
 		// MemDC.SelectObject(&newPen);
-		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
-			pDC->MoveTo(point);			
+		if (point.x <= ImgWidth && point.y <= ImgHeight && tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight)
+		{
+			pDC->MoveTo(point);
 			pDC->LineTo(tgtPoint);
-		newPen.DeleteObject();
-	
+			newPen.DeleteObject();
 		}
-		pDoc->m_Last_Position=pDoc->m_Current_Position;
+		pDoc->m_Last_Position = pDoc->m_Current_Position;
 	}
 	////////rectangle////////
-	else if (m_type ==5){
-		CPoint point= pDoc->m_Last_LBtnDn_Position;
+	else if (m_type == 5)
+	{
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
-		CPoint LDn(point.x,tgtPoint.y);
-		CPoint RUp(tgtPoint.x,point.y);
-			CPen newPen(LineStyle,width,color);				
-			pDC->SelectObject(&newPen);		
-			if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
-				pDC->MoveTo(point);			
-				pDC->LineTo(LDn);				
-				pDC->MoveTo(LDn);			
-				pDC->LineTo(tgtPoint);				
-				pDC->MoveTo(tgtPoint);			
-				pDC->LineTo(RUp);				
-				pDC->MoveTo(RUp);			
-				pDC->LineTo(point);				
+		CPoint LDn(point.x, tgtPoint.y);
+		CPoint RUp(tgtPoint.x, point.y);
+		CPen newPen(LineStyle, width, color);
+		pDC->SelectObject(&newPen);
+		if (point.x <= ImgWidth && point.y <= ImgHeight && tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight)
+		{
+			pDC->MoveTo(point);
+			pDC->LineTo(LDn);
+			pDC->MoveTo(LDn);
+			pDC->LineTo(tgtPoint);
+			pDC->MoveTo(tgtPoint);
+			pDC->LineTo(RUp);
+			pDC->MoveTo(RUp);
+			pDC->LineTo(point);
 		}
 		newPen.DeleteObject();
 	}
 	////outlined rectangle///
-	else if (m_type ==6){
-		CPoint point= pDoc->m_Last_LBtnDn_Position;
+	else if (m_type == 6)
+	{
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
-		CPoint LDn(point.x,tgtPoint.y);
-		CPoint RUp(tgtPoint.x,point.y);
-		CPen newPen(LineStyle,width,color);				
-		pDC->SelectObject(&newPen);		
-		if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
-				pDC->MoveTo(point);			
-				pDC->LineTo(LDn);				
-				pDC->MoveTo(LDn);			
-				pDC->LineTo(tgtPoint);				
-				pDC->MoveTo(tgtPoint);			
-				pDC->LineTo(RUp);				
-				pDC->MoveTo(RUp);			
-				pDC->LineTo(point);				
+		CPoint LDn(point.x, tgtPoint.y);
+		CPoint RUp(tgtPoint.x, point.y);
+		CPen newPen(LineStyle, width, color);
+		pDC->SelectObject(&newPen);
+		if (point.x <= ImgWidth && point.y <= ImgHeight && tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight)
+		{
+			pDC->MoveTo(point);
+			pDC->LineTo(LDn);
+			pDC->MoveTo(LDn);
+			pDC->LineTo(tgtPoint);
+			pDC->MoveTo(tgtPoint);
+			pDC->LineTo(RUp);
+			pDC->MoveTo(RUp);
+			pDC->LineTo(point);
 		}
 		newPen.DeleteObject();
 
@@ -201,45 +210,74 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		CBrush newBrush;
 		newBrush.CreateSolidBrush(bgcolor);
 		// pDC->SelectObject(&newBrush);
-		pDC->Rectangle(point.x,point.y,tgtPoint.x,tgtPoint.y);
+		pDC->Rectangle(point.x, point.y, tgtPoint.x, tgtPoint.y);
 		// CRect rect(point.x,point.y,tgtPoint.x,tgtPoint.y);
 		// pDC->FillRect(&rect,&newBrush);
 		newBrush.DeleteObject();
 	}
-	else if(m_type == 7){
-		CPoint point= pDoc->m_Last_LBtnDn_Position;
+	else if (m_type == 7)
+	{
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
 		CPoint tgtPoint = pDoc->m_Current_Position;
-		CPoint LDn(point.x,tgtPoint.y);
-		CPoint RUp(tgtPoint.x,point.y);
+		CPoint LDn(point.x, tgtPoint.y);
+		CPoint RUp(tgtPoint.x, point.y);
 
 		CBrush newBrush(bgcolor);
 		pDC->SelectObject(&newBrush);
-		CRect drawrc(point.x,point.y,tgtPoint.x,tgtPoint.y);
-		pDC->FillRect(&drawrc,&newBrush);
+		CRect drawrc(point.x, point.y, tgtPoint.x, tgtPoint.y);
+		pDC->FillRect(&drawrc, &newBrush);
 		// pDC->Rectangle(point.x,point.y,tgtPoint.x,tgtPoint.y);
 		newBrush.DeleteObject();
 
-		// CPen newPen(LineStyle,width,bgcolor);				
-		// pDC->SelectObject(&newPen);		
+		// CPen newPen(LineStyle,width,bgcolor);
+		// pDC->SelectObject(&newPen);
 		// if(point.x <= ImgWidth && point.y <= ImgHeight &&tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight ){
-		// 		pDC->MoveTo(point);			
-		// 		pDC->LineTo(LDn);				
-		// 		pDC->MoveTo(LDn);			
-		// 		pDC->LineTo(tgtPoint);				
-		// 		pDC->MoveTo(tgtPoint);			
-		// 		pDC->LineTo(RUp);				
-		// 		pDC->MoveTo(RUp);			
-		// 		pDC->LineTo(point);				
+		// 		pDC->MoveTo(point);
+		// 		pDC->LineTo(LDn);
+		// 		pDC->MoveTo(LDn);
+		// 		pDC->LineTo(tgtPoint);
+		// 		pDC->MoveTo(tgtPoint);
+		// 		pDC->LineTo(RUp);
+		// 		pDC->MoveTo(RUp);
+		// 		pDC->LineTo(point);
 		// }
 		// newPen.DeleteObject();
+	}
+	else if (m_type == 8)
+	{
+		// CPen newPen(LineStyle, width, color);
+		// CBrush rrcBrush(bgcolor);
+		CBrush *rrcBrush = CBrush::FromHandle((HBRUSH)GetStockObject(NULL_BRUSH));
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		// pDC->SelectObject(&newPen);
+		pDC->SelectObject(rrcBrush);
+		pDC->RoundRect(point.x, point.y, tgtPoint.x, tgtPoint.y, (tgtPoint.x - point.x) / 7, (tgtPoint.y - point.y) / 7);
+		rrcBrush->DeleteObject();
+	}
+	else if (m_type == 9 || m_type == 10)
+	{
+		CBrush rrcBrush;
+		rrcBrush.CreateSolidBrush(bgcolor);
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		pDC->SelectObject(rrcBrush);
+		pDC->RoundRect(point.x, point.y, tgtPoint.x, tgtPoint.y, (tgtPoint.x - point.x) / 7, (tgtPoint.y - point.y) / 7);
+		rrcBrush.DeleteObject();
+		if (m_type == 10)
+		{
+			CPen rrcBrush2(PS_SOLID, 1, bgcolor);
+			pDC->SelectObject(rrcBrush2);
+			pDC->RoundRect(point.x, point.y, tgtPoint.x, tgtPoint.y, (tgtPoint.x - point.x) / 7, (tgtPoint.y - point.y) / 7);
+			rrcBrush2.DeleteObject();
+		}
 	}
 
 	// pDC->BitBlt(rc_size.left,rc_size.top,rc_size.Width(),rc_size.Height(),&MemDC,0,0,SRCCOPY);
 	// oldBitmap.DeleteObject();
 	// MemDC.DeleteDC();
-	pDoc->m_Last_Position=pDoc->m_Current_Position;			
+	pDoc->m_Last_Position = pDoc->m_Current_Position;
 	return;
-	
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -285,139 +323,153 @@ CImageEditorDoc *CImageEditorView::GetDocument() // non-debug version is inline
 /////////////////////////////////////////////////////////////////////////////
 // CImageEditorView message handlers
 
-
-
-void CImageEditorView::OnLButtonDown(UINT nFlags, CPoint point) 
+void CImageEditorView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = true;
-	CImageEditorDoc* pDoc = GetDocument();
+	CImageEditorDoc *pDoc = GetDocument();
 
-	pDoc->m_Last_LBtnDn_Position=point;
+	pDoc->m_Last_LBtnDn_Position = point;
 	pDoc->m_Last_Position = point;
 	// InvalidateRect(NULL,FALSE);
 
 	CView::OnLButtonDown(nFlags, point);
 }
 
-void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point) 
+void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = false;
-	if(m_type ==2||m_type >=5){
-		CImageEditorDoc* pDoc = GetDocument();
+	if (m_type == 2 || m_type >= 5)
+	{
+		CImageEditorDoc *pDoc = GetDocument();
 		pDoc->m_Current_Position = point;
-		InvalidateRect(NULL,FALSE);		
+		InvalidateRect(NULL, FALSE);
 	}
 	CView::OnLButtonUp(nFlags, point);
 }
 
-void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point) 
+void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-	if(m_type == 1){
-		if(LBtnDn == true){
-			CImageEditorDoc* pDoc = GetDocument();
+	if (m_type == 1)
+	{
+		if (LBtnDn == true)
+		{
+			CImageEditorDoc *pDoc = GetDocument();
 			pDoc->m_Current_Position = point;
-			InvalidateRect(NULL,FALSE);	
+			InvalidateRect(NULL, FALSE);
 		}
 	}
-	
+
 	CView::OnMouseMove(nFlags, point);
 }
 
-void CImageEditorView::OnSelectColor() 
+void CImageEditorView::OnSelectColor()
 {
 	// TODO: Add your command handler code here
 	colorPanel.DoModal();
-//	CView::OnMouseMove(nFlags, point);
-	
+	//	CView::OnMouseMove(nFlags, point);
 }
 
-void CImageEditorView::OnCreateNewFile() 
+void CImageEditorView::OnCreateNewFile()
 {
 	// TODO: Add your command handler code here
 	createNewFile.DoModal();
-	if(createNewFile.ResetMap==true)   
-		InvalidateRect(NULL,FALSE);
-	
+	if (createNewFile.ResetMap == true)
+		InvalidateRect(NULL, FALSE);
 }
 
-void CImageEditorView::OnStyleSolid() 
+void CImageEditorView::OnStyleSolid()
 {
 	// TODO: Add your command handler code here
 	LineStyle = 0;
 }
 
-void CImageEditorView::OnStyleDash() 
+void CImageEditorView::OnStyleDash()
 {
 	// TODO: Add your command handler code here
-	LineStyle = 1;	
+	LineStyle = 1;
 }
 
-void CImageEditorView::OnStyleDot() 
+void CImageEditorView::OnStyleDot()
 {
 	// TODO: Add your command handler code here
 	LineStyle = 2;
 }
 
-void CImageEditorView::OnStyleDashdot() 
+void CImageEditorView::OnStyleDashdot()
 {
 	// TODO: Add your command handler code here
-	LineStyle = 3;	
+	LineStyle = 3;
 }
 
-void CImageEditorView::OnStyleDashdotdot() 
+void CImageEditorView::OnStyleDashdotdot()
 {
 	// TODO: Add your command handler code here
 	LineStyle = 4;
 }
 
-void CImageEditorView::OnGetLineWidth() 
+void CImageEditorView::OnGetLineWidth()
 {
 	// TODO: Add your command handler code here
 	getLineWidth.DoModal();
 }
 
-void CImageEditorView::OnPencil() 
+void CImageEditorView::OnPencil()
 {
-	m_type = 1;	
+	m_type = 1;
 }
 
-void CImageEditorView::OnLine() 
-{
-	// TODO: Add your command handler code here
-	m_type = 2;	
-}
-void CImageEditorView::OnCurve() 
+void CImageEditorView::OnLine()
 {
 	// TODO: Add your command handler code here
-	m_type = 3;	
-	
+	m_type = 2;
 }
-
-void CImageEditorView::OnText() 
+void CImageEditorView::OnCurve()
 {
 	// TODO: Add your command handler code here
-	m_type = 4;		
+	m_type = 3;
 }
 
-
-void CImageEditorView::OnRectangle() 
+void CImageEditorView::OnText()
 {
 	// TODO: Add your command handler code here
-	m_type = 5;		
+	m_type = 4;
 }
 
-void CImageEditorView::OnOutlinedRectangle() 
+void CImageEditorView::OnRectangle()
 {
 	// TODO: Add your command handler code here
-	m_type = 6;		
+	m_type = 5;
 }
 
-void CImageEditorView::OnFilledRectangle() 
+void CImageEditorView::OnOutlinedRectangle()
 {
 	// TODO: Add your command handler code here
-	m_type = 7;		
+	m_type = 6;
 }
 
+void CImageEditorView::OnFilledRectangle()
+{
+	// TODO: Add your command handler code here
+	m_type = 7;
+}
+
+void CImageEditorView::OnRoundRectangle()
+{
+	// TDO: Add your command handler code here
+	m_type = 8;
+}
+
+void CImageEditorView::OnOutlinedRoundRectangle()
+{
+	// TODO: Add your command handler code here
+	m_type = 9;
+}
+
+void CImageEditorView::OnFilledRoundRectangle()
+{
+	// TODO: Add your command handler code here
+	m_type = 10;
+}

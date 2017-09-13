@@ -28,14 +28,18 @@
 > - Create dialog attached to ID_FILE_NEW: "NEW IMAGE" 
 > - Fulfil "Settings" toolbar, including line width, line style and color selection
 > - Fulfil "Line Function" (lacking double-buffer, a bit weird at the moment)   ![][4]
-> - Fulfil "Rectangle Function" ~~ (lacking double-buffer, a bit weird at the moment) ~~
+> - Fulfil "Rectangle Function" ~~(lacking double-buffer, a bit weird at the moment)~~
 
 > ## 2017-9-12
 > ### Progress:
 > - Fulfil "Filled rectangle" function
 > - Fulfil "Outlined rectangle" function
-> - **"Rectangle"s do not require double-bufferings!**
+> - ~~**"Rectangle"s do not require double-bufferings!**~~
 
+> ## 2017-9-13
+> ### Progress:
+> - Fulfil "round rectangle" function series
+> - **NOTE: IMPLEMENT DOUBLE-BUFFER FOR ALL BASIC PAINTING FUNCTIONS**
 
 
 

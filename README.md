@@ -53,9 +53,9 @@ Basic Featues
     - [x] Rectangle
     - [x] Outlined Rectangle
     - [x] Filled Rectangle
-    - [ ] Round Rectangle
-    - [ ] Outlined Round Rectangle
-    - [ ] Filled Round Rectangle
+    - [x] Round Rectangle
+    - [x] Outlined Round Rectangle
+    - [x] Filled Round Rectangle
     - [ ] Ellipse
     - [ ] Outlined Ellipse
     - [ ] Filled Ellipse

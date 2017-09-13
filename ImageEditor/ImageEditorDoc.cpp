@@ -30,6 +30,7 @@ END_MESSAGE_MAP()
 CImageEditorDoc::CImageEditorDoc()
 {
 	// TODO: add one-time construction code here
+	openImg = false;
 }
 
 CImageEditorDoc::~CImageEditorDoc()
@@ -40,7 +41,7 @@ BOOL CImageEditorDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
-
+	// m_img.
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
 
@@ -56,6 +57,7 @@ BOOL CImageEditorDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	if (lpszPathName != NULL)
 	{
 		m_img.Load(lpszPathName, 1);
+		openImg = true;
 	}
 	// (SDI documents will reuse this document)
 

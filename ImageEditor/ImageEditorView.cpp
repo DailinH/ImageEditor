@@ -89,11 +89,18 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	GetClientRect(&rc_size);
 
 	//////////////open image from...////////////
-	CImage &img = pDoc->m_img;
-	HDC hDC = pDC->GetSafeHdc();
-	pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
-	CRect rect(0, 0, img.Width(), img.Height());
-	img.DrawToHDC(hDC, &rect);
+	if (pDoc->openImg == true)
+	{
+		CImage &img = pDoc->m_img;
+		HDC hDC = pDC->GetSafeHdc();
+		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+		CRect rect(0, 0, img.Width(), img.Height());
+		img.DrawToHDC(hDC, &rect);
+		ImgHeight = (img.Height() < rc_size.right) ? img.Height() : rc_size.right;
+		ImgWidth = (img.Width() < rc_size.right) ? img.Width() : rc_size.right;
+		pDoc->openImg = false;
+	}
+	/////////////////////////////////////////////
 	// CSize sizeTotal;
 	// sizeTotal.cx = img.Width();
 	// sizeTotal.cy = img.Height();

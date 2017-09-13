@@ -18,10 +18,10 @@ static char THIS_FILE[] = __FILE__;
 IMPLEMENT_DYNCREATE(CImageEditorDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CImageEditorDoc, CDocument)
-	//{{AFX_MSG_MAP(CImageEditorDoc)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code!
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CImageEditorDoc)
+// NOTE - the ClassWizard will add and remove mapping macros here.
+//    DO NOT EDIT what you see in these blocks of generated code!
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,6 @@ END_MESSAGE_MAP()
 CImageEditorDoc::CImageEditorDoc()
 {
 	// TODO: add one-time construction code here
-
 }
 
 CImageEditorDoc::~CImageEditorDoc()
@@ -48,12 +47,25 @@ BOOL CImageEditorDoc::OnNewDocument()
 	return TRUE;
 }
 
+BOOL CImageEditorDoc::OnOpenDocument(LPCTSTR lpszPathName)
+{
+	if (!CDocument::OnOpenDocument(lpszPathName))
+		return FALSE;
 
+	// TODO: add reinitialization code here
+	if (lpszPathName != NULL)
+	{
+		m_img.Load(lpszPathName, 1);
+	}
+	// (SDI documents will reuse this document)
+
+	return TRUE;
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // CImageEditorDoc serialization
 
-void CImageEditorDoc::Serialize(CArchive& ar)
+void CImageEditorDoc::Serialize(CArchive &ar)
 {
 	if (ar.IsStoring())
 	{
@@ -74,7 +86,7 @@ void CImageEditorDoc::AssertValid() const
 	CDocument::AssertValid();
 }
 
-void CImageEditorDoc::Dump(CDumpContext& dc) const
+void CImageEditorDoc::Dump(CDumpContext &dc) const
 {
 	CDocument::Dump(dc);
 }

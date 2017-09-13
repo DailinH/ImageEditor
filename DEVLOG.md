@@ -41,6 +41,8 @@
 > - Fulfil "round rectangle" function series
 > - **NOTE: IMPLEMENT DOUBLE-BUFFER FOR ALL BASIC PAINTING FUNCTIONS**
 > - Fulfil "Ellipse" function series
+> - Fulfil "open file" function with openCV
+
 
 
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html

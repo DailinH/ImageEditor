@@ -8,7 +8,8 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-
+#include "cv.h"
+#include "highgui.h"
 
 class CImageEditorDoc : public CDocument
 {
@@ -16,40 +17,39 @@ protected: // create from serialization only
 	CImageEditorDoc();
 	DECLARE_DYNCREATE(CImageEditorDoc)
 
-// Attributes
+	// Attributes
 public:
-
-// Operations
+	CImage m_img;
+	// Operations
 public:
-
-// Overrides
+	// Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CImageEditorDoc)
-	public:
+public:
 	virtual BOOL OnNewDocument();
-	virtual void Serialize(CArchive& ar);
+	virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
+	virtual void Serialize(CArchive &ar);
 	//}}AFX_VIRTUAL
 
-// Implementation
+	// Implementation
 public:
 	CPoint m_Current_Position;
 	CPoint m_Last_Position;
 	CPoint m_Last_LBtnDn_Position;
 	CBitmap Bmp_Buff;
-	
+
 	virtual ~CImageEditorDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+	virtual void Dump(CDumpContext &dc) const;
 #endif
 
 protected:
-
-// Generated message map functions
+	// Generated message map functions
 protected:
 	//{{AFX_MSG(CImageEditorDoc)
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
+	// NOTE - the ClassWizard will add and remove member functions here.
+	//    DO NOT EDIT what you see in these blocks of generated code !
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

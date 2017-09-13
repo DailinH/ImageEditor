@@ -87,6 +87,18 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+
+	//////////////open image from...////////////
+	CImage &img = pDoc->m_img;
+	HDC hDC = pDC->GetSafeHdc();
+	pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+	CRect rect(0, 0, img.Width(), img.Height());
+	img.DrawToHDC(hDC, &rect);
+	// CSize sizeTotal;
+	// sizeTotal.cx = img.Width();
+	// sizeTotal.cy = img.Height();
+	// SetScrollSizes(MM_TEXT, sizeTotal);
+	///////////////////////////////////////////
 	///////set color//////////
 	int red = atoi(colorPanel.m_Color_Red);
 	int green = atoi(colorPanel.m_Color_Green);

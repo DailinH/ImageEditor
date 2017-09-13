@@ -43,6 +43,9 @@ ON_COMMAND(ID_Filled_Rectangle, OnFilledRectangle)
 ON_COMMAND(ID_Round_Rectangle, OnRoundRectangle)
 ON_COMMAND(ID_Outlined_Round_Rectangle, OnOutlinedRoundRectangle)
 ON_COMMAND(ID_Filled_Round_Rectangle, OnFilledRoundRectangle)
+ON_COMMAND(ID_Ellipse, OnEllipse)
+ON_COMMAND(ID_Outlined_Ellipse, OnOutlinedEllipse)
+ON_COMMAND(ID_Filled_Ellipse, OnFilledEllipse)
 //}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -272,6 +275,33 @@ void CImageEditorView::OnDraw(CDC *pDC)
 			rrcBrush2.DeleteObject();
 		}
 	}
+	else if (m_type == 11)
+	{
+		CBrush *rrcBrush = CBrush::FromHandle((HBRUSH)GetStockObject(NULL_BRUSH));
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		// pDC->SelectObject(&newPen);
+		pDC->SelectObject(rrcBrush);
+		pDC->Ellipse(point.x, point.y, tgtPoint.x, tgtPoint.y);
+		rrcBrush->DeleteObject();
+	}
+	else if (m_type == 12 || m_type == 13)
+	{
+		CBrush rrcBrush;
+		rrcBrush.CreateSolidBrush(bgcolor);
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		pDC->SelectObject(rrcBrush);
+		pDC->Ellipse(point.x, point.y, tgtPoint.x, tgtPoint.y);
+		rrcBrush.DeleteObject();
+		if (m_type == 13)
+		{
+			CPen rrcBrush2(PS_SOLID, 1, bgcolor);
+			pDC->SelectObject(rrcBrush2);
+			pDC->Ellipse(point.x, point.y, tgtPoint.x, tgtPoint.y);
+			rrcBrush2.DeleteObject();
+		}
+	}
 
 	// pDC->BitBlt(rc_size.left,rc_size.top,rc_size.Width(),rc_size.Height(),&MemDC,0,0,SRCCOPY);
 	// oldBitmap.DeleteObject();
@@ -472,4 +502,22 @@ void CImageEditorView::OnFilledRoundRectangle()
 {
 	// TODO: Add your command handler code here
 	m_type = 10;
+}
+
+void CImageEditorView::OnEllipse()
+{
+	// TODO: Add your command handler code here
+	m_type = 11;
+}
+
+void CImageEditorView::OnOutlinedEllipse()
+{
+	// TODO: Add your command handler code here
+	m_type = 12;
+}
+
+void CImageEditorView::OnFilledEllipse()
+{
+	// TODO: Add your command handler code here
+	m_type = 13;
 }

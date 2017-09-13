@@ -18,12 +18,12 @@ ResourceCount=7
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_DIALOG1
-Resource4=IDD_DIALOG2
+Resource3=IDD_DIALOG2
+Resource4=IDD_DIALOG3
 Class6=ImageEditorColorPanel
-Resource5=IDD_ABOUTBOX (English (U.S.))
+Resource5=IDD_DIALOG1
 Class7=ImageEditorNewFile
-Resource6=IDD_DIALOG3
+Resource6=IDD_ABOUTBOX (English (U.S.))
 Class8=ImageEditorLineWidth
 Resource7=IDR_MAINFRAME (English (U.S.))
 
@@ -54,7 +54,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_Filled_Round_Rectangle
+LastObject=ID_Filled_Ellipse
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 

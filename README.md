@@ -56,9 +56,9 @@ Basic Featues
     - [x] Round Rectangle
     - [x] Outlined Round Rectangle
     - [x] Filled Round Rectangle
-    - [ ] Ellipse
-    - [ ] Outlined Ellipse
-    - [ ] Filled Ellipse
+    - [x] Ellipse
+    - [x] Outlined Ellipse
+    - [x] Filled Ellipse
  5. Settings
     - [x] Line Width
     - [x] Line Style
@@ -75,9 +75,7 @@ Basic Featues
     - [ ] Attributes
     - [ ] Clear
     - [ ] Draw Opaque
- 7. Color
-    - [ ] Edit Color
- 8. Help
+ 7. Help
     - [ ] Help Topics
     - [x] About ImageEditor
 

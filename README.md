@@ -9,8 +9,8 @@ Basic Featues
 ---------------
 
  1. Files
-    - [ ] New ![][4]
-    - [ ] Open ![][4] 
+    - [x] New
+    - [x] Open 
     - [ ] Save ![][4]
     - [ ] Save As ![][4]
     - [ ] From Scanner or Camera
@@ -76,11 +76,16 @@ Basic Featues
     - [ ] Clear
     - [ ] Draw Opaque
  7. Help
-    - [ ] Help Topics
+    - [x] Help Topics
     - [x] About ImageEditor
-
+***
+References
+---------------
+ Using OpenCV with MFC
+[http://read.pudn.com/downloads66/sourcecode/others/237661/OpenCV%20references/Using%20OpenCV%20with%20MFC.pdf][5]
 
   [1]: https://img.shields.io/badge/language-C++-green.svg
   [2]: https://img.shields.io/badge/platform-win--32%20%7C%20win--64-lightgrey.svg
   [3]: https://img.shields.io/travis/rust-lang/rust/master.svg
   [4]: https://img.shields.io/badge/progress-default-lightgrey.svg
+  [5]: http://read.pudn.com/downloads66/sourcecode/others/237661/OpenCV%20references/Using%20OpenCV%20with%20MFC.pdf

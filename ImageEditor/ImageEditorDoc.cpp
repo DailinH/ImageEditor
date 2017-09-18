@@ -7,6 +7,7 @@
 #include "ImageEditorDoc.h"
 #include "cv.h"
 #include "highgui.h"
+// using namespace cv;
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -59,6 +60,7 @@ BOOL CImageEditorDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	{
 		pImg = cvLoadImage(lpszPathName, 1);
 		m_img.CopyOf(pImg); //, IMAGE_CHANNELS);
+		m_img.Destroy();
 		// m_img.Load(lpszPathName, 1);
 		openImg = true;
 	}
@@ -115,7 +117,7 @@ BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 	CString strPath("");
 	if (dlg.DoModal() == IDOK)
 	{
-		//pImg = m_img.GetImage();
+		// // pImg = m_img.GetImage();
 		// saveImg = pImg;
 		// cvFlip(saveImg);
 		// cvSaveImage(dlg.GetPathName(), saveImg);
@@ -126,7 +128,7 @@ BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 		// pDoc->pImg = tmpImg.GetImage();
 		// saveImg = pDoc->pImg;
 		// cvFlip(saveImg);
-		// cvSaveImage(dlg.GetPathName(), saveImg);
+		cvSaveImage(dlg.GetPathName(), IplImg);
 		// cvFlip(saveImg);
 		//return TRUE;
 	}

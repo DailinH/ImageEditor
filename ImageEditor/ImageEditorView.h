@@ -16,31 +16,32 @@
 
 class CImageEditorView : public CView
 {
-  protected: // create from serialization only
+protected: // create from serialization only
 	CImageEditorView();
 	DECLARE_DYNCREATE(CImageEditorView)
 
 	// Attributes
-  public:
+public:
 	CImageEditorDoc *GetDocument();
 
 	// Operations
-  public:
+public:
 	// Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CImageEditorView)
-  public:
+public:
 	virtual void OnDraw(CDC *pDC); // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
 
-  protected:
+protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo *pInfo);
 	virtual void OnBeginPrinting(CDC *pDC, CPrintInfo *pInfo);
 	virtual void OnEndPrinting(CDC *pDC, CPrintInfo *pInfo);
+	// void OnFileSaveAs();
 	//}}AFX_VIRTUAL
 
 	// Implementation
-  public:
+public:
 	bool LBtnDn;
 	int ImgHeight;
 	int ImgWidth;
@@ -72,9 +73,9 @@ class CImageEditorView : public CView
 	virtual void Dump(CDumpContext &dc) const;
 #endif
 
-  protected:
+protected:
 	// Generated message map functions
-  protected:
+protected:
 	//{{AFX_MSG(CImageEditorView)
 	afx_msg void OnPencil();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);

@@ -51,11 +51,14 @@
 > ### Related Topics
 > - [MFC document serialization][5]
 > - [convertion between CImage and IplImage][6]
-
+> - [BUG EXTERMINATION: 'MessageBoxA' : function does not take 1 parameters][7]
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg
   [3]: http://www.cnblogs.com/shenxiaolin/p/5295995.html  
   [4]: https://img.shields.io/badge/progress-30%-blue.svg
   [5]: http://www.cnblogs.com/superanyi/archive/2011/01/06/1929182.html
   [6]: http://blog.sina.com.cn/s/blog_6f4991630100n20k.html
+  [7]: http://blog.csdn.net/yitaohust/article/details/3051931
+  
+  
   

@@ -22,6 +22,8 @@ public:
 	CImage m_img;
 	IplImage *pImg;
 	BOOL openImg;
+	IplImage *saveImg;
+
 	// Operations
 public:
 	// Overrides
@@ -32,6 +34,10 @@ public:
 	virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
 	// virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
 	virtual void Serialize(CArchive &ar);
+	// BOOL Save(LPCTSTR csFilename, IplImage *thisImg);
+	// virtual BOOL onSaveDocument(LPCTSTR lpszPathName); //图像保存
+	virtual BOOL DoSave(LPCTSTR lpszPathName, BOOL bReplace);
+
 	//}}AFX_VIRTUAL
 
 	// Implementation

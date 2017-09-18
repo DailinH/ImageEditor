@@ -8,6 +8,8 @@
 #include "ImageEditorView.h"
 #include "ImageEditorColorPanel.h"
 #include "ImageEditorLineWidth.h"
+#include "cv.h"
+#include "highgui.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -89,7 +91,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	GetClientRect(&rc_size);
 
 	//////////////open image from...////////////
-	if (pDoc->openImg == true)
+	if (pDoc->openImg == TRUE)
 	{
 		CImage &img = pDoc->m_img;
 		HDC hDC = pDC->GetSafeHdc();

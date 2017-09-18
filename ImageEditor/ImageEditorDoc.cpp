@@ -99,3 +99,36 @@ void CImageEditorDoc::Dump(CDumpContext &dc) const
 
 /////////////////////////////////////////////////////////////////////////////
 // CImageEditorDoc commands
+// BOOL CImageEditorDoc::Save(LPCTSTR csFilename, IplImage *thisImg)
+// {
+// 	int bl;
+// 	cvFlip(thisImg);					   //  恢复原 OpenCV 位图结构
+// 	bl = cvSaveImage(csFilename, thisImg); //  图像存盘
+// 	return (bl);
+// }
+BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
+// BOOL CImageEditorDoc::onSaveDocument(LPCTSTR lpszPathName) //图像保存
+{
+	// MessageBox(NULL, "right!", "", MB_OK);
+	// return true;
+	CFileDialog dlg(false, "*.bmp", "Untitled.bmp", OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, "BMP(*.bmp)|*.bmp|PNG(*.png)|*.png|JPEG(*.jpg;*.jpeg;*.jpe;*.jfif)|*.jpg||");
+	CString strPath("");
+	if (dlg.DoModal() == IDOK)
+	{
+		//pImg = m_img.GetImage();
+		// saveImg = pImg;
+		// cvFlip(saveImg);
+		// cvSaveImage(dlg.GetPathName(), saveImg);
+		// cvFlip(saveImg);
+		// return TRUE;
+		// CImageEditorDoc *pDoc = GetDocument();
+		// CImage &tmpImg = pDoc->m_img;
+		// pDoc->pImg = tmpImg.GetImage();
+		// saveImg = pDoc->pImg;
+		// cvFlip(saveImg);
+		// cvSaveImage(dlg.GetPathName(), saveImg);
+		// cvFlip(saveImg);
+		//return TRUE;
+	}
+	return FALSE;
+}

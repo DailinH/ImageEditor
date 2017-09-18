@@ -5,7 +5,8 @@
 #include "ImageEditor.h"
 
 #include "ImageEditorDoc.h"
-
+#include "cv.h"
+#include "highgui.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -56,7 +57,9 @@ BOOL CImageEditorDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	// TODO: add reinitialization code here
 	if (lpszPathName != NULL)
 	{
-		m_img.Load(lpszPathName, 1);
+		pImg = cvLoadImage(lpszPathName, 1);
+		m_img.CopyOf(pImg); //, IMAGE_CHANNELS);
+		// m_img.Load(lpszPathName, 1);
 		openImg = true;
 	}
 	// (SDI documents will reuse this document)

@@ -24,6 +24,7 @@ public:
 	BOOL newImg;
 	BOOL openImg;
 	BOOL saveImg;
+	BOOL saveStatus;
 	CString getPathName;
 	// CFileDialog *dlg;
 	//IplImage *saveImg;

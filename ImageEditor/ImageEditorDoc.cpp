@@ -35,6 +35,7 @@ CImageEditorDoc::CImageEditorDoc()
 	newImg = true;
 	openImg = false;
 	saveImg = false;
+	saveStatus = false;
 	getPathName = "";
 }
 
@@ -118,29 +119,38 @@ BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 {
 	// MessageBox(NULL, "right!", "", MB_OK);
 	// return true;
-	CFileDialog dlg(false, "*.bmp", "Untitled.bmp", OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, "BMP(*.bmp)|*.bmp|PNG(*.png)|*.png|JPEG(*.jpg;*.jpeg;*.jpe;*.jfif)|*.jpg||");
-	// CString strPath("");
-	if (dlg.DoModal() == IDOK)
+	if (saveStatus == true)
 	{
-		getPathName = dlg.GetPathName();
 		saveImg = true;
-		MessageBox(NULL, getPathName, "", MB_OK);
-		//		InvalidateRect(NULL, FALSE);
 		return TRUE;
-		// saveImg = pImg;
-		// // pImg = m_img.GetImage();
-		// cvFlip(saveImg);
-		// cvSaveImage(dlg.GetPathName(), saveImg);
-		// cvFlip(saveImg);
-		// return TRUE;
-		// CImageEditorDoc *pDoc = GetDocument();
-		// CImage &tmpImg = pDoc->m_img;
-		// pDoc->pImg = tmpImg.GetImage();
-		// saveImg = pDoc->pImg;
-		// cvFlip(saveImg);
-		// cvSaveImage(dlg.GetPathName(), IplImg);
-		// cvFlip(saveImg);
-		//return TRUE;
+	}
+	else
+	{
+		CFileDialog dlg(false, "*.bmp", "Untitled.bmp", OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, "BMP(*.bmp)|*.bmp|PNG(*.png)|*.png|JPEG(*.jpg;*.jpeg;*.jpe;*.jfif)|*.jpg||");
+		// CString strPath("");
+		if (dlg.DoModal() == IDOK)
+		{
+			getPathName = dlg.GetPathName();
+			saveImg = true;
+			saveStatus = true;
+			// MessageBox(NULL, getPathName, "", MB_OK);
+			//		InvalidateRect(NULL, FALSE);
+			return TRUE;
+			// saveImg = pImg;
+			// // pImg = m_img.GetImage();
+			// cvFlip(saveImg);
+			// cvSaveImage(dlg.GetPathName(), saveImg);
+			// cvFlip(saveImg);
+			// return TRUE;
+			// CImageEditorDoc *pDoc = GetDocument();
+			// CImage &tmpImg = pDoc->m_img;
+			// pDoc->pImg = tmpImg.GetImage();
+			// saveImg = pDoc->pImg;
+			// cvFlip(saveImg);
+			// cvSaveImage(dlg.GetPathName(), IplImg);
+			// cvFlip(saveImg);
+			//return TRUE;
+		}
 	}
 	return FALSE;
 }

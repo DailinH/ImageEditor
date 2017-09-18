@@ -48,9 +48,11 @@
 > - switch type CImage to type IplImage
 > - override function OnSave() for saving various img types
 > - initialize default-sized image upon opening the program(500*500)
+> - restore order for OnSave
+> - separate function **Save** from **Save As**
 > ### Existing Bugs:
-> - deranged signal order for 'OnSave()'
-> - unable to set default-sized new image upon opening ![][9]
+> - ~~deranged signal order for 'OnSave()'~~ ![][9]
+> - ~~unable to set default-sized new image upon opening~~ ![][9]
 > - lacking user-defined color panel(palette)
 > - need extra caution on destroying iplimage and cimage
 > ### Related Topics

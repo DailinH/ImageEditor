@@ -88,6 +88,7 @@ BOOL CImageEditorView::PreCreateWindow(CREATESTRUCT &cs)
 
 void CImageEditorView::OnDraw(CDC *pDC)
 {
+
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
@@ -106,7 +107,6 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		ImgWidth = (img.Width() < rc_size.right) ? img.Width() : rc_size.right;
 		pDoc->openImg = false;
 	}
-
 	if (pDoc->saveImg == true)
 	{
 		CImage tmpImg;
@@ -159,6 +159,9 @@ void CImageEditorView::OnDraw(CDC *pDC)
 			MessageBox("alert!");
 		}
 		pDoc->saveImg = false;
+		// pDoc->m_img.Destroy();
+		// tmpImg.Destroy();
+		// cvReleaseImage(&pDoc->pImg);
 	}
 	/////////////////////////////////////////////
 	// CSize sizeTotal;
@@ -390,6 +393,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	// oldBitmap.DeleteObject();
 	// MemDC.DeleteDC();
 	pDoc->m_Last_Position = pDoc->m_Current_Position;
+
 	return;
 }
 
@@ -465,6 +469,7 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
+	InvalidateRect(NULL, FALSE);
 	if (m_type == 1)
 	{
 		if (LBtnDn == true)

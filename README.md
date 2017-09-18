@@ -9,7 +9,7 @@ Basic Featues
 ---------------
 
  1. Files
-    - [x] New (require perfection, see DEVLOG.md)
+    - [x] New
     - [x] Open  
     - [ ] Save (require perfection, currently functioning the same as **Save As** )
     - [x] Save As (require perfection, see DEVLOG.md)

@@ -32,6 +32,7 @@ END_MESSAGE_MAP()
 CImageEditorDoc::CImageEditorDoc()
 {
 	// TODO: add one-time construction code here
+	newImg = true;
 	openImg = false;
 	saveImg = false;
 	getPathName = "";
@@ -63,7 +64,7 @@ BOOL CImageEditorDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		pImg = cvLoadImage(lpszPathName, 1);
 		m_img.CopyOf(pImg); //, IMAGE_CHANNELS);
 		// m_img.Destroy();
-	//	InvalidateRect(NULL, FALSE);
+		//	InvalidateRect(NULL, FALSE);
 
 		// m_img.Load(lpszPathName, 1);
 		openImg = true;
@@ -124,7 +125,7 @@ BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 		getPathName = dlg.GetPathName();
 		saveImg = true;
 		MessageBox(NULL, getPathName, "", MB_OK);
-//		InvalidateRect(NULL, FALSE);
+		//		InvalidateRect(NULL, FALSE);
 		return TRUE;
 		// saveImg = pImg;
 		// // pImg = m_img.GetImage();

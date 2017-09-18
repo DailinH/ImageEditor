@@ -65,6 +65,9 @@ CImageEditorView::CImageEditorView()
 	ImgHeight = 500;
 	ImgWidth = 500;
 	LineStyle = 0;
+	createNewFile.ResetMap = true;
+	// Invalidate(TRUE);
+	// InvalidateRect(NULL, FALSE);
 	// TODO: add construction code here
 }
 
@@ -89,6 +92,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+	//////////////new image/////////////////////
 
 	//////////////open image from...////////////
 	if (pDoc->openImg == true)
@@ -196,11 +200,15 @@ void CImageEditorView::OnDraw(CDC *pDC)
 
 	if (createNewFile.ResetMap == true)
 	{
-		ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right) ? atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
-		ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom) ? atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;
+		if (pDoc->newImg == false)
+		{
+			ImgHeight = (atoi(createNewFile.m_New_Img_Horizontal) < rc_size.right) ? atoi(createNewFile.m_New_Img_Horizontal) : rc_size.right;
+			ImgWidth = (atoi(createNewFile.m_New_Img_Vertical) < rc_size.bottom) ? atoi(createNewFile.m_New_Img_Vertical) : rc_size.bottom;
+		}
 		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
 		pDC->FillSolidRect(0, 0, ImgWidth, ImgHeight, bgcolor);
 		createNewFile.ResetMap = false;
+		pDoc->newImg = false;
 	}
 
 	///////set width//////////

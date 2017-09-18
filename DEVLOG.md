@@ -47,9 +47,10 @@
 > ### Progress:
 > - switch type CImage to type IplImage
 > - override function OnSave() for saving various img types
+> - initialize default-sized image upon opening the program(500*500)
 > ### Existing Bugs:
 > - deranged signal order for 'OnSave()'
-> - unable to set default-sized new image upon opening
+> - unable to set default-sized new image upon opening ![][9]
 > - lacking user-defined color panel(palette)
 > - need extra caution on destroying iplimage and cimage
 > ### Related Topics
@@ -57,6 +58,7 @@
 > - [convertion between CImage and IplImage][6]
 > - [BUG EXTERMINATION: 'MessageBoxA' : function does not take 1 parameters][7]
 > - [switch from CBitmap to IplImage][8]
+
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg
   [3]: http://www.cnblogs.com/shenxiaolin/p/5295995.html  
@@ -65,6 +67,8 @@
   [6]: http://blog.sina.com.cn/s/blog_6f4991630100n20k.html
   [7]: http://blog.csdn.net/yitaohust/article/details/3051931
   [8]: http://3y.uu456.com/bp_9qzpt1ix4e2p7v440mh4_1.html
+  [9]: https://img.shields.io/badge/state-exterminated-brightgreen.svg
+  
   
   
   

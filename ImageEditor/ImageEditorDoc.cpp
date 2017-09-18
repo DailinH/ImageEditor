@@ -33,6 +33,8 @@ CImageEditorDoc::CImageEditorDoc()
 {
 	// TODO: add one-time construction code here
 	openImg = false;
+	saveImg = false;
+	getPathName = "";
 }
 
 CImageEditorDoc::~CImageEditorDoc()
@@ -60,7 +62,9 @@ BOOL CImageEditorDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	{
 		pImg = cvLoadImage(lpszPathName, 1);
 		m_img.CopyOf(pImg); //, IMAGE_CHANNELS);
-		m_img.Destroy();
+		// m_img.Destroy();
+	//	InvalidateRect(NULL, FALSE);
+
 		// m_img.Load(lpszPathName, 1);
 		openImg = true;
 	}
@@ -114,11 +118,16 @@ BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 	// MessageBox(NULL, "right!", "", MB_OK);
 	// return true;
 	CFileDialog dlg(false, "*.bmp", "Untitled.bmp", OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, "BMP(*.bmp)|*.bmp|PNG(*.png)|*.png|JPEG(*.jpg;*.jpeg;*.jpe;*.jfif)|*.jpg||");
-	CString strPath("");
+	// CString strPath("");
 	if (dlg.DoModal() == IDOK)
 	{
-		// // pImg = m_img.GetImage();
+		getPathName = dlg.GetPathName();
+		saveImg = true;
+		MessageBox(NULL, getPathName, "", MB_OK);
+//		InvalidateRect(NULL, FALSE);
+		return TRUE;
 		// saveImg = pImg;
+		// // pImg = m_img.GetImage();
 		// cvFlip(saveImg);
 		// cvSaveImage(dlg.GetPathName(), saveImg);
 		// cvFlip(saveImg);
@@ -128,7 +137,7 @@ BOOL CImageEditorDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
 		// pDoc->pImg = tmpImg.GetImage();
 		// saveImg = pDoc->pImg;
 		// cvFlip(saveImg);
-		cvSaveImage(dlg.GetPathName(), IplImg);
+		// cvSaveImage(dlg.GetPathName(), IplImg);
 		// cvFlip(saveImg);
 		//return TRUE;
 	}

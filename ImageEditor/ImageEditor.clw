@@ -18,12 +18,12 @@ ResourceCount=7
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_ABOUTBOX (English (U.S.))
-Resource4=IDD_DIALOG1
+Resource3=IDD_DIALOG1
+Resource4=IDD_DIALOG2
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG3
+Resource5=IDD_ABOUTBOX (English (U.S.))
 Class7=ImageEditorNewFile
-Resource6=IDD_DIALOG2
+Resource6=IDD_DIALOG3
 Class8=ImageEditorLineWidth
 Resource7=IDR_MAINFRAME (English (U.S.))
 

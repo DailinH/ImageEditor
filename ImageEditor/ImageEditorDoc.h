@@ -13,23 +13,26 @@
 
 class CImageEditorDoc : public CDocument
 {
-protected: // create from serialization only
+  protected: // create from serialization only
 	CImageEditorDoc();
 	DECLARE_DYNCREATE(CImageEditorDoc)
 
 	// Attributes
-public:
+  public:
 	CImage m_img;
 	IplImage *pImg;
 	BOOL openImg;
-	IplImage *saveImg;
+	BOOL saveImg;
+	CString getPathName;
+	// CFileDialog *dlg;
+	//IplImage *saveImg;
 
 	// Operations
-public:
+  public:
 	// Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CImageEditorDoc)
-public:
+  public:
 	virtual BOOL OnNewDocument();
 	virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
 	// virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
@@ -41,7 +44,7 @@ public:
 	//}}AFX_VIRTUAL
 
 	// Implementation
-public:
+  public:
 	CPoint m_Current_Position;
 	CPoint m_Last_Position;
 	CPoint m_Last_LBtnDn_Position;
@@ -53,9 +56,9 @@ public:
 	virtual void Dump(CDumpContext &dc) const;
 #endif
 
-protected:
+  protected:
 	// Generated message map functions
-protected:
+  protected:
 	//{{AFX_MSG(CImageEditorDoc)
 	// NOTE - the ClassWizard will add and remove member functions here.
 	//    DO NOT EDIT what you see in these blocks of generated code !

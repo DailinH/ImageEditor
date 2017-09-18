@@ -9,10 +9,10 @@ Basic Featues
 ---------------
 
  1. Files
-    - [x] New
-    - [x] Open 
-    - [ ] Save ![][4]
-    - [ ] Save As ![][4]
+    - [x] New (require perfection, see DEVLOG.md)
+    - [x] Open  
+    - [ ] Save (require perfection, currently functioning the same as **Save As** )
+    - [x] Save As (require perfection, see DEVLOG.md)
     - [ ] From Scanner or Camera
     - [ ] Print Preview
     - [ ] Print Setup
@@ -81,8 +81,7 @@ Basic Featues
 ***
 References
 ---------------
- Using OpenCV with MFC
-[http://read.pudn.com/downloads66/sourcecode/others/237661/OpenCV%20references/Using%20OpenCV%20with%20MFC.pdf][5]
+ Using OpenCV with MFC[http://read.pudn.com/downloads66/sourcecode/others/237661/OpenCV%20references/Using%20OpenCV%20with%20MFC.pdf][5]
 
   [1]: https://img.shields.io/badge/language-C++-green.svg
   [2]: https://img.shields.io/badge/platform-win--32%20%7C%20win--64-lightgrey.svg

@@ -23,10 +23,10 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	//ON_UPDATE_COMMAND_UI(LINE_STYLE_DASH, OnUpdateStyleDash)
 	//}}AFX_MSG_MAP
 	// Global help commands
-	ON_COMMAND(ID_HELP_FINDER, CFrameWnd::OnHelpFinder)
-	ON_COMMAND(ID_HELP, CFrameWnd::OnHelp)
-	ON_COMMAND(ID_CONTEXT_HELP, CFrameWnd::OnContextHelp)
-	ON_COMMAND(ID_DEFAULT_HELP, CFrameWnd::OnHelpFinder)
+//	ON_COMMAND(ID_HELP_FINDER, CFrameWnd::OnHelpFinder)
+//	ON_COMMAND(ID_HELP, CFrameWnd::OnHelp)
+//	ON_COMMAND(ID_CONTEXT_HELP, CFrameWnd::OnContextHelp)
+//	ON_COMMAND(ID_DEFAULT_HELP, CFrameWnd::OnHelpFinder)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =

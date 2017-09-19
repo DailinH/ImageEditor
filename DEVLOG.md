@@ -64,6 +64,8 @@
 > ## 2017-9-19
 > ### Progress:
 > - evaded image-flip when saving pictures
+> - solve 'user breakpoint at....' by rearranging reference to opencv1.o(see reference in READEME.MD)
+
 
 
 

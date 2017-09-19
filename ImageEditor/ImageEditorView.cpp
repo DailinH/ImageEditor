@@ -62,8 +62,11 @@ CImageEditorView::CImageEditorView()
 {
 	m_type = 1;
 	LBtnDn = false;
-	ImgHeight = 500;
-	ImgWidth = 500;
+	startDrawing = false;
+	completeDrawing = false;
+	onDrawing = false;
+	ImgHeight = 320;
+	ImgWidth = 320;
 	LineStyle = 0;
 	createNewFile.ResetMap = true;
 	// Invalidate(TRUE);
@@ -88,15 +91,89 @@ BOOL CImageEditorView::PreCreateWindow(CREATESTRUCT &cs)
 
 void CImageEditorView::OnDraw(CDC *pDC)
 {
-
 	CImageEditorDoc *pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
-	//////////////new image/////////////////////
+	if (completeDrawing == true)
+	{
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY); //cpy img from pDC
+		HBITMAP hBmp = HBITMAP(Bm);															  //Handle to a bitmap.typedef HANDLE HBITMAP;
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //attain bitmap information (Bm -> bmp)
+		int depth, nChannels;
+		if (bmp.bmBitsPixel == 1) //get depth and nChannel
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			//nChannels = 1;
+			nChannels = 3;
+			//nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //create ipl image
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					 //create buffer area
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				 //copy hbmp and bmp to buffer area
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			 //copy bmp to IplImage
+		workingImg.CopyOf(pImg);
+		completeDrawing = false;
+		HDC hDC = pDC->GetSafeHdc();
+		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+		CRect rect(0, 0, ImgWidth, ImgHeight);
+		workingImg.DrawToHDC(hDC, &rect);
+		workingImg.Destroy();
+	}
+	if (startDrawing == true)
+	{
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY); //cpy img from pDC
+		HBITMAP hBmp = HBITMAP(Bm);															  //Handle to a bitmap.typedef HANDLE HBITMAP;
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //attain bitmap information (Bm -> bmp)
+		int depth, nChannels;
+		if (bmp.bmBitsPixel == 1) //get depth and nChannel
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			nChannels = 3;
+			//nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //create ipl image
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					 //create buffer area
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				 //copy hbmp and bmp to buffer area
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			 //copy bmp to IplImage
+		workingImg.CopyOf(pImg);
+		startDrawing = false;
+
+		//return;
+	}
+	if (onDrawing == true)
+	{
+		HDC hDC = pDC->GetSafeHdc();
+		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+		CRect rect(0, 0, ImgWidth, ImgHeight);
+		workingImg.DrawToHDC(hDC, &rect);
+
+	}
 
 	//////////////open image from...////////////
-	if (pDoc->openImg == true)
+	if (pDoc->openImg)
 	{
 		CImage &img = pDoc->m_img;
 		HDC hDC = pDC->GetSafeHdc();
@@ -106,22 +183,21 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		ImgHeight = (img.Height() < rc_size.right) ? img.Height() : rc_size.right;
 		ImgWidth = (img.Width() < rc_size.right) ? img.Width() : rc_size.right;
 		pDoc->openImg = false;
+		return;
 	}
-	if (pDoc->saveImg == true)
+	if (pDoc->saveImg)
 	{
-		CImage tmpImg;
-		tmpImg.Create(ImgWidth, ImgHeight, 24);
 		CDC tmpDC;
 		tmpDC.CreateCompatibleDC(pDC);
 		CBitmap Bm;
 		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
 		tmpDC.SelectObject(&Bm);
-		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
-		HBITMAP hBmp = HBITMAP(Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY); //cpy img from pDC
+		HBITMAP hBmp = HBITMAP(Bm);															  //Handle to a bitmap.typedef HANDLE HBITMAP;
 		BITMAP bmp;
-		Bm.GetBitmap(&bmp); //获得位图信息
+		Bm.GetBitmap(&bmp); //attain bitmap information (Bm -> bmp)
 		int depth, nChannels;
-		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+		if (bmp.bmBitsPixel == 1) //get depth and nChannel
 		{
 			depth = IPL_DEPTH_1U;
 			nChannels = 1;
@@ -130,12 +206,12 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		{
 			depth = IPL_DEPTH_8U;
 			nChannels = bmp.bmBitsPixel / 8;
+			// nChannels = 3;
 		}
-		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
-		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					 //创建缓冲区
-		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				 //将位图信息复制到缓冲区
-		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			 //将缓冲区信息复制给IplImage
-		//convert bitmap to cimage
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //create ipl image
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					 //create buffer area
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				 //copy hbmp and bmp to buffer area
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			 //copy bmp to IplImage
 		// HBITMAP hbmp = (HBITMAP)bm.GetSafeHandle();
 		// if (!tmpImg.IsNull()) //make sure tmpImg is null
 		// 	tmpImg.Destroy();
@@ -148,7 +224,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		// memcpy(pImage->imageData, ds.dsBm.bmBits, pImage->imageSize);
 		if (pImg != NULL)
 		{
-			MessageBox("successful!");
+			MessageBox("Succeeded!");
 			//cvFlip(pImg);
 			cvSaveImage(pDoc->getPathName, pImg);
 			//cvFlip(pImg);
@@ -156,9 +232,10 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		}
 		else
 		{
-			MessageBox("alert!");
+			MessageBox("Failed!");
 		}
 		pDoc->saveImg = false;
+
 		// pDoc->m_img.Destroy();
 		// tmpImg.Destroy();
 		// cvReleaseImage(&pDoc->pImg);
@@ -181,6 +258,10 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	int color = RGB(red, green, blue);
 
 	///////double buffer//////
+	/*
+		NOTES:
+		aim: create a tmp img 
+	*/
 	// CDC MemDC;
 	// MemDC.CreateCompatibleDC(pDC);
 
@@ -444,6 +525,11 @@ void CImageEditorView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = true;
+	startDrawing = true;
+	onDrawing = true;
+	////////////////////////
+	// store buffer in memory;
+
 	CImageEditorDoc *pDoc = GetDocument();
 
 	pDoc->m_Last_LBtnDn_Position = point;
@@ -457,6 +543,9 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = false;
+	completeDrawing = true;
+	onDrawing = false;
+
 	if (m_type == 2 || m_type >= 5)
 	{
 		CImageEditorDoc *pDoc = GetDocument();
@@ -470,15 +559,16 @@ void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	InvalidateRect(NULL, FALSE);
-	if (m_type == 1)
+	//might cause save failure
+	//	if (m_type == 1)
+	//	{
+	if (LBtnDn == true)
 	{
-		if (LBtnDn == true)
-		{
-			CImageEditorDoc *pDoc = GetDocument();
-			pDoc->m_Current_Position = point;
-			InvalidateRect(NULL, FALSE);
-		}
+		CImageEditorDoc *pDoc = GetDocument();
+		pDoc->m_Current_Position = point;
+		InvalidateRect(NULL, TRUE);
 	}
+	//	}
 
 	CView::OnMouseMove(nFlags, point);
 }

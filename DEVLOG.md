@@ -61,6 +61,12 @@
 > - [BUG EXTERMINATION: 'MessageBoxA' : function does not take 1 parameters][7]
 > - [switch from CBitmap to IplImage][8]
 
+> ## 2017-9-19
+> ### Progress:
+> - evaded image-flip when saving pictures
+
+
+
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg
   [3]: http://www.cnblogs.com/shenxiaolin/p/5295995.html  

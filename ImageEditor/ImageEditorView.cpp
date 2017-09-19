@@ -149,9 +149,9 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		if (pImg != NULL)
 		{
 			MessageBox("successful!");
-			cvFlip(pImg);
+			//cvFlip(pImg);
 			cvSaveImage(pDoc->getPathName, pImg);
-			cvFlip(pImg);
+			//cvFlip(pImg);
 			//	cvReleaseImageheader(&pImage);
 		}
 		else

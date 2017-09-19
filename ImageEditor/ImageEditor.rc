@@ -281,21 +281,6 @@ BEGIN
         MENUITEM "Copy T&o...",                 ID_EDIT_COPY_TO
         MENUITEM "Paste &From...",              ID_EDIT_PASTE_FROM
     END
-    POPUP "&View"
-    BEGIN
-        MENUITEM "&Color Box\tCtrl+L",          ID_VIEW_COLORBOX
-        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
-        MENUITEM "Text &Edit Bar",              ID_VIEW_TXT_EDIT
-        POPUP "&Zoom"
-        BEGIN
-            MENUITEM "&Normal\tCtrl+PgUp",          ID_VIEW_ZOOM_NORMAL
-            MENUITEM "&Large\tCtrl+PgDn",           ID_VIEW_ZOOM_LARGE
-            MENUITEM "&User Define...",             ID_VIEW_USRDEF
-            MENUITEM "&Grid\tCtrl+G",               ID_VIEW_ZOOM_GRID
-            MENUITEM "T&humbnail",                  ID_VIEW_ZOOM_THUMBNAIL
-        END
-        MENUITEM "&View Bitmap\tCtrl+F",        ID_VIEW_BITMAP
-    END
     POPUP "&Tools"
     BEGIN
         MENUITEM "Irregular Selection",         ID_Irregular_Selection
@@ -320,6 +305,8 @@ BEGIN
         MENUITEM "Ellipse",                     ID_Ellipse
         MENUITEM "Outlined Ellipse",            ID_Outlined_Ellipse
         MENUITEM "Filled Ellipse",              ID_Filled_Ellipse
+        MENUITEM SEPARATOR
+        MENUITEM "Gaussian Filter",             ID_Gaussian_Filter
     END
     POPUP "&Settings"
     BEGIN

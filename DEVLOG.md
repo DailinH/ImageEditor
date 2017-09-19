@@ -65,7 +65,10 @@
 > ### Progress:
 > - evaded image-flip when saving pictures
 
-
+> ## 2017-9-20
+> ### Progress:
+> - Discover bug-occurrance between the conversion of CBitmap and CImage;
+> - Add Gaussian Filter function \(*￣▽￣*)/
 
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg

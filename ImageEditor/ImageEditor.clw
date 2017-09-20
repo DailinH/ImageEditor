@@ -2,30 +2,32 @@
 
 [General Info]
 Version=1
-LastClass=ImageEditorLineWidth
+LastClass=CImageEditorView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
 LastPage=0
 
-ClassCount=8
+ClassCount=9
 Class1=CImageEditorApp
 Class2=CImageEditorDoc
 Class3=CImageEditorView
 Class4=CMainFrame
 
-ResourceCount=7
+ResourceCount=8
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_DIALOG2
-Resource4=IDD_ABOUTBOX (English (U.S.))
+Resource3=IDD_DIALOG1
+Resource4=IDD_DIALOG4
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG1
+Resource5=IDD_ABOUTBOX (English (U.S.))
 Class7=ImageEditorNewFile
 Resource6=IDD_DIALOG3
 Class8=ImageEditorLineWidth
-Resource7=IDR_MAINFRAME (English (U.S.))
+Resource7=IDD_DIALOG2
+Class9=ImageEditorFlipnRot
+Resource8=IDR_MAINFRAME (English (U.S.))
 
 [CLS:CImageEditorApp]
 Type=0
@@ -46,7 +48,7 @@ ImplementationFile=ImageEditorView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_Gaussian_Filter
+LastObject=CImageEditorView
 
 
 [CLS:CMainFrame]
@@ -54,7 +56,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=CMainFrame
+LastObject=ID_IMG_ROTATE
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -292,6 +294,29 @@ HeaderFile=ImageEditorLineWidth.h
 ImplementationFile=ImageEditorLineWidth.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_EDIT1
+LastObject=ID_APP_ABOUT
 VirtualFilter=dWC
+
+[DLG:IDD_DIALOG4]
+Type=1
+Class=ImageEditorFlipnRot
+ControlCount=9
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_RADIO1,button,1342308361
+Control4=IDC_RADIO2,button,1342177289
+Control5=IDC_RADIO3,button,1342177289
+Control6=IDC_RADIO4,button,1342308361
+Control7=IDC_RADIO5,button,1342177289
+Control8=IDC_RADIO6,button,1342177289
+Control9=IDC_STATIC,button,1342177287
+
+[CLS:ImageEditorFlipnRot]
+Type=0
+HeaderFile=ImageEditorFlipnRot.h
+ImplementationFile=ImageEditorFlipnRot.cpp
+BaseClass=CDialog
+Filter=D
+VirtualFilter=dWC
+LastObject=ID_APP_ABOUT
 

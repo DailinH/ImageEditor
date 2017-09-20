@@ -117,6 +117,26 @@ BEGIN
                     WS_DISABLED | NOT WS_BORDER
 END
 
+IDD_DIALOG4 DIALOG DISCARDABLE  0, 0, 178, 97
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,121,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,121,24,50,14
+    CONTROL         "Flip Horizontally",IDC_RADIO1,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,31,22,70,10
+    CONTROL         "Flip Vertically",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,
+                    31,32,60,10
+    CONTROL         "Rotate at...",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,31,
+                    42,51,10
+    CONTROL         "90",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    60,52,24,10
+    CONTROL         "180",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,60,62,28,10
+    CONTROL         "270",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,60,72,28,10
+    GROUPBOX        "Flip/Rotate",IDC_STATIC,21,13,90,70
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -148,6 +168,14 @@ BEGIN
         RIGHTMARGIN, 180
         TOPMARGIN, 7
         BOTTOMMARGIN, 88
+    END
+
+    IDD_DIALOG4, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 171
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 90
     END
 END
 #endif    // APSTUDIO_INVOKED

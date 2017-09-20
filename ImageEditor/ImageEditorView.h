@@ -13,6 +13,7 @@
 #include "ImageEditorColorPanel.h"
 #include "ImageEditorNewFile.h"
 #include "ImageEditorLineWidth.h"
+#include "ImageEditorFlipnRot.h"
 
 class CImageEditorView : public CView
 {
@@ -49,6 +50,7 @@ class CImageEditorView : public CView
 	ImageEditorColorPanel colorPanel;
 	ImageEditorNewFile createNewFile;
 	ImageEditorLineWidth getLineWidth;
+	ImageEditorFlipnRot flipRotate;
 	int m_type;
 	/*
 	brief notes:
@@ -103,6 +105,7 @@ class CImageEditorView : public CView
 	afx_msg void OnOutlinedEllipse();
 	afx_msg void OnFilledEllipse();
 	afx_msg void OnGaussianFilter();
+	afx_msg void OnImgRotateFlip();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

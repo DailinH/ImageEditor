@@ -13,12 +13,7 @@ Basic Featues
     - [x] Open  
     - [x] Save 
     - [x] Save As
-    - [ ] From Scanner or Camera
-    - [ ] Print Preview
-    - [ ] Print Setup
-    - [ ] Print
-    - [ ] Email
-    - [ ] Exit
+    - [x] Exit
  2. Edit
     - [ ] Undo
     - [ ] Repeat

@@ -138,11 +138,11 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
 		if (pImg != NULL)
 		{
-			cvSaveImage("E:\\1.bmp", pImg);
+//			cvSaveImage("1.bmp", pImg);
 			//cvFlip(pImg);
 			cvSmooth(pImg, dstImg,  CV_GAUSSIAN, 3, 3, 0, 0);
-			cvSaveImage("E:\\2.bmp", dstImg);
-			dstImg = cvLoadImage("E:\\2.bmp",1);
+			cvSaveImage("tmp.bmp", dstImg);
+			dstImg = cvLoadImage("tmp.bmp",1);
 			CImage tmpImg;
 			// tmpImg.Create(ImgWidth, ImgHeight, 24);
 			tmpImg.CopyOf(dstImg);

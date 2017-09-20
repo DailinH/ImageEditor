@@ -43,6 +43,7 @@ class CImageEditorView : public CView
 
 	// Implementation
   public:
+	bool FliporRotate;
 	bool GaussianFilter;
 	bool LBtnDn;
 	int ImgHeight;

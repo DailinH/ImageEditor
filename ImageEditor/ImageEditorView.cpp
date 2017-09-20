@@ -69,6 +69,7 @@ CImageEditorView::CImageEditorView()
 	LineStyle = 0;
 	GaussianFilter = false;
 	createNewFile.ResetMap = true;
+	FliporRotate = false;
 	// Invalidate(TRUE);
 	// InvalidateRect(NULL, FALSE);
 	// TODO: add construction code here
@@ -96,6 +97,97 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+	if (FliporRotate == true)
+	{
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+		HBITMAP hBmp = HBITMAP(Bm);
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //获得位图信息
+		int depth, nChannels;
+		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					 //创建缓冲区
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				 //将位图信息复制到缓冲区
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			 //将缓冲区信息复制给IplImage
+		//convert bitmap to cimage
+		// HBITMAP hbmp = (HBITMAP)bm.GetSafeHandle();
+		// if (!tmpImg.IsNull()) //make sure tmpImg is null
+		// 	tmpImg.Destroy();
+		// tmpImg.Attach(hbmp);
+		// pDoc->pImg = tmpImg.GetImage();
+
+		// DIBSECTION ds;
+		// bm.GetObject(hbmp, sizeof(CBitmap), &bm);
+		// IplImage *pImage = cvCreateImage(cvSize(bm.bmWidth, bm.bmHeight), 8, bm.biBitCount / 8);
+		// memcpy(pImage->imageData, ds.dsBm.bmBits, pImage->imageSize);
+		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
+		if (pImg != NULL)
+		{
+			cvSaveImage("E:\\1.bmp", pImg);
+			if (flipRotate.m_Flip_Type == 0)
+			{
+				cvFlip(pImg, NULL, 1);
+			}
+			else if (flipRotate.m_Flip_Type == 1)
+			{
+				cvFlip(pImg, NULL, 0);
+			}
+			else
+			{
+				if (flipRotate.m_Rotate_Type == 0)
+				{
+					cvTranspose(pImg, dstImg);
+					pImg = dstImg;
+					cvFlip(pImg, NULL, 1);
+				}
+				else if (flipRotate.m_Rotate_Type == 1)
+				{
+//					cvTranspose(pImg, dstImg);
+//					pImg = dstImg;
+					cvFlip(pImg, NULL, 0);
+					cvFlip(pImg, NULL, 1);
+
+				}
+				else
+				{
+					cvTranspose(pImg, dstImg);
+					pImg = dstImg;
+				}
+			}
+			cvSaveImage("E:\\2.bmp", pImg);
+			dstImg = cvLoadImage("E:\\2.bmp", 1);
+			CImage tmpImg;
+			// tmpImg.Create(ImgWidth, ImgHeight, 24);
+			tmpImg.CopyOf(dstImg);
+			pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+			CRect rect(0, 0, ImgWidth, ImgHeight);
+			tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+			//MessageBox("successful!");
+
+			//cvFlip(pImg);
+			//	cvReleaseImageheader(&pImage);
+		}
+		else
+		{
+			MessageBox("alert!");
+		}
+
+		FliporRotate = false;
+	}
 	/////////Gaussian Smooth/////////////////////
 	if (GaussianFilter == true)
 	{
@@ -691,4 +783,5 @@ void CImageEditorView::OnImgRotateFlip()
 {
 	// TODO: Add your command handler code here
 	flipRotate.DoModal();
+	FliporRotate = true;
 }

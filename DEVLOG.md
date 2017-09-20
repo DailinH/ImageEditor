@@ -70,7 +70,9 @@
 > - Discover bug-occurrance between the conversion of CBitmap and CImage;
 > - Add Gaussian Filter function \(*￣▽￣*)/
 > - Adjust line-width selection using slider control
-> - Release **Image Editor v1.0**
+> - Release **Image Editor v1.0** ![][9]
+> - Add Flip & Rotate Functions
+
 
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg
@@ -81,7 +83,7 @@
   [7]: http://blog.csdn.net/yitaohust/article/details/3051931
   [8]: http://3y.uu456.com/bp_9qzpt1ix4e2p7v440mh4_1.html
   [9]: https://img.shields.io/badge/state-exterminated-brightgreen.svg
-  
+  [10]: https://img.shields.io/badge/release-v1.0-orange.svg
   
   
   

@@ -59,7 +59,7 @@ Basic Featues
         - [x] dash-dot-dot
     - [x] Select Color
  5. Image
-    - [ ] Flip/Rotate
+    - [x] Flip/Rotate
     - [ ] Stretch/Distort
     - [ ] Inverse
     - [ ] Attributes
@@ -71,9 +71,12 @@ Basic Featues
 ***
 References
 ---------------
- Using OpenCV with MFC: [http://read.pudn.com/downloads66/sourcecode/others/237661/OpenCV%20references/Using%20OpenCV%20with%20MFC.pdf][5]
+ Using OpenCV with MFC: [http://read.pudn.com/downloads66/sourcecode/others/237661/OpenCV%20references/Using%20OpenCV%20with%20MFC.pdf][5]  
+ 
+
  Distinctions and Correlations between CBitmap, HBitmap and Bitmap:
- [http://www.cnblogs.com/ark-zhang/archive/2013/05/10/3071243.html][6]
+ [http://www.cnblogs.com/ark-zhang/archive/2013/05/10/3071243.html][6]  
+
  
   [1]: https://img.shields.io/badge/language-C++-green.svg
   [2]: https://img.shields.io/badge/platform-win--32%20%7C%20win--64-lightgrey.svg

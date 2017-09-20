@@ -50,6 +50,7 @@ ON_COMMAND(ID_Outlined_Ellipse, OnOutlinedEllipse)
 ON_COMMAND(ID_Filled_Ellipse, OnFilledEllipse)
 ON_COMMAND(ID_Gaussian_Filter, OnGaussianFilter)
 ON_COMMAND(ID_IMG_ROTATE, OnImgFlipRotate)
+ON_COMMAND(ID_IMG_INVERSE, OnInvertColor)
 //}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -68,6 +69,7 @@ CImageEditorView::CImageEditorView()
 	ImgWidth = 500;
 	LineStyle = 0;
 	GaussianFilter = false;
+	invertColor = false;
 	doFlipRotate = false;
 	createNewFile.ResetMap = true;
 	// Invalidate(TRUE);
@@ -97,6 +99,63 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+	//////////invert color///////////////////////
+	if (invertColor == true)
+	{
+		// CImage tmpImg;
+		// tmpImg.Create(ImgWidth, ImgHeight, 24);
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+		HBITMAP hBmp = HBITMAP(Bm);
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //获得位图信息
+		int depth, nChannels;
+		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
+		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
+		if (pImg != NULL)
+		{
+			cvNot(pImg, dstImg);
+			// cvSmooth(pImg, dstImg, CV_GAUSSIAN, 3, 3, 0, 0);
+			cvSaveImage("tmp.bmp", dstImg);
+			dstImg = cvLoadImage("tmp.bmp", 1);
+			CImage tmpImg;
+			// tmpImg.Create(ImgWidth, ImgHeight, 24);
+			tmpImg.CopyOf(dstImg);
+			pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+			CRect rect(0, 0, ImgWidth, ImgHeight);
+			tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+			//MessageBox("successful!");
+
+			//cvFlip(pImg);
+			//	cvReleaseImageheader(&pImage);
+		}
+		else
+		{
+			MessageBox("alert!");
+		}
+		invertColor = false;
+
+		// pDoc->m_img.Destroy();
+		// tmpImg.Destroy();
+		// cvReleaseImage(&pDoc->pImg);
+	}
 	//////////Flip and Rotate////////////////////
 	if (doFlipRotate == true)
 	{
@@ -148,13 +207,12 @@ void CImageEditorView::OnDraw(CDC *pDC)
 					cvFlip(pImg, NULL, 1);
 					cvFlip(pImg, NULL, 0);
 				}
-				else if( flipRotate.m_Rotate_Type == 2)
+				else if (flipRotate.m_Rotate_Type == 2)
 				{
 					cvTranspose(pImg, dstImg);
 					pImg = dstImg;
 					cvFlip(pImg, NULL, 0);
-				}					
-				
+				}
 			}
 			cvSaveImage("tmp.bmp", pImg);
 			dstImg = cvLoadImage("tmp.bmp", 1);
@@ -766,4 +824,10 @@ void CImageEditorView::OnImgFlipRotate()
 	// TODO: Add your command handler code here
 	flipRotate.DoModal();
 	doFlipRotate = true;
+}
+
+void CImageEditorView::OnInvertColor()
+{
+	// TODO: Add your command handler code here
+	invertColor = true;
 }

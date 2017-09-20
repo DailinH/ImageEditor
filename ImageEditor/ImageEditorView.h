@@ -43,7 +43,7 @@ protected:
 	// Implementation
 public:
 	bool doFlipRotate;
-
+	bool invertColor;
 	bool GaussianFilter;
 	bool LBtnDn;
 	int ImgHeight;
@@ -107,6 +107,7 @@ protected:
 	afx_msg void OnFilledEllipse();
 	afx_msg void OnGaussianFilter();
 	afx_msg void OnImgFlipRotate();
+	afx_msg void OnInvertColor();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

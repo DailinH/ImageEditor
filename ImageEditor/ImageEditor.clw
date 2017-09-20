@@ -56,7 +56,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_IMG_ROTATE
+LastObject=ID_IMG_INVERSE
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -199,12 +199,11 @@ Command46=ID_Select_Color
 Command47=ID_IMG_ROTATE
 Command48=ID_IMG_STRETCH
 Command49=ID_IMG_INVERSE
-Command50=ID_MENUITEM32790
-Command51=ID_IMG_CLEAR
-Command52=ID_IMG_OPAQUE
-Command53=ID_HELP_FINDER
-Command54=ID_APP_ABOUT
-CommandCount=54
+Command50=ID_IMG_CLEAR
+Command51=ID_IMG_OPAQUE
+Command52=ID_HELP_FINDER
+Command53=ID_APP_ABOUT
+CommandCount=53
 
 [ACL:IDR_MAINFRAME (English (U.S.))]
 Type=1

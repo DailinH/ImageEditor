@@ -72,6 +72,8 @@
 > - Adjust line-width selection using slider control
 > - Release **Image Editor v1.0** ![][9]
 > - Add Flip & Rotate Functions
+> - Add color-invert Function
+
 
 
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html

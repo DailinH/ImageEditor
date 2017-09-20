@@ -11,6 +11,39 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name cv
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name highgui
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "cv"="..\..\OpenCV\cv\src\cv.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "highgui"="..\..\OpenCV\otherlibs\highgui\highgui.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name cv
+    End Project Dependency
 }}}
 
 ###############################################################################

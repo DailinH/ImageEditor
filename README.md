@@ -61,10 +61,8 @@ Basic Featues
  5. Image
     - [x] Flip/Rotate
     - [ ] Stretch/Distort
-    - [ ] Inverse
-    - [ ] Attributes
+    - [x] Inverse
     - [ ] Clear
-    - [ ] Draw Opaque
  6. Help
     - [x] Help Topics
     - [x] About ImageEditor

@@ -14,6 +14,9 @@
 
 #include "resource.h"       // main symbols
 
+#include "cv.h"
+#include "highgui.h"
+
 /////////////////////////////////////////////////////////////////////////////
 // CImageEditorApp:
 // See ImageEditor.cpp for the implementation of this class

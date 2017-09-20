@@ -673,7 +673,7 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-	InvalidateRect(NULL, FALSE);
+	// InvalidateRect(NULL, FALSE);
 	if (m_type == 1)
 	{
 		if (LBtnDn == true)
@@ -683,6 +683,7 @@ void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 			InvalidateRect(NULL, FALSE);
 		}
 	}
+	UpdateWindow();
 
 	CView::OnMouseMove(nFlags, point);
 }

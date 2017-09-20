@@ -14,19 +14,17 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // ImageEditorNewFile dialog
 
-
-ImageEditorNewFile::ImageEditorNewFile(CWnd* pParent /*=NULL*/)
+ImageEditorNewFile::ImageEditorNewFile(CWnd *pParent /*=NULL*/)
 	: CDialog(ImageEditorNewFile::IDD, pParent)
 {
 	//{{AFX_DATA_INIT(ImageEditorNewFile)
-	m_New_Img_Horizontal = _T("");
-	m_New_Img_Vertical = _T("");
+	m_New_Img_Horizontal = _T("500");
+	m_New_Img_Vertical = _T("500");
 	ResetMap = false;
 	//}}AFX_DATA_INIT
 }
 
-
-void ImageEditorNewFile::DoDataExchange(CDataExchange* pDX)
+void ImageEditorNewFile::DoDataExchange(CDataExchange *pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(ImageEditorNewFile)
@@ -35,21 +33,19 @@ void ImageEditorNewFile::DoDataExchange(CDataExchange* pDX)
 	//}}AFX_DATA_MAP
 }
 
-
 BEGIN_MESSAGE_MAP(ImageEditorNewFile, CDialog)
-	//{{AFX_MSG_MAP(ImageEditorNewFile)
-	ON_BN_CLICKED(IDOK, OnCreateNewFile)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(ImageEditorNewFile)
+ON_BN_CLICKED(IDOK, OnCreateNewFile)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // ImageEditorNewFile message handlers
 
-void ImageEditorNewFile::OnCreateNewFile() 
+void ImageEditorNewFile::OnCreateNewFile()
 {
 	// TODO: Add your control notification handler code here
 	UpdateData(true);
-	ResetMap=true;
+	ResetMap = true;
 	CDialog::OnOK();
-	
 }

@@ -49,6 +49,7 @@ ON_COMMAND(ID_Ellipse, OnEllipse)
 ON_COMMAND(ID_Outlined_Ellipse, OnOutlinedEllipse)
 ON_COMMAND(ID_Filled_Ellipse, OnFilledEllipse)
 ON_COMMAND(ID_Gaussian_Filter, OnGaussianFilter)
+ON_COMMAND(ID_IMG_ROTATE, OnImgFlipRotate)
 //}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -67,6 +68,7 @@ CImageEditorView::CImageEditorView()
 	ImgWidth = 500;
 	LineStyle = 0;
 	GaussianFilter = false;
+	doFlipRotate = false;
 	createNewFile.ResetMap = true;
 	// Invalidate(TRUE);
 	// InvalidateRect(NULL, FALSE);
@@ -138,11 +140,11 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
 		if (pImg != NULL)
 		{
-//			cvSaveImage("1.bmp", pImg);
+			//			cvSaveImage("1.bmp", pImg);
 			//cvFlip(pImg);
-			cvSmooth(pImg, dstImg,  CV_GAUSSIAN, 3, 3, 0, 0);
+			cvSmooth(pImg, dstImg, CV_GAUSSIAN, 3, 3, 0, 0);
 			cvSaveImage("tmp.bmp", dstImg);
-			dstImg = cvLoadImage("tmp.bmp",1);
+			dstImg = cvLoadImage("tmp.bmp", 1);
 			CImage tmpImg;
 			// tmpImg.Create(ImgWidth, ImgHeight, 24);
 			tmpImg.CopyOf(dstImg);
@@ -684,4 +686,11 @@ void CImageEditorView::OnFilledEllipse()
 void CImageEditorView::OnGaussianFilter()
 {
 	GaussianFilter = true;
+}
+
+void CImageEditorView::OnImgFlipRotate()
+{
+	// TODO: Add your command handler code here
+	flipRotate.DoModal();
+	doFlipRotate = true;
 }

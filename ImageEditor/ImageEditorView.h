@@ -13,27 +13,27 @@
 #include "ImageEditorColorPanel.h"
 #include "ImageEditorNewFile.h"
 #include "ImageEditorLineWidth.h"
-
+#include "ImageEditorFlipnRotate.h"
 class CImageEditorView : public CView
 {
-  protected: // create from serialization only
+protected: // create from serialization only
 	CImageEditorView();
 	DECLARE_DYNCREATE(CImageEditorView)
 
 	// Attributes
-  public:
+public:
 	CImageEditorDoc *GetDocument();
 
 	// Operations
-  public:
+public:
 	// Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CImageEditorView)
-  public:
+public:
 	virtual void OnDraw(CDC *pDC); // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
 
-  protected:
+protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo *pInfo);
 	virtual void OnBeginPrinting(CDC *pDC, CPrintInfo *pInfo);
 	virtual void OnEndPrinting(CDC *pDC, CPrintInfo *pInfo);
@@ -41,7 +41,9 @@ class CImageEditorView : public CView
 	//}}AFX_VIRTUAL
 
 	// Implementation
-  public:
+public:
+	bool doFlipRotate;
+
 	bool GaussianFilter;
 	bool LBtnDn;
 	int ImgHeight;
@@ -49,6 +51,7 @@ class CImageEditorView : public CView
 	ImageEditorColorPanel colorPanel;
 	ImageEditorNewFile createNewFile;
 	ImageEditorLineWidth getLineWidth;
+	ImageEditorFlipnRotate flipRotate;
 	int m_type;
 	/*
 	brief notes:
@@ -74,9 +77,9 @@ class CImageEditorView : public CView
 	virtual void Dump(CDumpContext &dc) const;
 #endif
 
-  protected:
+protected:
 	// Generated message map functions
-  protected:
+protected:
 	//{{AFX_MSG(CImageEditorView)
 	afx_msg void OnPencil();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
@@ -103,6 +106,7 @@ class CImageEditorView : public CView
 	afx_msg void OnOutlinedEllipse();
 	afx_msg void OnFilledEllipse();
 	afx_msg void OnGaussianFilter();
+	afx_msg void OnImgFlipRotate();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

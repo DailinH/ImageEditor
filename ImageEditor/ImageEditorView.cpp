@@ -286,7 +286,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	}
 
 	///////set width//////////
-	int width = atoi(getLineWidth.m_Line_Width);
+	int width = getLineWidth.m_Line_Width;
 	///////create pen/////////
 	// CPen newPen(LineStyle,width,color);
 	//////////////////////////

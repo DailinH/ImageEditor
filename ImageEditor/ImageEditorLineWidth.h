@@ -19,7 +19,8 @@ public:
 // Dialog Data
 	//{{AFX_DATA(ImageEditorLineWidth)
 	enum { IDD = IDD_DIALOG3 };
-	CString	m_Line_Width;
+	int		m_Line_Width;
+	CString	m_Show_Width;
 	//}}AFX_DATA
 
 
@@ -36,6 +37,8 @@ protected:
 	// Generated message map functions
 	//{{AFX_MSG(ImageEditorLineWidth)
 	afx_msg void OnSetLineWidth();
+	afx_msg void OnWidthSlider(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnShowLineWidth(NMHDR* pNMHDR, LRESULT* pResult);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

@@ -69,6 +69,7 @@
 > ### Progress:
 > - Discover bug-occurrance between the conversion of CBitmap and CImage;
 > - Add Gaussian Filter function \(*￣▽￣*)/
+> - Adjust line-width selection using slider control
 
   [1]: http://jingyan.baidu.com/album/3ea51489c0b2d852e61bbac0.html
   [2]: https://img.shields.io/badge/completion-10%25-red.svg

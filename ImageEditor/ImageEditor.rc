@@ -109,9 +109,12 @@ FONT 10, "System"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,108,62,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,32,62,50,14
-    LTEXT           "width(integer):",IDC_STATIC,37,34,47,8
-    EDITTEXT        IDC_EDIT1,104,34,57,10,ES_AUTOHSCROLL
+    LTEXT           "Line-Width:",IDC_STATIC,37,34,38,8
     GROUPBOX        "",IDC_STATIC,23,22,149,33
+    CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_BORDER | WS_TABSTOP,96,34,71,11
+    EDITTEXT        IDC_EDIT1,77,34,16,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER
 END
 
 

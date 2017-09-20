@@ -97,6 +97,79 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+	//////////Flip and Rotate////////////////////
+	if (doFlipRotate == true)
+	{
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+		HBITMAP hBmp = HBITMAP(Bm);
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //获得位图信息
+		int depth, nChannels;
+		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
+		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels); //创建图像
+		if (pImg != NULL)
+		{
+			if (flipRotate.m_Flip_Type == 0)
+			{
+				cvFlip(pImg, NULL, 1);
+			}
+			else if (flipRotate.m_Flip_Type == 1)
+			{
+				cvFlip(pImg, NULL, 0);
+			}
+			else
+			{
+				if (flipRotate.m_Rotate_Type == 0)
+				{
+					cvTranspose(pImg, dstImg);
+					pImg = dstImg;
+					cvFlip(pImg, NULL, 1);
+				}
+				else if (flipRotate.m_Rotate_Type == 1)
+				{
+					cvFlip(pImg, NULL, 1);
+					cvFlip(pImg, NULL, 0);
+				}
+				else if( flipRotate.m_Rotate_Type == 2)
+				{
+					cvTranspose(pImg, dstImg);
+					pImg = dstImg;
+					cvFlip(pImg, NULL, 0);
+				}					
+				
+			}
+			cvSaveImage("tmp.bmp", pImg);
+			dstImg = cvLoadImage("tmp.bmp", 1);
+			CImage tmpImg;
+			tmpImg.CopyOf(dstImg);
+			pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+			CRect rect(0, 0, ImgWidth, ImgHeight);
+			tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+		}
+		else
+		{
+			MessageBox("alert!");
+		}
+		doFlipRotate = false;
+	}
 	/////////Gaussian Smooth/////////////////////
 	if (GaussianFilter == true)
 	{

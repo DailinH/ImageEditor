@@ -42,6 +42,7 @@
 #define ID_MENUITEM32790                32790
 #define ID_IMG_CLEAR                    32791
 #define ID_IMG_OPAQUE                   32792
+#define ID_IMG_Grey                     32792
 #define ID_COLOR_EDIT                   32793
 #define ID_Irregular_Selection          32794
 #define ID_Rectangle_Selection          32795

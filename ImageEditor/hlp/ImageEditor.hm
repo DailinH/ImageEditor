@@ -20,6 +20,7 @@ HID_IMG_INVERSE                         0x18015
 HID_MENUITEM32790                       0x18016
 HID_IMG_CLEAR                           0x18017
 HID_IMG_OPAQUE                          0x18018
+HID_IMG_Grey                            0x18018
 HID_COLOR_EDIT                          0x18019
 HID_Irregular_Selection                 0x1801A
 HID_Rectangle_Selection                 0x1801B

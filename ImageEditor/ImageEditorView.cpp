@@ -51,7 +51,9 @@ ON_COMMAND(ID_Filled_Ellipse, OnFilledEllipse)
 ON_COMMAND(ID_Gaussian_Filter, OnGaussianFilter)
 ON_COMMAND(ID_IMG_ROTATE, OnImgFlipRotate)
 ON_COMMAND(ID_IMG_INVERSE, OnInvertColor)
-//}}AFX_MSG_MAP
+	ON_COMMAND(ID_IMG_Grey, OnIMGColororGrey)
+	ON_COMMAND(ID_IMG_CLEAR, OnClear)
+	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
 ON_COMMAND(ID_FILE_PRINT_DIRECT, CView::OnFilePrint)
@@ -71,7 +73,9 @@ CImageEditorView::CImageEditorView()
 	GaussianFilter = false;
 	invertColor = false;
 	doFlipRotate = false;
+	doGrey = false;
 	createNewFile.ResetMap = true;
+	clearImg = false;
 	// Invalidate(TRUE);
 	// InvalidateRect(NULL, FALSE);
 	// TODO: add construction code here
@@ -99,6 +103,72 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+	/////////doGrey//////////////////////////////
+	if(doGrey == true)
+	{
+		doGrey = false;
+		//MessageBox("grey1!");
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+		HBITMAP hBmp = HBITMAP(Bm);
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //获得位图信息
+		int depth, nChannels;
+		//MessageBox("grey2!");
+
+		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			// nChannels = 1;//bmp.bmBitsPixel / 8;
+			nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
+
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
+
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
+		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, 1); //创建图像
+		if (pImg != NULL)
+		{
+			cvCvtColor(pImg,dstImg,CV_BGR2GRAY);
+			MessageBox("grey!");
+			//cvNot(pImg, dstImg);
+			// vSmooth(pImg, dstImg, CV_GAUSSIAN, 3, 3, 0, 0);
+			cvSaveImage("tmp.bmp", dstImg);
+
+			IplImage *tImg = cvLoadImage("tmp.bmp",1);// CV_LOAD_IMAGE_GRAYSCALE);
+			CImage tmpImg;
+			// tmpImg.Create(ImgWidth, ImgHeight, 24);
+			tmpImg.CopyOf(tImg);
+			pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+			CRect rect(0, 0, ImgWidth, ImgHeight);
+			tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+			//MessageBox("successful!");
+
+			//cvFlip(pImg);
+			//	cvReleaseImageheader(&pImage);
+		}
+		else
+		{
+			MessageBox("alert!");
+		}
+		invertColor = false;
+
+		// pDoc->m_img.Destroy();
+		// tmpImg.Destroy();
+		// cvReleaseImage(&pDoc->pImg);
+	}
 	//////////invert color///////////////////////
 	if (invertColor == true)
 	{
@@ -404,7 +474,11 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	// 	MemDC.FillSolidRect(0,0,ImgWidth,ImgHeight,RGB(255,255,255));
 	// 	createNewFile.ResetMap = false;
 	// 	}
-
+	if (clearImg == true){
+		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+		pDC->FillSolidRect(0, 0, ImgWidth, ImgHeight, bgcolor);
+		clearImg = false;
+	}
 	if (createNewFile.ResetMap == true)
 	{
 		if (pDoc->newImg == false)
@@ -673,7 +747,8 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-	// InvalidateRect(NULL, FALSE);
+	if(doFlipRotate || invertColor ||GaussianFilter||doGrey || clearImg)
+		InvalidateRect(NULL, FALSE);
 	if (m_type == 1)
 	{
 		if (LBtnDn == true)
@@ -831,4 +906,18 @@ void CImageEditorView::OnInvertColor()
 {
 	// TODO: Add your command handler code here
 	invertColor = true;
+}
+
+void CImageEditorView::OnIMGColororGrey() 
+{
+	doGrey = !doGrey;
+	// TODO: Add your command handler code here
+	
+}
+
+void CImageEditorView::OnClear() 
+{
+	clearImg = true;
+	// TODO: Add your command handler code here
+	
 }

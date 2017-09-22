@@ -43,8 +43,10 @@ protected:
 	// Implementation
 public:
 	bool doFlipRotate;
+	bool doGrey;
 	bool invertColor;
 	bool GaussianFilter;
+	bool clearImg;
 	bool LBtnDn;
 	int ImgHeight;
 	int ImgWidth;
@@ -108,6 +110,8 @@ protected:
 	afx_msg void OnGaussianFilter();
 	afx_msg void OnImgFlipRotate();
 	afx_msg void OnInvertColor();
+	afx_msg void OnIMGColororGrey();
+	afx_msg void OnClear();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

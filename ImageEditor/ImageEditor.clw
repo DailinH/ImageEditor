@@ -56,7 +56,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_IMG_INVERSE
+LastObject=ID_IMG_CLEAR
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -200,7 +200,7 @@ Command47=ID_IMG_ROTATE
 Command48=ID_IMG_STRETCH
 Command49=ID_IMG_INVERSE
 Command50=ID_IMG_CLEAR
-Command51=ID_IMG_OPAQUE
+Command51=ID_IMG_Grey
 Command52=ID_HELP_FINDER
 Command53=ID_APP_ABOUT
 CommandCount=53

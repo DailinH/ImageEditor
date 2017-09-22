@@ -70,9 +70,15 @@
 > - Discover bug-occurrance between the conversion of CBitmap and CImage;
 > - Add Gaussian Filter function \(*￣▽￣*)/
 > - Adjust line-width selection using slider control
-> - Release **Image Editor v1.0** ![][9]
+> - Release **Image Editor v1.0** ![][10]
 > - Add Flip & Rotate Functions
 > - Add color-invert Function
+
+> ## 2017-9-22
+> ### Progress:
+> - Add convert-to-gray function
+> - Add Clear-whole-image function
+
 
 
 

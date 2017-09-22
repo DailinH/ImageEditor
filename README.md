@@ -13,12 +13,9 @@ Basic Featues
     - [x] Open  
     - [x] Save 
     - [x] Save As
-    - [ ] From Scanner or Camera
-    - [ ] Print Preview
-    - [ ] Print Setup
-    - [ ] Print
-    - [ ] Email
-    - [ ] Exit
+    - [x] Print Setup
+    - [x] Print
+    - [x] Exit
  2. Edit
     - [ ] Undo
     - [ ] Repeat
@@ -37,8 +34,6 @@ Basic Featues
     - [ ] Magnify
     - [x] Pencil
     - [x] Line
-    - [ ] Curve
-    - [ ] Text
     - [x] Rectangle
     - [x] Outlined Rectangle
     - [x] Filled Rectangle
@@ -62,7 +57,8 @@ Basic Featues
     - [x] Flip/Rotate
     - [ ] Stretch/Distort
     - [x] Inverse
-    - [ ] Clear
+    - [x] Convert to Gray
+    - [x] Clear
  6. Help
     - [x] Help Topics
     - [x] About ImageEditor

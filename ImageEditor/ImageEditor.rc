@@ -358,7 +358,7 @@ BEGIN
         MENUITEM "&Stretch/Distort...\tCtrl+W", ID_IMG_STRETCH
         MENUITEM "&Invert Color\tCtrl+I",       ID_IMG_INVERSE
         MENUITEM "&Clear\tCtrl+Shft+W",         ID_IMG_CLEAR
-        MENUITEM "&Draw Opaque",                ID_IMG_OPAQUE
+        MENUITEM "Convert to Gray",             ID_IMG_Grey
     END
     POPUP "&Help"
     BEGIN

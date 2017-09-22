@@ -78,6 +78,7 @@
 > ### Progress:
 > - Add convert-to-gray function
 > - Add Clear-whole-image function
+> - Add Zoom In/Out function
 
 
 

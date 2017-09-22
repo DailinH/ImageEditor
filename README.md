@@ -27,11 +27,6 @@ Basic Featues
     - [ ] Copy to
     - [ ] Paste From
  3. Tools
-    - [ ] Irregular Selection
-    - [ ] Rectangle Selection
-    - [ ] Erase
-    - [ ] Fill
-    - [ ] Magnify
     - [x] Pencil
     - [x] Line
     - [x] Rectangle
@@ -55,7 +50,7 @@ Basic Featues
     - [x] Select Color
  5. Image
     - [x] Flip/Rotate
-    - [ ] Zoom
+    - [x] Zoom In / Out
     - [x] Inverse
     - [x] Convert to Gray
     - [x] Clear

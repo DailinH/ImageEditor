@@ -309,13 +309,8 @@ BEGIN
         MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
         MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
         MENUITEM SEPARATOR
-        MENUITEM "From Scanner or &Camera...",  ID_APP_SCANNER_CAMERA
-        MENUITEM SEPARATOR
-        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
         MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
         MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
-        MENUITEM SEPARATOR
-        MENUITEM "Email",                       ID_APP_EMAIL
         MENUITEM SEPARATOR
         MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
         MENUITEM SEPARATOR
@@ -338,16 +333,8 @@ BEGIN
     END
     POPUP "&Tools"
     BEGIN
-        MENUITEM "Irregular Selection",         ID_Irregular_Selection
-        MENUITEM "Rectangle Selection",         ID_Rectangle_Selection
-        MENUITEM "Erase",                       ID_Erase
-        MENUITEM "Fill",                        ID_Fill
-        MENUITEM "Magnify",                     ID_Magnify
-        MENUITEM SEPARATOR
         MENUITEM "Pencil",                      ID_Pencil
         MENUITEM "Line",                        ID_Line
-        MENUITEM "Curve",                       ID_Curve, GRAYED
-        MENUITEM "Text",                        ID_Text, GRAYED
         MENUITEM SEPARATOR
         MENUITEM "Rectangle",                   ID_Rectangle
         MENUITEM "Filled Rectangle",            ID_Filled_Rectangle
@@ -379,7 +366,7 @@ BEGIN
     POPUP "&Image"
     BEGIN
         MENUITEM "&Flip/Rotate",                ID_IMG_ROTATE
-        MENUITEM "Zoom In/Out",                 ID_IMG_STRETCH, GRAYED
+        MENUITEM "Zoom In/Out",                 ID_IMG_STRETCH
         MENUITEM "&Invert Color",               ID_IMG_INVERSE
         MENUITEM "&Clear",                      ID_IMG_CLEAR
         MENUITEM "Convert to Gray",             ID_IMG_Grey

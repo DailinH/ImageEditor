@@ -104,83 +104,85 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	CRect rc_size;
 	GetClientRect(&rc_size);
 	/////////doZoom//////////////////////////////
-	// if(doZoom == true)
-	// {
-	// 	doZoom = false;
-	// 	//MessageBox("grey1!");
-	// 	CDC tmpDC;
-	// 	tmpDC.CreateCompatibleDC(pDC);
-	// 	CBitmap Bm;
-	// 	Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
-	// 	tmpDC.SelectObject(&Bm);
-	// 	tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
-	// 	HBITMAP hBmp = HBITMAP(Bm);
-	// 	BITMAP bmp;
-	// 	Bm.GetBitmap(&bmp); //获得位图信息
-	// 	int depth, nChannels;
-	// 	//MessageBox("grey2!");
+	if(doZoom == true)
+	{
+		doZoom = false;
+		//MessageBox("grey1!");
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+		HBITMAP hBmp = HBITMAP(Bm);
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //获得位图信息
+		int depth, nChannels;
+		//MessageBox("grey2!");
 
-	// 	if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
 
-	// 	{
-	// 		depth = IPL_DEPTH_1U;
-	// 		nChannels = 1;
-	// 	}
-	// 	else
-	// 	{
-	// 		depth = IPL_DEPTH_8U;
-	// 		// nChannels = 1;//bmp.bmBitsPixel / 8;
-	// 		nChannels = bmp.bmBitsPixel / 8;
-	// 	}
-	// 	IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
-	// 	BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			// nChannels = 1;//bmp.bmBitsPixel / 8;
+			nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
 
-	// 	GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
 
-	// 	memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
-	// 	if (pImg != NULL)
-	// 	{	// cvCvtColor(pImg,dstImg,CV_BGR2GRAY);
-	// 		// MessageBox("grey!");
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
+		if (pImg != NULL)
+		{	// cvCvtColor(pImg,dstImg,CV_BGR2GRAY);
+			// MessageBox("grey!");
 
-	// 		//MessageBox(zoom.m_Zoom_Horizontal+" " + zoom.m_Zoom_Vertical);
-	// 		CvSize sz;
-	// 		double scaleX = 0.01*static_cast<double>(atoi(zoom.m_Zoom_Horizontal));
-	// 		double scaleY = 0.01*static_cast<double>(atoi(zoom.m_Zoom_Vertical));
-	// 		sz.width = ImgWidth * scaleX;
-	// 		sz.height = ImgHeight * scaleY;
+			//MessageBox(zoom.m_Zoom_Horizontal+" " + zoom.m_Zoom_Vertical);
+			CvSize sz;
+			double scaleX = 0.01*static_cast<double>(atoi(zoom.m_Zoom_Horizontal));
+			double scaleY = 0.01*static_cast<double>(atoi(zoom.m_Zoom_Vertical));
+			sz.width = ImgWidth * scaleX;
+			sz.height = ImgHeight * scaleY;
 
-	// 		IplImage *dstImg = cvCreateImage(sz, depth, nChannels); //创建图像
-	// 		//int a = bmp.bmWidth*atoi(zoom.m_Zoom_Horizontal)*0.01;
-	// 		//int b = bmp.bmWidth;
-	// 		//CString ms;
-	// 		//ms.Format("%d",b);
-	// 		//MessageBox(ms);
+			IplImage *dstImg = cvCreateImage(sz, depth, nChannels); //创建图像
+			//int a = bmp.bmWidth*atoi(zoom.m_Zoom_Horizontal)*0.01;
+			//int b = bmp.bmWidth;
+			//CString ms;
+			//ms.Format("%d",b);
+			//MessageBox(ms);
 
-	// 		cvResize(pImg,dstImg,CV_INTER_AREA);
-	// 		cvSaveImage("tmp.bmp", dstImg);
-	// 		MessageBox("saved");
-	// 		dstImg = cvLoadImage("tmp.bmp",1);// CV_LOAD_IMAGE_GRAYSCALE);
-	// 		CImage tmpImg;
-	// 		// tmpImg.Create(ImgWidth, ImgHeight, 24);
-	// 		tmpImg.CopyOf(dstImg);
-	// 		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
-	// 		CRect rect(0, 0, ImgWidth, ImgHeight);
-	// 		tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
-	// 		//MessageBox("successful!");
+			cvResize(pImg,dstImg,CV_INTER_AREA);
+			cvSaveImage("tmp.bmp", dstImg);
+			//MessageBox("saved");
+			dstImg = cvLoadImage("tmp.bmp",1);// CV_LOAD_IMAGE_GRAYSCALE);
+			CImage tmpImg;
+			// tmpImg.Create(ImgWidth, ImgHeight, 24);
+			tmpImg.CopyOf(dstImg);
+			pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+			ImgHeight = tmpImg.Height();
+			ImgWidth = tmpImg.Width();
+			CRect rect(0, 0, tmpImg.Width(), tmpImg.Height());
+			tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+			//MessageBox("successful!");
 
-	// 		//cvFlip(pImg);
-	// 		//	cvReleaseImageheader(&pImage);
-	// 	}
-	// 	else
-	// 	{
-	// 		MessageBox("alert!");
-	// 	}
+			//cvFlip(pImg);
+			//	cvReleaseImageheader(&pImage);
+		}
+		else
+		{
+			MessageBox("alert!");
+		}
 
 
-	// 	// pDoc->m_img.Destroy();
-	// 	// tmpImg.Destroy();
-	// 	// cvReleaseImage(&pDoc->pImg);
-	// }
+		// pDoc->m_img.Destroy();
+		// tmpImg.Destroy();
+		// cvReleaseImage(&pDoc->pImg);
+	}
 
 	/////////doGrey//////////////////////////////
 	if(doGrey == true)
@@ -221,7 +223,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		if (pImg != NULL)
 		{
 			cvCvtColor(pImg,dstImg,CV_BGR2GRAY);
-			MessageBox("grey!");
+			//MessageBox("grey!");
 			//cvNot(pImg, dstImg);
 			// vSmooth(pImg, dstImg, CV_GAUSSIAN, 3, 3, 0, 0);
 			cvSaveImage("tmp.bmp", dstImg);
@@ -820,7 +822,7 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-	if(doFlipRotate || invertColor ||GaussianFilter||doGrey || clearImg)
+	if(doFlipRotate || invertColor ||GaussianFilter||doGrey || clearImg || doZoom)
 		InvalidateRect(NULL, FALSE);
 	if (m_type == 1)
 	{

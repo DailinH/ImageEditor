@@ -177,6 +177,10 @@ SOURCE=.\ImageEditorView.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\ImageEditorZoom.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\MainFrm.cpp
 # End Source File
 # Begin Source File
@@ -215,6 +219,10 @@ SOURCE=.\ImageEditorNewFile.h
 # Begin Source File
 
 SOURCE=.\ImageEditorView.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ImageEditorZoom.h
 # End Source File
 # Begin Source File
 

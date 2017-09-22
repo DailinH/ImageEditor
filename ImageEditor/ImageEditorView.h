@@ -14,6 +14,7 @@
 #include "ImageEditorNewFile.h"
 #include "ImageEditorLineWidth.h"
 #include "ImageEditorFlipnRotate.h"
+#include "ImageEditorZoom.h"
 class CImageEditorView : public CView
 {
 protected: // create from serialization only
@@ -42,7 +43,7 @@ protected:
 
 	// Implementation
 public:
-	bool doFlipRotate;
+	bool Zoom;
 	bool doGrey;
 	bool invertColor;
 	bool GaussianFilter;
@@ -53,7 +54,12 @@ public:
 	ImageEditorColorPanel colorPanel;
 	ImageEditorNewFile createNewFile;
 	ImageEditorLineWidth getLineWidth;
+	
+	bool doFlipRotate;	
 	ImageEditorFlipnRotate flipRotate;
+
+	bool doZoom;
+	ImageEditorZoom zoom;
 	int m_type;
 	/*
 	brief notes:
@@ -112,6 +118,7 @@ protected:
 	afx_msg void OnInvertColor();
 	afx_msg void OnIMGColororGrey();
 	afx_msg void OnClear();
+	afx_msg void OnImgZoom();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

@@ -2,32 +2,34 @@
 
 [General Info]
 Version=1
-LastClass=CImageEditorView
+LastClass=ImageEditorZoom
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
 LastPage=0
 
-ClassCount=9
+ClassCount=10
 Class1=CImageEditorApp
 Class2=CImageEditorDoc
 Class3=CImageEditorView
 Class4=CMainFrame
 
-ResourceCount=8
+ResourceCount=9
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_DIALOG3
+Resource3=IDD_DIALOG4
 Resource4=IDD_ABOUTBOX (English (U.S.))
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG1
+Resource5=IDD_DIALOG5
 Class7=ImageEditorNewFile
-Resource6=IDD_DIALOG4
+Resource6=IDD_DIALOG3
 Class8=ImageEditorLineWidth
 Resource7=IDD_DIALOG2
 Class9=ImageEditorFlipnRotate
-Resource8=IDR_MAINFRAME (English (U.S.))
+Resource8=IDD_DIALOG1
+Class10=ImageEditorZoom
+Resource9=IDR_MAINFRAME (English (U.S.))
 
 [CLS:CImageEditorApp]
 Type=0
@@ -48,7 +50,7 @@ ImplementationFile=ImageEditorView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_Gaussian_Filter
+LastObject=CImageEditorView
 
 
 [CLS:CMainFrame]
@@ -56,7 +58,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_IMG_CLEAR
+LastObject=ID_IMG_STRETCH
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -318,4 +320,27 @@ BaseClass=CDialog
 Filter=D
 LastObject=IDC_RADIO1
 VirtualFilter=dWC
+
+[DLG:IDD_DIALOG5]
+Type=1
+Class=ImageEditorZoom
+ControlCount=9
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_STATIC,static,1342308352
+Control4=IDC_STATIC,static,1342308352
+Control5=IDC_EDIT1,edit,1350631552
+Control6=IDC_EDIT3,edit,1350631552
+Control7=IDC_STATIC,static,1342308352
+Control8=IDC_STATIC,static,1342308352
+Control9=IDC_STATIC,button,1342177287
+
+[CLS:ImageEditorZoom]
+Type=0
+HeaderFile=ImageEditorZoom.h
+ImplementationFile=ImageEditorZoom.cpp
+BaseClass=CDialog
+Filter=D
+VirtualFilter=dWC
+LastObject=IDC_EDIT1
 

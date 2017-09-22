@@ -6,7 +6,7 @@
 --------------------Configuration: ImageEditor - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP6FB0.bat" with contents
+Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSPBBEB.bat" with contents
 [
 @echo off
 start /wait hcw /C /E /M "hlp\ImageEditor.hpj"
@@ -19,22 +19,8 @@ echo hlp\ImageEditor.hpj(1) : error:
 type "hlp\ImageEditor.log"
 :done
 ]
-Creating command line "C:\Users\hudai\AppData\Local\Temp\RSP6FB0.bat"
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP6FB1.tmp" with contents
-[
-/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/ImageEditor.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
-"D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp"
-]
-Creating command line "cl.exe @C:\Users\hudai\AppData\Local\Temp\RSP6FB1.tmp" 
-Making help file...
-hlp\ImageEditor.hpj(1) : error:
-Microsoft (R) Help Compiler
-HCRTF 4.03.0002
-Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
-imageeditor.hpj
-    HC5011: Error: imageeditor.hpj : 
- Cannot open the file "include\afxhelp.hm."
-Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSP7167.tmp" with contents
+Creating command line "C:\Users\hudai\AppData\Local\Temp\RSPBBEB.bat"
+Creating temporary file "C:\Users\hudai\AppData\Local\Temp\RSPBBEC.tmp" with contents
 [
 cxcore.lib cv.lib ml.lib cvaux.lib highgui.lib cvcam.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/ImageEditor.pdb" /machine:I386 /out:"Release/ImageEditor.exe" 
 ".\Release\ImageEditor.obj"
@@ -44,23 +30,28 @@ cxcore.lib cv.lib ml.lib cvaux.lib highgui.lib cvcam.lib /nologo /subsystem:wind
 ".\Release\ImageEditorLineWidth.obj"
 ".\Release\ImageEditorNewFile.obj"
 ".\Release\ImageEditorView.obj"
+".\Release\ImageEditorZoom.obj"
 ".\Release\MainFrm.obj"
 ".\Release\StdAfx.obj"
 ".\Release\ImageEditor.res"
 "\01 语言课程设计\03 画图软件\OpenCV\lib\highgui.lib"
 ]
-Creating command line "link.exe @C:\Users\hudai\AppData\Local\Temp\RSP7167.tmp"
+Creating command line "link.exe @C:\Users\hudai\AppData\Local\Temp\RSPBBEC.tmp"
+Making help file...
+hlp\ImageEditor.hpj(1) : error:
+Microsoft (R) Help Compiler
+HCRTF 4.03.0002
+Copyright (c) Microsoft Corp 1990 - 1995. All rights reserved.
+imageeditor.hpj
+    HC5011: Error: imageeditor.hpj : 
+ Cannot open the file "include\afxhelp.hm."
 <h3>Output Window</h3>
-Compiling...
-ImageEditorView.cpp
-D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp(373) : warning C4805: '==' : unsafe mix of type 'int' and type 'const bool' in operation
-D:\01 语言课程设计\03 画图软件\ImageEditor\ImageEditor\ImageEditorView.cpp(384) : warning C4805: '==' : unsafe mix of type 'int' and type 'const bool' in operation
 Linking...
 
 
 
 <h3>Results</h3>
-ImageEditor.exe - 2 error(s), 2 warning(s)
+ImageEditor.exe - 2 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

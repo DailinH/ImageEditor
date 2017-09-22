@@ -53,6 +53,7 @@ ON_COMMAND(ID_IMG_ROTATE, OnImgFlipRotate)
 ON_COMMAND(ID_IMG_INVERSE, OnInvertColor)
 	ON_COMMAND(ID_IMG_Grey, OnIMGColororGrey)
 	ON_COMMAND(ID_IMG_CLEAR, OnClear)
+	ON_COMMAND(ID_IMG_STRETCH, OnImgZoom)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -76,8 +77,7 @@ CImageEditorView::CImageEditorView()
 	doGrey = false;
 	createNewFile.ResetMap = true;
 	clearImg = false;
-	// Invalidate(TRUE);
-	// InvalidateRect(NULL, FALSE);
+	doZoom = false;
 	// TODO: add construction code here
 }
 
@@ -103,6 +103,85 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	ASSERT_VALID(pDoc);
 	CRect rc_size;
 	GetClientRect(&rc_size);
+	/////////doZoom//////////////////////////////
+	// if(doZoom == true)
+	// {
+	// 	doZoom = false;
+	// 	//MessageBox("grey1!");
+	// 	CDC tmpDC;
+	// 	tmpDC.CreateCompatibleDC(pDC);
+	// 	CBitmap Bm;
+	// 	Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+	// 	tmpDC.SelectObject(&Bm);
+	// 	tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+	// 	HBITMAP hBmp = HBITMAP(Bm);
+	// 	BITMAP bmp;
+	// 	Bm.GetBitmap(&bmp); //获得位图信息
+	// 	int depth, nChannels;
+	// 	//MessageBox("grey2!");
+
+	// 	if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+
+	// 	{
+	// 		depth = IPL_DEPTH_1U;
+	// 		nChannels = 1;
+	// 	}
+	// 	else
+	// 	{
+	// 		depth = IPL_DEPTH_8U;
+	// 		// nChannels = 1;//bmp.bmBitsPixel / 8;
+	// 		nChannels = bmp.bmBitsPixel / 8;
+	// 	}
+	// 	IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
+	// 	BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
+
+	// 	GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
+
+	// 	memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
+	// 	if (pImg != NULL)
+	// 	{	// cvCvtColor(pImg,dstImg,CV_BGR2GRAY);
+	// 		// MessageBox("grey!");
+
+	// 		//MessageBox(zoom.m_Zoom_Horizontal+" " + zoom.m_Zoom_Vertical);
+	// 		CvSize sz;
+	// 		double scaleX = 0.01*static_cast<double>(atoi(zoom.m_Zoom_Horizontal));
+	// 		double scaleY = 0.01*static_cast<double>(atoi(zoom.m_Zoom_Vertical));
+	// 		sz.width = ImgWidth * scaleX;
+	// 		sz.height = ImgHeight * scaleY;
+
+	// 		IplImage *dstImg = cvCreateImage(sz, depth, nChannels); //创建图像
+	// 		//int a = bmp.bmWidth*atoi(zoom.m_Zoom_Horizontal)*0.01;
+	// 		//int b = bmp.bmWidth;
+	// 		//CString ms;
+	// 		//ms.Format("%d",b);
+	// 		//MessageBox(ms);
+
+	// 		cvResize(pImg,dstImg,CV_INTER_AREA);
+	// 		cvSaveImage("tmp.bmp", dstImg);
+	// 		MessageBox("saved");
+	// 		dstImg = cvLoadImage("tmp.bmp",1);// CV_LOAD_IMAGE_GRAYSCALE);
+	// 		CImage tmpImg;
+	// 		// tmpImg.Create(ImgWidth, ImgHeight, 24);
+	// 		tmpImg.CopyOf(dstImg);
+	// 		pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+	// 		CRect rect(0, 0, ImgWidth, ImgHeight);
+	// 		tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+	// 		//MessageBox("successful!");
+
+	// 		//cvFlip(pImg);
+	// 		//	cvReleaseImageheader(&pImage);
+	// 	}
+	// 	else
+	// 	{
+	// 		MessageBox("alert!");
+	// 	}
+
+
+	// 	// pDoc->m_img.Destroy();
+	// 	// tmpImg.Destroy();
+	// 	// cvReleaseImage(&pDoc->pImg);
+	// }
+
 	/////////doGrey//////////////////////////////
 	if(doGrey == true)
 	{
@@ -163,7 +242,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		{
 			MessageBox("alert!");
 		}
-		invertColor = false;
+
 
 		// pDoc->m_img.Destroy();
 		// tmpImg.Destroy();
@@ -437,12 +516,6 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		// tmpImg.Destroy();
 		// cvReleaseImage(&pDoc->pImg);
 	}
-	/////////////////////////////////////////////
-	// CSize sizeTotal;
-	// sizeTotal.cx = img.Width();
-	// sizeTotal.cy = img.Height();
-	// SetScrollSizes(MM_TEXT, sizeTotal);
-	///////////////////////////////////////////
 	///////set color//////////
 	int red = atoi(colorPanel.m_Color_Red);
 	int green = atoi(colorPanel.m_Color_Green);
@@ -920,4 +993,11 @@ void CImageEditorView::OnClear()
 	clearImg = true;
 	// TODO: Add your command handler code here
 	
+}
+
+void CImageEditorView::OnImgZoom() 
+{
+	// TODO: Add your command handler code here
+	zoom.DoModal();
+	doZoom = true;
 }

@@ -55,7 +55,7 @@ Basic Featues
     - [x] Select Color
  5. Image
     - [x] Flip/Rotate
-    - [ ] Stretch/Distort
+    - [ ] Zoom
     - [x] Inverse
     - [x] Convert to Gray
     - [x] Clear

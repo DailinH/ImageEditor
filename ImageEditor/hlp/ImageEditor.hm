@@ -57,5 +57,6 @@ HIDD_DIALOG1                            0x20082
 HIDD_DIALOG2                            0x20083
 HIDD_DIALOG3                            0x20084
 HIDD_DIALOG4                            0x20085
+HIDD_DIALOG5                            0x20086
  
 // Frame Controls (IDW_*) 

@@ -370,6 +370,7 @@ BEGIN
         MENUITEM "&Invert Color",               ID_IMG_INVERSE
         MENUITEM "&Clear",                      ID_IMG_CLEAR
         MENUITEM "Convert to Gray",             ID_IMG_Grey
+        MENUITEM "Move Image to...",            ID_MENUITEM32828
     END
     POPUP "&Help"
     BEGIN

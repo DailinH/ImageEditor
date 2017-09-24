@@ -72,6 +72,7 @@
 #define LINE_STYLE_DASHDOT              32824
 #define LINE_STYLE_DASHDOTDOT           32825
 #define ID_Gaussian_Filter              32827
+#define ID_MENUITEM32828                32828
 
 // Next default values for new objects
 // 
@@ -79,7 +80,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        135
-#define _APS_NEXT_COMMAND_VALUE         32828
+#define _APS_NEXT_COMMAND_VALUE         32829
 #define _APS_NEXT_CONTROL_VALUE         1010
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=ImageEditorZoom
+LastClass=CImageEditorView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "ImageEditor.h"
@@ -18,16 +18,16 @@ ResourceCount=9
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDD_DIALOG2
-Resource4=IDD_DIALOG1
+Resource3=IDD_DIALOG5
+Resource4=IDD_DIALOG4
 Class6=ImageEditorColorPanel
-Resource5=IDD_DIALOG5
+Resource5=IDD_DIALOG1
 Class7=ImageEditorNewFile
-Resource6=IDD_ABOUTBOX (English (U.S.))
+Resource6=IDD_DIALOG2
 Class8=ImageEditorLineWidth
-Resource7=IDD_DIALOG4
+Resource7=IDD_DIALOG3
 Class9=ImageEditorFlipnRotate
-Resource8=IDD_DIALOG3
+Resource8=IDD_ABOUTBOX (English (U.S.))
 Class10=ImageEditorZoom
 Resource9=IDR_MAINFRAME (English (U.S.))
 
@@ -58,7 +58,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_IMG_STRETCH
+LastObject=ID_MENUITEM32828
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -193,9 +193,10 @@ Command38=ID_IMG_STRETCH
 Command39=ID_IMG_INVERSE
 Command40=ID_IMG_CLEAR
 Command41=ID_IMG_Grey
-Command42=ID_HELP_FINDER
-Command43=ID_APP_ABOUT
-CommandCount=43
+Command42=ID_MENUITEM32828
+Command43=ID_HELP_FINDER
+Command44=ID_APP_ABOUT
+CommandCount=44
 
 [ACL:IDR_MAINFRAME (English (U.S.))]
 Type=1

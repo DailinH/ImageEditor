@@ -54,6 +54,7 @@ ON_COMMAND(ID_IMG_INVERSE, OnInvertColor)
 	ON_COMMAND(ID_IMG_Grey, OnIMGColororGrey)
 	ON_COMMAND(ID_IMG_CLEAR, OnClear)
 	ON_COMMAND(ID_IMG_STRETCH, OnImgZoom)
+	ON_COMMAND(ID_MENUITEM32828, OnMoveImage)
 	//}}AFX_MSG_MAP
 // Standard printing commands
 ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -78,6 +79,7 @@ CImageEditorView::CImageEditorView()
 	createNewFile.ResetMap = true;
 	clearImg = false;
 	doZoom = false;
+	moveImg = false;
 	// TODO: add construction code here
 }
 
@@ -104,6 +106,72 @@ void CImageEditorView::OnDraw(CDC *pDC)
 	CRect rc_size;
 	GetClientRect(&rc_size);
 	/////////doZoom//////////////////////////////
+	if(moveImg == true)
+	{
+		moveImg = false;
+		CPoint point = pDoc->m_Last_LBtnDn_Position;
+		CPoint tgtPoint = pDoc->m_Current_Position;
+		int x_dist = tgtPoint.x - point.x;
+		int y_dist = tgtPoint.y - point.y;
+		//MessageBox("grey1!");
+		CDC tmpDC;
+		tmpDC.CreateCompatibleDC(pDC);
+		CBitmap Bm;
+		Bm.CreateCompatibleBitmap(pDC, ImgWidth, ImgHeight);
+		tmpDC.SelectObject(&Bm);
+		tmpDC.StretchBlt(0, 0, ImgWidth, ImgHeight, pDC, 0, 0, ImgWidth, ImgHeight, SRCCOPY);
+		HBITMAP hBmp = HBITMAP(Bm);
+		BITMAP bmp;
+		Bm.GetBitmap(&bmp); //获得位图信息
+		int depth, nChannels;
+		//MessageBox("grey2!");
+
+		if (bmp.bmBitsPixel == 1) //得到图像深度和通道数
+
+		{
+			depth = IPL_DEPTH_1U;
+			nChannels = 1;
+		}
+		else
+		{
+			depth = IPL_DEPTH_8U;
+			// nChannels = 1;//bmp.bmBitsPixel / 8;
+			nChannels = bmp.bmBitsPixel / 8;
+		}
+		IplImage *pImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, nChannels);   //创建图像
+		BYTE *pBuffer = new BYTE[bmp.bmHeight * bmp.bmWidth * nChannels];					   //创建缓冲区
+
+		GetBitmapBits(hBmp, bmp.bmHeight * bmp.bmWidth * nChannels, pBuffer);				   //将位图信息复制到缓冲区
+
+		memcpy(pImg->imageData, pBuffer, bmp.bmHeight * bmp.bmWidth * nChannels);			   //将缓冲区信息复制给IplImage
+		IplImage *dstImg = cvCreateImage(cvSize(bmp.bmWidth, bmp.bmHeight), depth, 1); //创建图像
+		if (pImg != NULL)
+		{
+			cvSaveImage("tmp.bmp", pImg);
+			IplImage *tImg = cvLoadImage("tmp.bmp",1);// CV_LOAD_IMAGE_GRAYSCALE);
+			CImage tmpImg;
+			// tmpImg.Create(ImgWidth, ImgHeight, 24);
+			tmpImg.CopyOf(tImg);
+			pDC->FillSolidRect(0, 0, rc_size.right, rc_size.bottom, RGB(128, 128, 128));
+			if(x_dist>0 && y_dist>0)
+				pDC->FillSolidRect(0, 0,ImgWidth+x_dist,  ImgHeight+y_dist, RGB(255, 255, 255));
+			CRect rect(x_dist, y_dist, ImgWidth+x_dist, ImgHeight+y_dist);
+			tmpImg.DrawToHDC(pDC->GetSafeHdc(), &rect);
+			//MessageBox("successful!");
+
+			//cvFlip(pImg);
+			//	cvReleaseImageheader(&pImage);
+		}
+		else
+		{
+			MessageBox("alert!");
+		}
+
+
+		// pDoc->m_img.Destroy();
+		// tmpImg.Destroy();
+		// cvReleaseImage(&pDoc->pImg);
+	}
 	if(doZoom == true)
 	{
 		doZoom = false;
@@ -633,6 +701,13 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		CPoint tgtPoint = pDoc->m_Current_Position;
 		CPoint LDn(point.x, tgtPoint.y);
 		CPoint RUp(tgtPoint.x, point.y);
+		CBrush newBrush(bgcolor);
+		//MessageBox(bgcolor);
+		pDC->SelectObject(&newBrush);
+		CRect drawrc(point.x, point.y, tgtPoint.x, tgtPoint.y);
+		pDC->FillRect(&drawrc, &newBrush);
+		// pDC->Rectangle(point.x,point.y,tgtPoint.x,tgtPoint.y);
+		newBrush.DeleteObject();
 		CPen newPen(LineStyle, width, color);
 		pDC->SelectObject(&newPen);
 		if (point.x <= ImgWidth && point.y <= ImgHeight && tgtPoint.x <= ImgWidth && tgtPoint.y <= ImgHeight)
@@ -648,14 +723,10 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		}
 		newPen.DeleteObject();
 
-		// CBrush newBrush(bgcolor);
-		CBrush newBrush;
-		newBrush.CreateSolidBrush(bgcolor);
-		// pDC->SelectObject(&newBrush);
-		pDC->Rectangle(point.x, point.y, tgtPoint.x, tgtPoint.y);
-		// CRect rect(point.x,point.y,tgtPoint.x,tgtPoint.y);
-		// pDC->FillRect(&rect,&newBrush);
-		newBrush.DeleteObject();
+		// CBrush newBrush;
+		// newBrush.CreateSolidBrush(bgcolor);
+		// pDC->Rectangle(point.x, point.y, tgtPoint.x, tgtPoint.y);
+		// newBrush.DeleteObject();
 	}
 	else if (m_type == 7)
 	{
@@ -665,6 +736,7 @@ void CImageEditorView::OnDraw(CDC *pDC)
 		CPoint RUp(tgtPoint.x, point.y);
 
 		CBrush newBrush(bgcolor);
+		//MessageBox(bgcolor);
 		pDC->SelectObject(&newBrush);
 		CRect drawrc(point.x, point.y, tgtPoint.x, tgtPoint.y);
 		pDC->FillRect(&drawrc, &newBrush);
@@ -810,7 +882,8 @@ void CImageEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	LBtnDn = false;
-	if (m_type == 2 || m_type >= 5)
+
+	if (m_type == 2 || m_type >= 5 || moveImg)
 	{
 		CImageEditorDoc *pDoc = GetDocument();
 		pDoc->m_Current_Position = point;
@@ -824,7 +897,7 @@ void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 	// TODO: Add your message handler code here and/or call default
 	if(doFlipRotate || invertColor ||GaussianFilter||doGrey || clearImg || doZoom)
 		InvalidateRect(NULL, FALSE);
-	if (m_type == 1)
+	if (m_type == 1 && !moveImg)
 	{
 		if (LBtnDn == true)
 		{
@@ -833,8 +906,6 @@ void CImageEditorView::OnMouseMove(UINT nFlags, CPoint point)
 			InvalidateRect(NULL, FALSE);
 		}
 	}
-	UpdateWindow();
-
 	CView::OnMouseMove(nFlags, point);
 }
 
@@ -1002,4 +1073,9 @@ void CImageEditorView::OnImgZoom()
 	// TODO: Add your command handler code here
 	zoom.DoModal();
 	doZoom = true;
+}
+
+void CImageEditorView::OnMoveImage() 
+{
+	moveImg = true;	
 }

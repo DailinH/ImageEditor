@@ -44,6 +44,7 @@ HID_Outlined_Ellipse                    0x1802E
 HID_Filled_Ellipse                      0x1802F
 HID_MENUITEM32820                       0x18034
 HID_Gaussian_Filter                     0x1803B
+HID_MENUITEM32828                       0x1803C
  
 // Prompts (IDP_*) 
  
